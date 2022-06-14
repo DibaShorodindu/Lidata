@@ -124,7 +124,7 @@
               </li>
               @guest
                     <li class="navigation__item">
-                        <a href="{{ route('/phonelistUserLogin') }}" class="navigation__link"> Account </a>
+                        <a href="{{ route('user.login') }}" class="navigation__link"> Account </a>
                     </li>
                 @else
                     <li class="navigation__item">

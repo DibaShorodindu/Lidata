@@ -15,7 +15,7 @@
       <div class="row">
         <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('/') }}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">
               Careers
             </li>
@@ -48,7 +48,7 @@
       <div class="container">
         <div class="row mb-5 pb-5">
           <div class="col-md-12 text-center">
-            <h2 class="careers-heading--main">Our values</h3>
+            <h2 class="careers-heading--main">Our values</h2>
           </div>
           <div class="col-md-12 text-center mx-auto">
             <p class="careers-heading--sub ">How you succeed matters to Li Data. Here is how we work:</p>
@@ -134,7 +134,7 @@
         <div class="row my-5 py-5">
           <div class="col-md-4 col-8 mx-auto">
             <div class="card">
-              <img class="card-img-top img-fluid" src="assets/images/user01.jpg" alt="founder">
+              <img class="card-img-top img-fluid" src="{{ asset('/') }}adminAsset/assets/images/user01.jpg" alt="founder">
               <div class="card-body">
                 <h4 class="card-title">Dana Walton</h4>
                 <p class="card-text">Founder and CEO</p>
@@ -143,7 +143,7 @@
           </div>
           <div class="col-md-4 col-8 mx-auto">
             <div class="card">
-              <img class="card-img-top img-fluid" src="assets/images/user02.jpg" alt="">
+              <img class="card-img-top img-fluid" src="{{ asset('/') }}adminAsset/assets/images/user02.jpg" alt="">
               <div class="card-body">
                 <h4 class="card-title">Bryan Campos</h4>
                 <p class="card-text">Product Manager</p>
@@ -152,7 +152,7 @@
           </div>
           <div class="col-md-4 col-8 mx-auto">
             <div class="card">
-              <img class="card-img-top img-fluid" src="assets/images/user03.jpg" alt="">
+              <img class="card-img-top img-fluid" src="{{ asset('/') }}adminAsset/assets/images/user03.jpg" alt="">
               <div class="card-body">
                 <h4 class="card-title">Kathy Barrier</h4>
                 <p class="card-text">Engineering Manager</p>

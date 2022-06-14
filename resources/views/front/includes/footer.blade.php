@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row pt-3">
         <div class="col-lg-3 pl-5 mb-lg-0 mb-5">
-          <a href="/">
+          <a href="{{ route('/') }}">
             <img class="img-fluid footer__logo" src="{{ asset('/') }}adminAsset/assets/images/logo--company-name-dark.svg" alt="phone list" />
           </a>
         </div>
@@ -11,10 +11,10 @@
         <div class="col-lg-2 col-md-4 col-sm-6 pl-md-0 pb-3 ps-md-0 ps-4">
           <h5 class="footer-title">ABOUT</h5>
           <ul class="pt-3">
-            <li><a href="{{route('about')}}">About us</a></li>
-            <li><a href="{{route('contact')}}">Contact us</a></li>
-            <li><a href="/">Forum</a></li>
-            <li><a href="/">Help</a></li>
+            <li><a href="{{ route('about') }}">About us</a></li>
+            <li><a href="{{ route('contact') }}">Contact us</a></li>
+            <li><a href="{{ route('/') }}">Forum</a></li>
+            <li><a href="">Help</a></li>
           </ul>
         </div>
 
@@ -114,9 +114,9 @@
         </div>
         <div class="col-md-8 mt-md-0 mt-4">
           <ul class="text-center m-auto terms">
-            <li><a href="{{route('terms-of-service')}}">Terms of service</a></li>
-            <li><a href="{{route('privacy-policy')}}">Privacy Policy</a></li>
-            <li><a href="{{route('refund')}}">Refund Policy</a></li>
+            <li><a href="{{ route('terms-of-service') }}">Terms of service</a></li>
+            <li><a href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
+            <li><a href="{{ route('refund') }}">Refund Policy</a></li>
           </ul>
         </div>
       </div>

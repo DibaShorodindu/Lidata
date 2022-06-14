@@ -1,5 +1,5 @@
 <?php
-    $connect = mysqli_connect("localhost", "root", "", "lidata_list");
+    $connect = mysqli_connect("localhost", "root", "", "lidata");
     $query = "SELECT * FROM phone_lists";
     $result = mysqli_query($connect, $query);
     $rowcount = mysqli_num_rows( $result );
@@ -199,7 +199,7 @@
                         Phone List has experts who are collecting data from all over the world. We are collecting information from reliable sources and after a lot of research, we are putting the data onto the website. This contact database will surely increase your sales leads. Again, every detail of a person like a person’s name, address, gender, postal code, etc that you will get is 100% accurate and active. If you get any of our data to be inaccurate or if it bounces back, we will provide credits for that data and that’s a promise we keep.
                     </p>
                     @guest
-                        <a href="{{ route('/phonelistUserRegister') }}"class="btn-txt mt-3">
+                        <a href="{{ route('user.register') }}"class="btn-txt mt-3">
                             Get Started →
                         </a>
                     @else
@@ -234,7 +234,7 @@
                         From the Phone List website, you can easily find the expecting contact details you are looking after as our search engine is very accurate. Again all the mobile number lists are very easy to buy, you can purchase any service within a minute. In the end, the contact database is also simple to download. So any unfamiliar and inexperienced person can easily follow the process and get the contact list from Phone List.
                     </p>
                     @guest
-                        <a href="{{ route('/phonelistUserRegister') }}"class="btn-txt mt-3">
+                        <a href="{{ route('user.register') }}"class="btn-txt mt-3">
                             Get Started →
                         </a>
                     @else
@@ -263,7 +263,7 @@
 
                     </p>
                     @guest
-                        <a href="{{ route('/phonelistUserRegister') }}"class="btn-txt mt-3">
+                        <a href="{{ route('user.register') }}"class="btn-txt mt-3">
                             Get Started →
                         </a>
                     @else
@@ -347,7 +347,7 @@
                         Phone List understands the value of your money. Therefore, we are giving you the mobile number list at a very low price as we can afford it. All our mobile number list packages are very affordable so anyone can buy this contact database from Phone List. By doing that Phone List is showing the world that we are a business-friendly website. Overall, you are getting high-quality contact details at an amazingly cheap price. This bulk price proves that we are very keen to support others in their financial journey.
                     </p>
                     @guest
-                        <a href="{{ route('/phonelistUserRegister') }}"class="btn-txt mt-3">
+                        <a href="{{ route('user.register') }}"class="btn-txt mt-3">
                             Get Started →
                         </a>
                     @else
@@ -374,7 +374,7 @@
                         Through these contact details, you can go beyond borders. By purchasing this you can get connected with high-profile people. Purchasing these mobile leads will provide you with the latest and active contact number list from all over the world. From here you can get more publicity for your business or company and it will enhance your company image. Because of this contact number product, people from all over the world can see your business. In conclusion, it will help you to build your company as a multinational company.
                     </p>
                     @guest
-                        <a href="{{ route('/phonelistUserRegister') }}"class="btn-txt mt-3">
+                        <a href="{{ route('user.register') }}"class="btn-txt mt-3">
                             Get Started →
                         </a>
                     @else
@@ -407,7 +407,7 @@
                         Phone List works so exquisitely whenever it comes to collecting contact details. After download, you will receive the data as a CSV file. Fuse the file into your sales CRM. Therefore, you can use the database on any CRM platform. So you can say that CRM sales are very much possible with this data prospect. By doing this you can generate an extensive network for your business. The larger you can create your network the more sales leads you will get.
                     </p>
                     @guest
-                        <a href="{{ route('/phonelistUserRegister') }}"class="btn-txt mt-3">
+                        <a href="{{ route('user.register') }}"class="btn-txt mt-3">
                             Get Started →
                         </a>
                     @else

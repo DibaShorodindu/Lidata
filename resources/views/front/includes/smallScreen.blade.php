@@ -20,7 +20,7 @@
             <a href="{{route('product')}}" class="navigation__link">Product</a>
           </li>
           <li class="navigation__item">
-            <a href="{{route('pricing-us')}}" class="navigation__link">Pricing</a>
+            <a href="{{route('packages')}}" class="navigation__link">Pricing</a>
           </li>
           <li class="navigation__item">
             <a href="" class="navigation__link">Blog</a>
@@ -55,7 +55,7 @@
 
           @guest
                     <li class="navigation__item">
-                        <a href="{{ route('/phonelistUserLogin') }}" class="navigation__link"> Account </a>
+                        <a href="{{ route('user.login') }}" class="navigation__link"> Account </a>
                     </li>
                 @else
                     <li class="navigation__item">

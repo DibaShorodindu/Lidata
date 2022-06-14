@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\PhoneListUserModel;
+use App\Models\LidataUserModel;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -22,21 +22,25 @@ class GoogleController extends Controller
 
     public function handleGoogleCallback()
     {
-        //echo 'hello';
-        //return redirect()->route('/');
         try {
 
             $user = Socialite::driver(static::DRIVER_TYPE)->user();
 
-            $userExisted = PhoneListUserModel::where('email', $user->email)->first();
+            $userExisted = LidataUserModel::where('email', $user->email)->first();
 
             if( $userExisted ) {
 
-                return redirect()->route('loggedInUser');
+                $saveUser = LidataUserModel::where('email', $user->email)->first();
+
+
+                //return redirect('loggedInUser');
 
             }else {
                 return view('user.userGoogleRegister', ['newUserData'=>$user]);
             }
+            Auth::loginUsingId($saveUser->id);
+            return redirect('loggedInUser');
+
 
 
         } catch (Exception $e) {

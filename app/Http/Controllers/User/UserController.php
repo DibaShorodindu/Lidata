@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Card;
 use App\Models\Contact;
 use App\Imports\ContactImport;
+use App\Models\Country;
 use App\Models\PhoneList;
-use App\Models\PhoneListUserModel;
+use App\Models\LidataUserModel;
 use App\Models\PurchasePlan;
 use App\Models\Credit;
 use Carbon\Carbon;
@@ -33,25 +34,23 @@ class UserController extends Controller
     protected $id;
     protected $user;
     protected $allData;
+    protected $country;
 
 
     public function dashboard()
     {
-        if(Auth::check()){
+        /*if(Auth::check()){*/
             return view('userDashboard.userDashboard');
-        }
-        return redirect('/phonelistUserLogin')->with('message','Oppes! You have entered invalid credentials');
+        /*}
+        return redirect('user.login')->with('message','Oppes! You have entered invalid credentials');*/
 
     }
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
+
 
     public function userRegister()
     {
-        return view('user.userRegister');
+        $this->country = Country::all();
+        return view('user.userRegister', ['countries'=> $this->country]);
     }
 
 
@@ -59,11 +58,11 @@ class UserController extends Controller
     {
         $data = $request->all();
         $validator = \Validator::make($request->all(), [
-            'email' => 'required|email|unique:phone_list_user_models,email',
+            'email' => 'required|email|unique:lidata_user_models,email',
             'password' => 'required',
             'firstName' => 'required',
             'lastName' => 'required',
-            'phone'=>'required|min:11|numeric|unique:phone_list_user_models',
+            'phone'=>'required|min:11|numeric|unique:lidata_user_models',
             'country' => 'required',
         ]);
         if ($validator->fails()) {
@@ -73,7 +72,7 @@ class UserController extends Controller
         
         else {
             $check = $this->create($data);
-            $newUser = PhoneListUserModel::where('email', $data['email'])->first();
+            $newUser = LidataUserModel::where('email', $data['email'])->first();
             PurchasePlan::create($newUser);
             // return $newUser;
             Credit::create([
@@ -91,45 +90,80 @@ class UserController extends Controller
      */
     public function create(array $data)
     {
-        return PhoneListUserModel::create([
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'firstName' => $data['firstName'],
-            'lastName' => $data['lastName'],
-            'name' => $data['firstName'].' '.$data['lastName'],
-            'phone' => $data['phone'],
-            'country' => $data['country'],
-        ]);
+        if ($data['fb_id'] != null)
+        {
+            return LidataUserModel::create([
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'firstName' => $data['firstName'],
+                'lastName' => $data['lastName'],
+                'name' => $data['firstName'].' '.$data['lastName'],
+                'phone' => $data['phone'],
+                'country' => $data['country'],
+                'purchasePlan' => 'Free',
+                'useAbleCredit' => 50,
+                'fb_id' => $data['fb_id']
+            ]);
+        }
+        else
+        {
+            return LidataUserModel::create([
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'firstName' => $data['firstName'],
+                'lastName' => $data['lastName'],
+                'name' => $data['firstName'].' '.$data['lastName'],
+                'phone' => $data['phone'],
+                'country' => $data['country'],
+                'purchasePlan' => 'Free',
+                'useAbleCredit' => 50,
+                'fb_id' => null
+            ]);
+
+        }
+
     }
 
 
     /** start updating user information*/
     public function updateUserFirstName(Request $request, $id)
     {
-        $this->user = PhoneListUserModel::where('id', $id)->update(['firstName' => $request->firstName]);
+        $this->user = LidataUserModel::where('id', $id)->update(['firstName' => $request->firstName]);
         return redirect()->back();
 
     }
     public function updateUserLastName(Request $request, $id)
     {
-        $this->user = PhoneListUserModel::where('id', $id)->update(['lastName' => $request->lastName]);
+        $this->user = LidataUserModel::where('id', $id)->update(['lastName' => $request->lastName]);
+        return redirect()->back();
+
+    }
+    public function updateUserTitle(Request $request)
+    {
+        $this->user = LidataUserModel::where('id', Auth::user()->id)->update(['title' => $request->title]);
         return redirect()->back();
 
     }
     public function updateUserPhone(Request $request, $id)
     {
-        $this->user = PhoneListUserModel::where('id', $id)->update(['phone' => $request->phone]);
+        $this->user = LidataUserModel::where('id', $id)->update(['phone' => $request->phone]);
+        return redirect()->back();
+
+    }
+    public function updateUserAddress(Request $request)
+    {
+        $this->user = LidataUserModel::where('id', Auth::user()->id)->update(['address' => $request->address]);
         return redirect()->back();
 
     }
     public function updateUserCountry(Request $request, $id)
     {
-        $this->user = PhoneListUserModel::where('id', $id)->update(['country' => $request->country]);
+        $this->user = LidataUserModel::where('id', $id)->update(['country' => $request->country]);
         return redirect()->back();
     }
     public function updateUserEmail(Request $request, $id)
     {
-        $this->user = PhoneListUserModel::where('id', $id)->update(['email' => $request->email]);
+        $this->user = LidataUserModel::where('id', $id)->update(['email' => $request->email]);
         return redirect()->back();
 
     }
@@ -141,19 +175,21 @@ class UserController extends Controller
         return redirect()->back();
 
     }
-    public function updateUserInfo()
+    public function updateUserInfo($array)
     {
-        dd(Request('id'));
 
-        $id = Request('id');
-        $option = PhoneListUserModel::where('id', $id)->first();
-        $option->fristName = Request('fristName');
-        $option->lastName = Request('lastName');
-        //$option->phone = $this->user['phone'];
-        //$option->country = $this->user['country'];
-        //$option->update();
-        /*$this->user = PhoneListUserModel::where('id', $id)->update(['country' => $request->country]);*/
-        return redirect()->back();
+
+        $myArray = explode(',', $array);
+        $address = array_slice($myArray,5);
+        $myAddress = implode(',', $address);
+
+
+        $this->user = LidataUserModel::where('id', Auth::user()->id)->update(['firstName' => $myArray[1]]);
+        $this->user = LidataUserModel::where('id', Auth::user()->id)->update(['lastName' => $myArray[2]]);
+        $this->user = LidataUserModel::where('id', Auth::user()->id)->update(['title' => $myArray[3]]);
+        $this->user = LidataUserModel::where('id', Auth::user()->id)->update(['phone' => $myArray[4]]);
+        $this->user = LidataUserModel::where('id', Auth::user()->id)->update(['address' => $myAddress]);
+        return redirect()->route('account');
 
     }
     /** end updating user information*/
@@ -184,13 +220,13 @@ class UserController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $result = $request->email;
-            $this->data = PhoneListUserModel::where('email', 'LIKE', $result. '%'  )->get();
+            $this->data = LidataUserModel::where('email', 'LIKE', $result. '%'  )->get();
             return redirect('loggedInUser')
                 ->with( ['userData' => $this->data] )
                 ->withSuccess('You have Successfully loggedin');
         }
 
-        return redirect("/phonelistUserLogin")->with('message','Oppes! You have entered invalid credentials');
+        return redirect("user.login")->with('message','Oppes! You have entered invalid credentials');
 
 
     }
@@ -333,7 +369,8 @@ class UserController extends Controller
 
     public function account()
     {
-        return view('userDashboard.settings.account');
+        $this->country = Country::all();
+        return view('userDashboard.settings.account', ['countries'=> $this->country]);
     }
 
     public function managePlan()

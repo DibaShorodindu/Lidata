@@ -27,10 +27,10 @@
 />
 
 <!-- Custom CSS -->
-<link rel="stylesheet" href="{{ asset('/') }}assets/css/style.css" />
+<link rel="stylesheet" href="{{ asset('/') }}adminAsset/assets/css/style.css" />
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="{{ asset('/') }}assets/images/icons/favicon.ico" />
+<link rel="shortcut icon" href="{{ asset('/') }}adminAsset/assets/images/icons/favicon.ico" />
 
 
 

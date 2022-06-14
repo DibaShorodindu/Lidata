@@ -3,7 +3,7 @@
 use App\Http\Controllers\UserAuth\ForgotPasswordController;
 use App\Http\Controllers\User\Searching\TypeaheadController;
 use App\Http\Controllers\User\SocialController;
-use App\Http\Controllers\LidataController;
+use App\Http\Controllers\Front\LidataController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,54 +51,49 @@ Route::get('/adminDashboard',[
 
 
 Route::get('/',[
-        'uses' => 'App\Http\Controllers\LidataController@index',
+        'uses' => 'App\Http\Controllers\Front\LidataController@index',
         'as' => '/',
         ]);
 
 
-// route pricing
 
-Route::get('/pricing-us',[
-    'uses' => '\App\Http\Controllers\LidataController@pricing_us',
-    'as'   => 'pricing-us',
-    ]);
 
 // route carrer
 
 Route::get('/career',[
-    'uses' => '\App\Http\Controllers\LidataController@careers_us',
+    'uses' => '\App\Http\Controllers\Front\LidataController@careers_us',
     'as'   => 'career',
     ]);
 
 // route category
 
 Route::get('/category-company/{id}',[
-    'uses' => '\App\Http\Controllers\LidataController@category_company',
+    'uses' => '\App\Http\Controllers\Front\LidataController@category_company',
     'as'   => 'category-company',
     ]);
 
 Route::get('/category/{id}',[
-    'uses' => '\App\Http\Controllers\LidataController@category',
+    'uses' => '\App\Http\Controllers\Front\LidataController@category',
     'as'   => 'category',
     ]);
 
 Route::get('/userSearch',[
-    'uses' => '\App\Http\Controllers\LidataController@userSearch',
+    'uses' => '\App\Http\Controllers\Front\LidataController@userSearch',
     'as'   => 'userSearch',
     ]);
 
 Route::get('/Company_Search',[
-    'uses' => '\App\Http\Controllers\LidataController@COmpany_Search',
+    'uses' => '\App\Http\Controllers\Front\LidataController@COmpany_Search',
     'as'   => 'Company_Search',
     ]);
 
 Route::get('/user/{id}',[
-    'uses' => '\App\Http\Controllers\LidataController@user',
+    'uses' => '\App\Http\Controllers\Front\LidataController@user',
     'as'   => 'user',
     ]);
 
 Route::get('/user-company/{id}',[
-    'uses' => '\App\Http\Controllers\LidataController@company_user',
+    'uses' => '\App\Http\Controllers\Front\LidataController@company_user',
     'as'   => 'user-company',
         ]);
 
@@ -111,51 +106,45 @@ Route::get('/autocomplete-company-search', [LidataController::class, 'autocomple
     // route term of service
 
     Route::get('/terms-of-service',[
-        'uses' => '\App\Http\Controllers\LidataController@terms_of_service_us',
+        'uses' => '\App\Http\Controllers\Front\LidataController@terms_of_service_us',
         'as'   => 'terms-of-service',
         ]);
 
     // route privecy police
 
 Route::get('/privacy-policy',[
-    'uses' => '\App\Http\Controllers\LidataController@privacy_policy_us',
+    'uses' => '\App\Http\Controllers\Front\LidataController@privacy_policy_us',
     'as'   => 'privacy-policy',
     ]);
 
 
 
 
-    // route category
-
-    // Route::get('/category/{id}',[
-    //     'uses' => '\App\Http\Controllers\LidataController@category',
-    //     'as'   => 'category',
-    //     ]);
 
 // route product
 
 Route::get('/product',[
-    'uses' => '\App\Http\Controllers\LidataController@product_us',
+    'uses' => '\App\Http\Controllers\Front\LidataController@product_us',
     'as'   => 'product',
     ]);
 
 // route about
 Route::get('/about',[
-        'uses' => '\App\Http\Controllers\LidataController@about_us',
+        'uses' => '\App\Http\Controllers\Front\LidataController@about_us',
         'as'   => 'about',
         ]);
 
 // route contact
 
 Route::get('/contact',[
-    'uses' => '\App\Http\Controllers\LidataController@contact_us',
+    'uses' => '\App\Http\Controllers\Front\LidataController@contact_us',
     'as'   => 'contact',
     ]);
 
 // route refound
 
 Route::get('/refund',[
-    'uses' => '\App\Http\Controllers\LidataController@refund_us',
+    'uses' => '\App\Http\Controllers\Front\LidataController@refund_us',
     'as'   => 'refund',
         ]);
 
@@ -163,53 +152,21 @@ Route::get('/refund',[
 
 
 
-
-
-            //public home page
-// Route::get('/',[
-//     'uses' => 'App\Http\Controllers\PublicController@home',
-//     'as' => '/',
-// ]);
-
-
-
-
-// Route::get('/category/{id}',[
-//     'uses' => '\App\Http\Controllers\PublicController@category',
-//     'as'   => 'category',
-// ]);
-// Route::get('/convert-to-json', function () {
-//     return App\Http\Controllers\PublicController::paginate(5);
-// });
-// Route::get('/people.{id}',[
-//     'uses' => '\App\Http\Controllers\PublicController@user',
-//     'as'   => 'user',
-// ]);
-
-// Route::get('/userSearch',[
-//     'uses' => '\App\Http\Controllers\PublicController@userSearch',
-//     'as'   => 'userSearch',
-// ]);
-
-// Route::get('/country/{id}',[
-//     'uses' => '\App\Http\Controllers\PublicController@country',
-//     'as'   => 'country',
-// ]);
-Route::get('/phonelistUserRegister',[
+Route::get('/user-register',[
     'uses' => 'App\Http\Controllers\User\UserController@userRegister',
-    'as' => '/phonelistUserRegister',
+    'as' => 'user.register',
 ]);
-Route::post('/phonelistUserRegisterAdd',[
+Route::post('/add-new-user',[
     'uses' => 'App\Http\Controllers\User\UserController@newUser',
-    'as' => '/phonelistUserRegisterAdd',
+    'as' => 'add.new.user',
 ]);
-Route::get('/phonelistUserLogin',[
+Route::get('/user-login',[
     'uses' => 'App\Http\Controllers\User\UserController@userLogin',
-    'as' => '/phonelistUserLogin',
+    'as' => 'user.login',
 ]);
-Route::post('/phonelistUserLoginAuth',[
+Route::post('/user-login-auth',[
     'uses' => 'App\Http\Controllers\User\UserController@userAuth',
-    'as' => '/phonelistUserLoginAuth',
+    'as' => 'user.login.auth',
 ]);
 /** terms and services*/
 // Route::get('/terms-of-service',[
@@ -505,11 +462,19 @@ Route::get('/settings/billing/{id}',[
         'uses' => '\App\Http\Controllers\User\UserController@updateUserLastName',
         'as'   => 'updateUserLastName',
     ]);
+    Route::post('/settings/updateUserTitle',[
+        'uses' => '\App\Http\Controllers\User\UserController@updateUserTitle',
+        'as'   => 'updateUserTitle',
+    ]);
     Route::post('/settings/updateUserPhone/{id}',[
         'uses' => '\App\Http\Controllers\User\UserController@updateUserPhone',
         'as'   => 'updateUserPhone',
     ]);
-    Route::post('/settings/updateUserCountry/{id}',[
+    Route::post('/settings/updateUserAddress',[
+        'uses' => '\App\Http\Controllers\User\UserController@updateUserAddress',
+        'as'   => 'updateUserAddress',
+    ]);
+    Route::get('/settings/updateUserCountry/{id}',[
         'uses' => '\App\Http\Controllers\User\UserController@updateUserCountry',
         'as'   => 'updateUserCountry',
     ]);
@@ -518,7 +483,7 @@ Route::get('/settings/billing/{id}',[
         'as'   => 'updateUserEmail',
     ]);
 
-    Route::post('/settings/updateUserInfo',[
+    Route::get('/settings/updateUserInfo/{array}',[
         'uses' => '\App\Http\Controllers\User\UserController@updateUserInfo',
         'as'   => 'updateUserInfo',
     ]);

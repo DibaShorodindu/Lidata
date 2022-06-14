@@ -30,31 +30,18 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    // 'google' => [
-    //     'client_id' => env('GOOGLE_CLIENT_ID'),
-    //     'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-    //     'redirect' => 'http://localhost/PhoneList/public/user/google/callback',
-    // ],
-
-
-
-    //   'google' => [
-    //     'client_id' => env('GOOGLE_CLIENT_ID'),
-    //     'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-    //     'redirect' => 'http://127.0.0.1:8000/Auth/google/callback',
-    // ],
 
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'http://localhost/lidata_list/public/user/google/callback',
+        'redirect' => 'http://localhost/Lidata/user/google/callback',
     ],
 
 
     'facebook' => [
-        'client_id' => '1053160198602367',
-        'client_secret' => '262aeeaa7c940a6de85e3743d04d3776',
-        'redirect' => 'http://localhost/lidata_list/public/auth/facebook/callback',
+        'client_id' => '1847953295409204',
+        'client_secret' => '64dded023cd7aaaa51284fde5debea7e',
+        'redirect' => 'http://localhost/Lidata/auth/facebook/callback',
     ],
 
 ];

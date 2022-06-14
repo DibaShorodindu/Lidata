@@ -24,34 +24,6 @@
             <span class="navbar-toggler-icon"> </span>
           </button>
 
-          <!-- update lidata code last -->
-        
-          <!-- <div
-            class="collapse navbar-collapse justify-content-between"
-            id="navbarSupportedContent"
-          >
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item pl-4">
-                    <a class="nav-link" aria-current="page" href="{{ route('loggedInUser') }}">
-                        <i class="bi bi-house-door"></i>
-                        Dashboard
-                    </a>
-                </li>
-                <li class="nav-item" id="search">
-                    <a class="nav-link" href="{{ route('people') }}">
-                        <i class="bi bi-search"></i>
-                        Data Search
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('upgrade') }}">
-                        <i class="bi bi-box-seam"></i>
-                        Products
-                    </a>
-                </li>
-            </ul>
-        </div> -->
 
         <div
             class="collapse navbar-collapse justify-content-between"

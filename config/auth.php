@@ -62,7 +62,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\PhoneListUserModel::class,
+            'model' => App\Models\LidataUserModel::class,
         ],
 
         // 'users' => [

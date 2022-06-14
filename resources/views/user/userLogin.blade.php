@@ -12,8 +12,8 @@
                     <img src="{{ asset('/') }}adminAsset/assets/images/logo--company-name-dark.svg" alt="logo" />
                 </div>
                 <div class="card-title d-flex">
-                    <a href="{{ route('/phonelistUserLogin') }}" class="login p-4">Log in</a>
-                    <a href="{{ route('/phonelistUserRegister') }}" class="signup p-4"
+                    <a href="{{ route('user.login') }}" class="login p-4">Log in</a>
+                    <a href="{{ route('user.register') }}" class="signup p-4"
                     >Sign up <i class="bi bi-box-arrow-up-right ms-2"></i>
                     </a>
                 </div>
@@ -47,7 +47,7 @@
                             <div class="divider--line ms-5"></div>
                         </div>
                     </div>
-                    <form action="{{ route('/phonelistUserLoginAuth') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('user.login.auth') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-5">
                             <label for="email" class="form-label">Email</label>

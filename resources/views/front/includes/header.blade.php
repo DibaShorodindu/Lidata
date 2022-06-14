@@ -10,16 +10,16 @@
         <nav class="navbar navbar--center d-lg-flex d-none">
           <ul class="navbar__ul">
             <li class="navbar__li">
-              <a href="{{route('product')}}" class="navbar__a"> Product </a>
+              <a href="{{ route('product') }}" class="navbar__a"> Product </a>
             </li>
             <li class="navbar__li">
-              <a href="{{route('pricing-us')}}" class="navbar__a"> Pricing </a>
+              <a href="{{ route('packages') }}" class="navbar__a"> Pricing </a>
             </li>
             <li class="navbar__li">
               <a href="" class="navbar__a"> Blog </a>
             </li>
             <li class="navbar__li">
-              <a href="{{route('career')}}" class="navbar__a"> Careers </a>
+              <a href="{{ route('career') }}" class="navbar__a"> Careers </a>
             </li>
           </ul>
         </nav>
@@ -49,7 +49,7 @@
             </li>
             @guest
                     <li class="navbar__li">
-                        <a href="{{ route('/phonelistUserLogin') }}" class="navbar__a"> Account </a>
+                        <a href="{{ route('user.login') }}" class="navbar__a"> Account </a>
                     </li>
                 @else
                     <li class="navbar__li">

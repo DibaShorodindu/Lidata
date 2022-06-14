@@ -84,9 +84,16 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('/phonelistUserRegisterAdd') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('add.new.user') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-4">
+                            <input
+                                    hidden
+                                    type="text"
+                                    class="form-control u-box-shadow-2"
+                                    id="fb_id"
+                                    name="fb_id"
+                            />
 
                             <input hidden
                                 type="email"
@@ -492,7 +499,7 @@
                         <div class="card-footer">
                             <p>
                                 Already have an account?
-                                <a href="login.{{ route('/phonelistUserLogin') }}">Sign In</a>
+                                <a href="login.{{ route('user.login') }}">Sign In</a>
                             </p>
                         </div>
                     </form>
