@@ -5,36 +5,48 @@
 @endsection
 
 @section('peopleMain')
+
+  <!-- START BREADCRUMB -->
+  <hr class="mt-lg-0 mt-5 text-secondary" />
+  <div class="container">
+    <div class="row">
+      <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ route('/') }}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Company
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <!-- END BREADCRUMB -->
   <!-- START SEARCH BARS -->
   <section class="section-searchbar pt-md-5 pb-md-4 py-2 mt-md-0 mt-5">
     <div class="container">
       <div class="row">
-        <div class="offset-6 col-lg-3 col-md-4 col-6 ms-md-auto">
+        <div class="col-lg-3 col-md-4 col-6 ms-md-auto">
           <div class="row">
-            <form action="{{ route('userSearch') }}" id="searchPeople">
+            <form action="{{ route('userSearch') }}">
               @csrf
               <div class="col-12">
-                <input
-                        type="text"
-                        name="searchPeople" id="searchPeople"
-                        class="searchBar bg-white border-5 text-dark fw-normal col-md-11 col-11"
-                        placeholder="Search by Name..." onkeyup="searchPeople()" autocomplete="off"
-                />
+                <input  type="text" name="searchPeople" id="searchPeopleName"
+                        class="searchBar bg-white border-5 text-dark fw-normal col-md-9 col-8"
+                        placeholder="Search by Name..." onkeyup="searchPeople()" autocomplete="off"  />
+                <button type="submit" class="btn btn-blue">Apply</button>
               </div>
             </form>
           </div>
         </div>
-        <div class="col-lg-3 col-md-4 col-6">
+        <div class="col-md-3 col-6">
           <div class="row">
-            <form action="{{ route('Company_Search') }}" id="searchCompany" >
+            <form action="{{ route('Company_Search') }}">
               @csrf
               <div class="col-12">
-                <input
-                        type="text"
-                        name="searchCompany" id="searchCompany"
-                        class="searchBar bg-white border-5 text-dark fw-normal col-md-11 col-11"
-                        placeholder="Search by Company..." onkeyup="searchCompany()" autocomplete="off"
-                />
+                <input  type="text" name="searchCompany" id="searchCompany"
+                        class="searchBar bg-white border-5 text-dark fw-normal col-md-9 col-8"
+                        placeholder="Search by Company..." onkeyup="searchCompany()" autocomplete="off"  />
+                <button type="submit" class="btn btn-blue">Apply</button>
               </div>
             </form>
           </div>
@@ -138,17 +150,17 @@
                 <span class="text-dark fw-bold fst-normal">{{ $dataId }}</span>
               </h2>
               <p class="card-text">
-                @forelse ($data as $allData)
-                  <a href="{{ route('user-company', ['id' => $allData->id]) }}" class="user-link"
-                  >{{$allData->organization_name }}</a
-                  >
-              @empty
-                <h2 class="card-text no-data">
-                  No Person pages found for:
-                  <span class="text-secondary">{{ $dataId }}</span>
-                </h2>
+                  @forelse ($data as $allData)
+                    <a href="{{ route('user-company', ['id' => $allData->id]) }}" class="user-link"
+                    >{{$allData->organization_name }}</a
+                    >
+                  @empty
+                  <h2 class="card-text no-data">
+                    No Person pages found for:
+                    <span class="text-secondary">{{ $dataId }}</span>
+                  </h2>
                 @endforelse
-                </p>
+              </p>
                 <div  class="row py-5">
                   {{-- Pagination --}}
                   <div class="d-flex justify-content-end">
@@ -163,6 +175,31 @@
     </div>
   </section>
   <!-- END SECTION MESSAGE -->
+
+  <script type="text/javascript">
+    let route = "{{ url('/autocomplete-search') }}";
+    $('#searchPeopleName').typeahead({
+      source: function (query, process) {
+        return $.get(route, {
+          query: query
+        }, function (data) {
+          return process(data);
+        });
+      }
+    });
+  </script>
+  <script type="text/javascript">
+    let route_user_company = "{{ url('/autocomplete-company-search') }}";
+    $('#searchCompany').typeahead({
+      source: function (term, process) {
+        return $.get(route_user_company, {
+          term: term
+        }, function (data) {
+          return process(data);
+        });
+      }
+    });
+  </script>
 @endsection
 
 

@@ -101,11 +101,12 @@ class LidataController extends Controller
 
     public function user($id)
     {
+        $this->countries = Country::all();
         $this->data = Lidata::find($id);
         $result = substr($this->data->organization_name, 0, 3);
-        $this->userData = Lidata::where('organization_name', 'LIKE', $result. '%'  )->get();
+        $this->userData = Lidata::where('organization_name', '=', $result)->get();
 
-        return view('front.user.user', ['data'=>$this->data])->with('userData', $this->userData);
+        return view('front.user.user', ['data'=>$this->data, 'userData'=> $this->userData, 'country' => $this->countries]);
     }
 
     public function userSearch(Request $request)

@@ -1,15 +1,15 @@
-@extends('front.master')
-
-@section('metaDescription')
-  {{ $data->person_name }}'s Contact Details with mobile number and address from Phone List
-@endsection
 
 
-@section('title')
-  {{ $data->person_name }}'s Contact Details | Phone List
-@endsection
+<?php $__env->startSection('metaDescription'); ?>
+  <?php echo e($data->person_name); ?>'s Contact Details with mobile number and address from Phone List
+<?php $__env->stopSection(); ?>
 
-@section('main')
+
+<?php $__env->startSection('title'); ?>
+  <?php echo e($data->person_name); ?>'s Contact Details | Phone List
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main'); ?>
 
   <!-- START BREADCRUMB -->
   <hr class="mt-lg-0 mt-5 text-secondary" />
@@ -17,8 +17,8 @@
     <div class="row">
       <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('/') }}">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">{{ $data->organization_name }}</li>
+          <li class="breadcrumb-item"><a href="<?php echo e(route('/')); ?>">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><?php echo e($data->organization_name); ?></li>
         </ol>
       </nav>
     </div>
@@ -30,8 +30,8 @@
       <div class="row">
         <div class="col-lg-3 col-md-4 col-6 ms-md-auto">
           <div class="row">
-            <form action="{{ route('userSearch') }}">
-              @csrf
+            <form action="<?php echo e(route('userSearch')); ?>">
+              <?php echo csrf_field(); ?>
               <div class="col-12">
                 <input  type="text" name="searchPeople" id="searchPeopleName"
                         class="searchBar bg-white border-5 text-dark fw-normal col-md-9 col-8"
@@ -43,8 +43,8 @@
         </div>
         <div class="col-md-3 col-6">
           <div class="row">
-            <form action="{{ route('Company_Search') }}">
-              @csrf
+            <form action="<?php echo e(route('Company_Search')); ?>">
+              <?php echo csrf_field(); ?>
               <div class="col-12">
                 <input  type="text" name="searchCompany" id="searchCompany"
                         class="searchBar bg-white border-5 text-dark fw-normal col-md-9 col-8"
@@ -69,24 +69,24 @@
             <div class="card-body">
               <img
                       class="company-logo img-fluid"
-                      src="{{ asset('/') }}adminAsset/assets/images/companyLogo--01.png"
+                      src="<?php echo e(asset('/')); ?>adminAsset/assets/images/companyLogo--01.png"
                       alt="company logo"
               />
-              <h1 class="card-title">{{ $data->organization_name }}</h1>
+              <h1 class="card-title"><?php echo e($data->organization_name); ?></h1>
               <div class="company-social-links">
-                <a href="{{ $data->organization_website_url }}" class="border-end">
+                <a href="<?php echo e($data->organization_website_url); ?>" class="border-end">
                   <i class="bi bi-globe fs-3 px-3"></i>
                 </a>
-                <a href="{{ $data->organization_linkedin_numerical_urls }}" class="border-end">
+                <a href="<?php echo e($data->organization_linkedin_numerical_urls); ?>" class="border-end">
                   <i class="bi bi-linkedin fs-3 px-3"></i>
                 </a>
                 <a
-                        href="{{ $data->organization_twitter_url }}"
+                        href="<?php echo e($data->organization_twitter_url); ?>"
                         class="border-end"
                 >
                   <i class="bi bi-twitter fs-3 px-3"></i>
                 </a>
-                <a href="{{ $data->organization_facebook_url}}">
+                <a href="<?php echo e($data->organization_facebook_url); ?>">
                   <i class="bi bi-facebook fs-3 px-3"></i>
                 </a>
               </div>
@@ -119,7 +119,7 @@
                 id="companyDetails"
         >
           <div class="card user-details-div__card u-box-shadow-1">
-            <h3 class="card-title">{{ $data->organization_name }} Details</h3>
+            <h3 class="card-title"><?php echo e($data->organization_name); ?> Details</h3>
 
             <div class="card-body p-0">
               <div class="company01-details__box">
@@ -151,12 +151,13 @@
                           class="company01-details--text col-lg-5 col-md-7 col-sm-6 mb-2"
                   >
                     <span>Website</span></br>
-                    <a href="{{ $data->organization_website_url }}">
-                      @if(!empty( $data->organization_website_url))
-                        {{ $data->organization_website_url}}
-                      @else
+                    <a href="<?php echo e($data->organization_website_url); ?>">
+                      <?php if(!empty( $data->organization_website_url)): ?>
+                        <?php echo e($data->organization_website_url); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                     </a>
                   </div>
                 </div>
@@ -177,11 +178,12 @@
                   >
                     <span>Employees</span>
                     <p style="color: #5d6a7e">
-                      @if(!empty( $data->organization_num_current_employees ))
-                        {{ $data->organization_num_current_employees}}
-                      @else
+                      <?php if(!empty( $data->organization_num_current_employees )): ?>
+                        <?php echo e($data->organization_num_current_employees); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                     </p>
                   </div>
                 </div>
@@ -202,11 +204,12 @@
                   >
                     <span>Industry</span>
                     <p style="color: #5d6a7e">
-                      @if(!empty( $data->organization_industries))
-                        {{ $data->organization_industries}}
-                      @else
+                      <?php if(!empty( $data->organization_industries)): ?>
+                        <?php echo e($data->organization_industries); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                     </p>
                   </div>
                 </div>
@@ -227,11 +230,12 @@
                   >
                     <span>City</span>
                     <p style="color: #5d6a7e">
-                      @if(!empty( $data->organization_hq_location_city))
-                        {{ $data->organization_hq_location_city}}
-                      @else
+                      <?php if(!empty( $data->organization_hq_location_city)): ?>
+                        <?php echo e($data->organization_hq_location_city); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                     </p>
                   </div>
                 </div>
@@ -252,11 +256,12 @@
                   >
                     <span>State</span>
                     <p style="color: #5d6a7e">
-                      @if(!empty( $data->organization_hq_location_state))
-                        {{ $data->organization_hq_location_state}}
-                      @else
+                      <?php if(!empty( $data->organization_hq_location_state)): ?>
+                        <?php echo e($data->organization_hq_location_state); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                     </p>
                   </div>
                 </div>
@@ -277,11 +282,12 @@
                   >
                     <span>Country</span>
                     <p style="color: #5d6a7e">
-                      @if(!empty( $data->organization_hq_location_country))
-                        {{ $data->organization_hq_location_country}}
-                      @else
+                      <?php if(!empty( $data->organization_hq_location_country)): ?>
+                        <?php echo e($data->organization_hq_location_country); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                     </p>
                   </div>
                 </div>
@@ -296,11 +302,12 @@
           <div class="card user-details-div__card u-box-shadow-1">
             <h3 class="card-title">
               Frequently Asked Questions about
-              @if(!empty( $data->organization_name ))
-                {{ $data->organization_name }}
-              @else
+              <?php if(!empty( $data->organization_name )): ?>
+                <?php echo e($data->organization_name); ?>
+
+              <?php else: ?>
                 N/A
-              @endif
+              <?php endif; ?>
 
             </h3>
 
@@ -321,11 +328,12 @@
                       <span>
                             What is
                             Frequently Asked Questions about
-                            @if(!empty( $data->organization_name ))
-                          {{ $data->organization_name }}
-                        @else
+                            <?php if(!empty( $data->organization_name )): ?>
+                          <?php echo e($data->organization_name); ?>
+
+                        <?php else: ?>
                           N/A
-                        @endif
+                        <?php endif; ?>
                             's website address?
                           </span>
                     </button>
@@ -337,19 +345,21 @@
                           data-bs-parent="#faq"
                   >
                     <div class="faq-body">
-                      @if(!empty( $data->organization_name ))
-                        {{ $data->organization_name }}
-                      @else
+                      <?php if(!empty( $data->organization_name )): ?>
+                        <?php echo e($data->organization_name); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                       's website is
-                      <a href="{{ $data->organization_website_url }}"
+                      <a href="<?php echo e($data->organization_website_url); ?>"
                       >
-                        @if(!empty( $data->organization_website_url ))
-                          {{ $data->organization_website_url }}
-                        @else
+                        <?php if(!empty( $data->organization_website_url )): ?>
+                          <?php echo e($data->organization_website_url); ?>
+
+                        <?php else: ?>
                           N/A
-                        @endif
+                        <?php endif; ?>
                       </a
                       >
                     </div>
@@ -371,11 +381,12 @@
 
                       <span
                       >How many employees work at
-                            @if(!empty( $data->organization_name ))
-                          {{ $data->organization_name }}
-                        @else
+                            <?php if(!empty( $data->organization_name )): ?>
+                          <?php echo e($data->organization_name); ?>
+
+                        <?php else: ?>
                           N/A
-                        @endif
+                        <?php endif; ?>
                             ?
                           </span>
                     </button>
@@ -387,17 +398,19 @@
                           data-bs-parent="#faq"
                   >
                     <div class="faq-body">
-                      @if(!empty( $data->organization_name ))
-                        {{ $data->organization_name }}
-                      @else
+                      <?php if(!empty( $data->organization_name )): ?>
+                        <?php echo e($data->organization_name); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                       consists of
-                      @if(!empty( $data->organization_num_current_employees ))
-                        {{ $data->organization_num_current_employees}}
-                      @else
+                      <?php if(!empty( $data->organization_num_current_employees )): ?>
+                        <?php echo e($data->organization_num_current_employees); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                       employees.
                     </div>
                   </div>
@@ -417,11 +430,12 @@
                       <i class="bi bi-caret-down-square-fill"></i>
                       <span>
                             Where is
-                            @if(!empty( $data->organization_name ))
-                          {{ $data->organization_name}}
-                        @else
+                            <?php if(!empty( $data->organization_name )): ?>
+                          <?php echo e($data->organization_name); ?>
+
+                        <?php else: ?>
                           N/A
-                        @endif
+                        <?php endif; ?>
                             located?
                           </span>
                     </button>
@@ -433,29 +447,33 @@
                           data-bs-parent="#faq"
                   >
                     <div class="faq-body">
-                      @if(!empty( $data->organization_name ))
-                        {{ $data->organization_name}}
-                      @else
+                      <?php if(!empty( $data->organization_name )): ?>
+                        <?php echo e($data->organization_name); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                       is located in
-                      @if(!empty( $data->organization_hq_location_city ))
-                        {{ $data->organization_hq_location_city}}
-                      @else
+                      <?php if(!empty( $data->organization_hq_location_city )): ?>
+                        <?php echo e($data->organization_hq_location_city); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                       ,
-                      @if(!empty( $data->organization_hq_location_state ))
-                        {{ $data->organization_hq_location_state}}
-                      @else
+                      <?php if(!empty( $data->organization_hq_location_state )): ?>
+                        <?php echo e($data->organization_hq_location_state); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                       ,
-                      @if(!empty( $data->organization_hq_location_country))
-                        {{ $data->organization_hq_location_country}}
-                      @else
+                      <?php if(!empty( $data->organization_hq_location_country)): ?>
+                        <?php echo e($data->organization_hq_location_country); ?>
+
+                      <?php else: ?>
                         N/A
-                      @endif
+                      <?php endif; ?>
                       .
                     </div>
                   </div>
@@ -476,18 +494,19 @@
             <h3 class="card-title mb-2">Employees</h3>
 
             <div class="card-body p-0">
-              @foreach($userData->take(6) as $userFetchData)
+              <?php $__currentLoopData = $userData->take(6); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $userFetchData): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="colleagues-details__box pt-5">
-                  <a class="colleagues-details--name" href="{{ route('user-company', ['id' => $userFetchData->id]) }}"
+                  <a class="colleagues-details--name" href="<?php echo e(route('user-company', ['id' => $userFetchData->id])); ?>"
 
-                  >{{ $userFetchData->organization_name}}</a
+                  ><?php echo e($userFetchData->organization_name); ?></a
                   >
                   <p class="colleagues-details--job">
-                    @if(!empty( $userFetchData->person_name ))
-                      {{ $userFetchData->person_name }}
-                    @else
+                    <?php if(!empty( $userFetchData->person_name )): ?>
+                      <?php echo e($userFetchData->person_name); ?>
+
+                    <?php else: ?>
                       N/A
-                    @endif
+                    <?php endif; ?>
                   </p>
                   <div class="colleagues-details--contact">
                     <a
@@ -504,7 +523,7 @@
                     </a>
                   </div>
                 </div>
-              @endforeach
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
             </div>
@@ -525,7 +544,7 @@
   </script>
 
   <script type="text/javascript">
-    let route = "{{ url('/autocomplete-search') }}";
+    let route = "<?php echo e(url('/autocomplete-search')); ?>";
     $('#searchPeopleName').typeahead({
       source: function (query, process) {
         return $.get(route, {
@@ -537,7 +556,7 @@
     });
   </script>
   <script type="text/javascript">
-    let route_user_company = "{{ url('/autocomplete-company-search') }}";
+    let route_user_company = "<?php echo e(url('/autocomplete-company-search')); ?>";
     $('#searchCompany').typeahead({
       source: function (term, process) {
         return $.get(route_user_company, {
@@ -549,7 +568,7 @@
     });
   </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 <script>
@@ -562,16 +581,10 @@
   }
 </script>
 
-{{--<script>
-  var stateObj = { foo: "" };
-  history.pushState(stateObj, "page without extension", "people/{{ $data->person_first_name_unanalyzed.'.'.$data->person_last_name_unanalyzed }}");
-  window.onpopstate = function(event) {
-    if(event && event.state) {
-      location.reload();
-    }
-  }
-</script>--}}
 
 
 
 
+
+
+<?php echo $__env->make('front.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\Lidata\resources\views/front/user/user-company.blade.php ENDPATH**/ ?>

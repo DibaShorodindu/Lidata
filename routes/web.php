@@ -232,10 +232,10 @@ Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFaceboo
 //     'uses' => '\App\Http\Controllers\AdminController@fileImportExport',
 //     'as' => 'file-import-export'
 //     ]);
-// Route::post('/file-import', [
-//     'uses' => '\App\Http\Controllers\AdminController@fileImport',
-//     'as' => 'file-import'
-// ]);
+ Route::post('/file-import', [
+     'uses' => '\App\Http\Controllers\AdminController@fileImport',
+    'as' => 'file-import'
+ ]);
 Route::get('/file-export', [
     'uses' => '\App\Http\Controllers\AdminController@fileExport',
     'as' => 'file-export'
@@ -264,10 +264,10 @@ Route::get('/selected-file-export{id}', [
             //manage edit update delete
 
 
-// Route::get('/view-all',[
-//     'uses' => '\App\Http\Controllers\AdminController@manageData',
-//     'as'   => 'view-all',
-// ]);
+ Route::get('/view-all',[
+     'uses' => '\App\Http\Controllers\AdminController@manageData',
+     'as'   => 'view-all',
+ ]);
 // Route::get('/edit-data/{id}',[
 //     'uses' => '\App\Http\Controllers\AdminController@editData',
 //     'as'   => 'edit-data',

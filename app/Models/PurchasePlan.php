@@ -31,11 +31,11 @@ class PurchasePlan extends Model
         self::$purchagePlan->plan         = 'Free';
         self::$purchagePlan->price        = 0;
         self::$purchagePlan->credit       = 50;
-        self::$purchagePlan->phoneNumber  = 50;
+        self::$purchagePlan->dataView     = 50;
         self::$purchagePlan->dataFilter   = 'Basic Filters';
         self::$purchagePlan->csvExport    = 'CSV Export';
         self::$purchagePlan->start        = Carbon::now()->toDateString();
-        self::$purchagePlan->end         = Carbon::now()->addDays(29)->format('Y-m-d');
+        self::$purchagePlan->end          = Carbon::now()->addDays(29)->format('Y-m-d');
         self::$purchagePlan->save();
     }
 }

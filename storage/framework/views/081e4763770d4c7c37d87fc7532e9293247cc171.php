@@ -13,22 +13,21 @@
                 <li class="nav-item">
                     <span class="text-uppercase">Personal Profile</span>
                     <a
-                        href="<?php echo e(route('account')); ?>"
-                        class="nav-link <?php echo e(request()->routeIs('account') ? 'active' : ''); ?>"
-                        aria-current="page"
+                            href="<?php echo e(route('account')); ?>"
+                            class="nav-link <?php echo e(request()->routeIs('account') ? 'active' : ''); ?>"
+                            aria-current="page"
                     >
-                        <h2 class="fs-4 m-0">You</h2>
+                        <h2 class="fs-4 m-0 fw-bold">You</h2>
                     </a>
                 </li>
                 <li class="nav-item mt-4">
-                    <span class="text-uppercase">Admin Settings</span>
                     <a href="<?php echo e(route('managePlan')); ?>" class="nav-link <?php echo e(request()->routeIs('managePlan') ? 'active' : ''); ?> <?php echo e(request()->routeIs('billing') ? 'active' : ''); ?>" >
-                        <h2 class="fs-4 m-0">Manage Plan</h2>
+                        <h2 class="fs-4 m-0 fw-bold">Manage Plan</h2>
                     </a>
                 </li>
                 <li class="nav-item mt-4">
-                 <span class="text-uppercase">System Activity</span>
-                  <a href="<?php echo e(route('contacts')); ?>" class="nav-link <?php echo e(request()->routeIs('contacts') ? 'active' : ''); ?> <?php echo e(request()->routeIs('csv-export-settings') ? 'active' : ''); ?>"> Imports &#38; Exports</a>
+                    <span class="text-uppercase">System Activity</span>
+                    <a href="<?php echo e(route('exports')); ?>" class="nav-link <?php echo e(request()->routeIs('exports') ? 'active' : ''); ?> <?php echo e(request()->routeIs('csv-export-settings') ? 'active' : ''); ?>">Exports</a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo e(route('current')); ?>" class="nav-link <?php echo e(request()->routeIs('current') ? 'active' : ''); ?> <?php echo e(request()->routeIs('history') ? 'active' : ''); ?>"> Credit Usage </a>
@@ -38,8 +37,8 @@
         <!-- END SIDEBAR -->
 
         <!-- START MAIN -->
-        <?php echo $__env->yieldContent('main'); ?>
-        <!-- END MAIN -->
+    <?php echo $__env->yieldContent('main'); ?>
+    <!-- END MAIN -->
     </section>
 <?php $__env->stopSection(); ?>
 

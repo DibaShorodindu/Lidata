@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Exports\CustomExport;
+use App\Imports\LidataImport;
 use App\Models\Credit;
 use App\Models\CreditHistory;
 use App\Models\ExportHistori;
@@ -22,14 +23,14 @@ class AdminController extends Controller
     protected $allData;
     protected $credit;
 
-            // view admin Dashboard
+    // view admin Dashboard
 
     public function index()
     {
         return view('admin.dashboard');
     }
 
-            //  admin Dashboard file upload
+    //  admin Dashboard file upload
 
 
     /**
@@ -49,7 +50,7 @@ class AdminController extends Controller
 
     public function fileImport(Request $request)
     {
-        Excel::import(new PhoneListImport, $request->file('file')->store('temp'));
+        Excel::import(new LidataImport(), $request->file('file')->store('temp'));
         return back()->with('message', 'file imported Successfully');
     }
 
@@ -66,14 +67,14 @@ class AdminController extends Controller
 
 
     // public function customExport(Request $request)
-    
+
     // {
     //     return (new CustomExport($request->chk))->download('phoneList.xlsx');
     // }
 
     public function customExport(Request $request)
     {
-    
+
         $credit=Credit::find(Auth::user()->id)->first();
         if ($credit->useableCredit >= count($request->chk))
         {
@@ -99,14 +100,14 @@ class AdminController extends Controller
     // //    return $request->userId;
     //     $credit=Credit::find($request->userId);
     //     // return $credit;
-       
+
     //     if ($credit->useableCredit >= count($request->chk))
     //     {
     //         ExportHistori::newExportHistori($request);
     //         Credit::updateUserCradit($request);
     //         CreditHistory::create($request);
     //         return (new CustomExport($request->chk))->download('phoneList.xlsx');
-           
+
     //     }
     //     else
     //     {
@@ -114,15 +115,15 @@ class AdminController extends Controller
     //     }
     // }
 
-        public function cumpanyExport(Request $request)
-        {
-            return (new CustomExport($request->chk))->download('phoneList.xlsx');
-        }
+    public function cumpanyExport(Request $request)
+    {
+        return (new CustomExport($request->chk))->download('phoneList.xlsx');
+    }
 
-        
-   
 
-            //  admin Dashboard view all data // data edit update delete
+
+
+    //  admin Dashboard view all data // data edit update delete
 
 
     public function manageData(){
