@@ -1,3 +1,7 @@
+<?php $__env->startSection('title.title'); ?>
+    Credit Usage | Li Data
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('main'); ?>
     <section class="section-main">
         <!-- START SECOND NAVBAR -->
@@ -19,15 +23,15 @@
         <section class="section-current-credit">
             <div class="card u-box-shadow-2 m-4 border rounded-3">
                 <div
-                    class="card-title d-flex justify-content-between align-items-center"
+                        class="card-title d-flex justify-content-between align-items-center"
                 >
                     <h3 class="p-4 text-capitalize">
                         Credits Usage <span> <?php echo e($userPurchasePlan[1]); ?> <?php echo e($userPurchasePlan[3]); ?> <?php echo e($userPurchasePlan[2]); ?>  - <?php echo e($userPurchasePlan[4]); ?> <?php echo e($userPurchasePlan[5]); ?> <?php echo e($userPurchasePlan[6]); ?> </span>
                     </h3>
                     <a
-                        href="<?php echo e(route('upgrade')); ?>"
-                        type="button"
-                        class="btn btn-access me-4"
+                            href="<?php echo e(route('upgrade')); ?>"
+                            type="button"
+                            class="btn btn-access me-4"
                     >
                         Buy More Credits
                     </a>
@@ -39,7 +43,7 @@
                                 <h3 class="fs-3">
                                     Email Credits
                                     <i
-                                        class="bi bi-question-circle-fill text-secondary"
+                                            class="bi bi-question-circle-fill text-secondary"
                                     ></i>
                                     <p class="mt-4">
                                         You have used <span class="text-primary"><?php echo e($userPurchasePlan[7]); ?></span> of
@@ -57,5 +61,4 @@
     </section>
 <?php $__env->stopSection(); ?>
 
-                   
 <?php echo $__env->make('userDashboard.settings.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\Lidata\resources\views/userDashboard/settings/credits/current.blade.php ENDPATH**/ ?>

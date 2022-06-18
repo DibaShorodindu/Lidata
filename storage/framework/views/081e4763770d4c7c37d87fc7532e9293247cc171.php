@@ -2,7 +2,7 @@
 
 
 <?php $__env->startSection('title'); ?>
-    Manage Plan | Li Data
+    <?php echo $__env->yieldContent('title.title'); ?>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('body'); ?>

@@ -24,7 +24,7 @@ class PurchasePlan extends Model
        
     ];
 
-    public static function create($request)
+    public static function createNew($request)
     {
         self::$purchagePlan = new PurchasePlan();
         self::$purchagePlan->userId       = $request->id;

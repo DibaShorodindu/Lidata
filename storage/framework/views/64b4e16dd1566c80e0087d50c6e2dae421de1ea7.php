@@ -1,17 +1,13 @@
-@extends('userDashboard.settings.master')
-@section('title.title')
-    Billing | Li Data
-@endsection
-@section('main')
+<?php $__env->startSection('main'); ?>
     <section class="section-main">
         <!-- START SECOND NAVBAR -->
         <section class="second-navbar">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a href="{{ route('managePlan') }}" class="nav-link {{  request()->routeIs('managePlan') ? 'active' : '' }}">Plan Overview</a>
+                    <a href="<?php echo e(route('managePlan')); ?>" class="nav-link <?php echo e(request()->routeIs('managePlan') ? 'active' : ''); ?>">Plan Overview</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('billing') }}" class="nav-link {{  request()->routeIs('billing') ? 'active' : '' }}">Billing</a>
+                    <a href="<?php echo e(route('billing')); ?>" class="nav-link <?php echo e(request()->routeIs('billing') ? 'active' : ''); ?>">Billing</a>
                 </li>
             </ul>
         </section>
@@ -30,37 +26,37 @@
                                 </h1>
                                 <!-- Button trigger modal -->
                                 <div class="col-7">
-                                    @if( !$userCardInfo->isEmpty() )
+                                    <?php if( !$userCardInfo->isEmpty() ): ?>
                                         <button type="button" class="btn btn-blue col-5" data-bs-toggle="modal"
                                                 data-bs-target="#creditCardModalEdit">
                                             <i class="bi bi-pen pe-1"></i>
                                             Update Credit Card
                                         </button>
-                                    @else
+                                    <?php else: ?>
                                         <button type="button" class="btn btn-blue col-5" data-bs-toggle="modal"
                                                 data-bs-target="#creditCardModal">
                                             <i class="bi bi-pen pe-1"></i>
                                             Add Credit Card
                                         </button>
-                                    @endif
-                                    @if( !$userCardInfo->isEmpty() )
-                                        <a href="{{ route('removeCard') }}">
-                                            <button type="button"  class="btn btn-blue text-white col-5 ">
-                                                <i class="bi bi-dash pe-1"></i>
-                                                Remove Credit Card
-                                            </button>
-                                        </a>
-                                    @endif
+                                    <?php endif; ?>
+                                        <?php if( !$userCardInfo->isEmpty() ): ?>
+                                            <a href="">
+                                                <button type="button"  class="btn btn-blue text-white col-5 ">
+                                                    <i class="bi bi-dash pe-1"></i>
+                                                    Remove Credit Card
+                                                </button>
+                                            </a>
+                                        <?php endif; ?>
                                 </div>
                             </div>
 
                             <!-- WHEN NO CREDIT CARD INFO FOUND -->
 
-                            @if( $userCardInfo->isEmpty() )
+                            <?php if( $userCardInfo->isEmpty() ): ?>
                                 <div class="card-body text-secondary">
                                     <span>You have not entered any credit card information yet.</span>
                                 </div>
-                        @endif
+                        <?php endif; ?>
 
 
                         <!-- Modal -->
@@ -73,8 +69,8 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body m-4 mb-5">
-                                            <form action="{{--{{ route('addCardInfo') }}--}}" method="post" enctype="multipart/form-data">
-                                                @csrf
+                                            <form action="" method="post" enctype="multipart/form-data">
+                                                <?php echo csrf_field(); ?>
                                                 <div>
                                                     <h5>Your Details</h5>
                                                     <div class="card u-box-shadow-2 border-0">
@@ -83,7 +79,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <div class="mb-3">
-                                                                            <input type="text" hidden name="userId" value="{{ Auth::user()->id }}" class="form-control"/>
+                                                                            <input type="text" hidden name="userId" value="<?php echo e(Auth::user()->id); ?>" class="form-control"/>
                                                                             <label for="fname" class="form-label">First Name</label>
                                                                             <input type="text" name="firstName" value="" class="form-control" id="fname" placeholder="First Name"
                                                                                    required />
@@ -804,9 +800,9 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body m-4 mb-5">
-                                            @foreach($userCardInfo as $cardInfo)
-                                                <form action="{{ route('updateCardInfo') }}" method="post" enctype="multipart/form-data">
-                                                    @csrf
+                                            <?php $__currentLoopData = $userCardInfo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cardInfo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <form action="" method="post" enctype="multipart/form-data">
+                                                    <?php echo csrf_field(); ?>
                                                     <div>
                                                         <h5>Your Details</h5>
                                                         <div class="card u-box-shadow-2 border-0">
@@ -815,17 +811,17 @@
                                                                     <div class="row">
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
-                                                                                <input type="text" hidden name="userId" value="{{ Auth::user()->id }}" class="form-control"/>
-                                                                                <input type="text" hidden name="cardId" value="{{ $cardInfo->id }}" class="form-control"/>
+                                                                                <input type="text" hidden name="userId" value="<?php echo e(Auth::user()->id); ?>" class="form-control"/>
+                                                                                <input type="text" hidden name="cardId" value="<?php echo e($cardInfo->id); ?>" class="form-control"/>
                                                                                 <label for="fname" class="form-label">First Name</label>
-                                                                                <input type="text" name="firstName" value="{{ $cardInfo->firstName }}" class="form-control" id="fname" placeholder="First Name"
+                                                                                <input type="text" name="firstName" value="<?php echo e($cardInfo->firstName); ?>" class="form-control" id="fname" placeholder="First Name"
                                                                                        required />
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label for="lname" class="form-label">Last Name</label>
-                                                                                <input type="text" name="lastName" value="{{ $cardInfo->lastName }}" class="form-control" id="lname" placeholder="Last Name"
+                                                                                <input type="text" name="lastName" value="<?php echo e($cardInfo->lastName); ?>" class="form-control" id="lname" placeholder="Last Name"
                                                                                        required />
                                                                             </div>
                                                                         </div>
@@ -843,21 +839,21 @@
                                                                         <div class="col-md-12">
                                                                             <div class="mb-3">
                                                                                 <label for="cNumber" class="form-label">Credit Card Number</label>
-                                                                                <input type="number" name="creditCardNumber" value="{{ $cardInfo->creditCardNumber }}" class="form-control" id="cNumber"
+                                                                                <input type="number" name="creditCardNumber" value="<?php echo e($cardInfo->creditCardNumber); ?>" class="form-control" id="cNumber"
                                                                                        placeholder="1234 1234 1234 1234" required maxlength="16" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label for="expDate" class="form-label">Expiration Date</label>
-                                                                                <input type="text" name="expirationDate" value="{{ $cardInfo->expirationDate }}" class="form-control" id="expDate" placeholder="MM / YY"
+                                                                                <input type="text" name="expirationDate" value="<?php echo e($cardInfo->expirationDate); ?>" class="form-control" id="expDate" placeholder="MM / YY"
                                                                                        required />
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label for="cvc" class="form-label">CVC</label>
-                                                                                <input type="number" name="cvc" value="{{ $cardInfo->cvc }}" class="form-control" id="cvc" placeholder="CVC"
+                                                                                <input type="number" name="cvc" value="<?php echo e($cardInfo->cvc); ?>" class="form-control" id="cvc" placeholder="CVC"
                                                                                        required />
                                                                             </div>
                                                                         </div>
@@ -875,20 +871,20 @@
                                                                         <div class="col-md-12">
                                                                             <div class="mb-3">
                                                                                 <label for="address" class="form-label">Address</label>
-                                                                                <input type="text" name="address" value="{{ $cardInfo->address }}" class="form-control" id="address" placeholder="Address"
+                                                                                <input type="text" name="address" value="<?php echo e($cardInfo->address); ?>" class="form-control" id="address" placeholder="Address"
                                                                                        required />
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label for="city" class="form-label">City</label>
-                                                                                <input type="text" name="city" value="{{ $cardInfo->city }}" class="form-control" id="city" placeholder="City" />
+                                                                                <input type="text" name="city" value="<?php echo e($cardInfo->city); ?>" class="form-control" id="city" placeholder="City" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label for="state" class="form-label">State</label>
-                                                                                <input type="text" name="state" value="{{ $cardInfo->state }}" class="form-control" id="state" placeholder="State" />
+                                                                                <input type="text" name="state" value="<?php echo e($cardInfo->state); ?>" class="form-control" id="state" placeholder="State" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6">
@@ -896,8 +892,9 @@
                                                                                 <label for="country" class="form-label">Country</label>
                                                                                 <div class="country-dropdown">
                                                                                     <select name="country" class="col-12">
-                                                                                        <option selected value="{{ $cardInfo->country }}">
-                                                                                            {{ $cardInfo->country }}
+                                                                                        <option selected value="<?php echo e($cardInfo->country); ?>">
+                                                                                            <?php echo e($cardInfo->country); ?>
+
                                                                                         </option>
                                                                                         <option value="Afghanistan">
                                                                                             Afghanistan
@@ -1512,7 +1509,7 @@
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label for="postalCode" class="form-label">Postal Code</label>
-                                                                                <input type="number" name="postalCode" value="{{ $cardInfo->postalCode }}" class="form-control" id="postalCode"
+                                                                                <input type="number" name="postalCode" value="<?php echo e($cardInfo->postalCode); ?>" class="form-control" id="postalCode"
                                                                                        placeholder="Postal Code" />
                                                                             </div>
                                                                         </div>
@@ -1527,7 +1524,7 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -1535,19 +1532,29 @@
 
                             <!-- WHEN CREDIT CARD INFO FOUND -->
                             <div class="credit-card-info u-box-shadow-2 mt-4">
-                                <form action="{{ route('upgrade') }}" enctype="multipart/form-data" method="get">
-                                    @csrf
-                                    @foreach($userCardInfo as $card)
+                                <form action="" enctype="multipart/form-data" method="post">
+                                    <?php echo csrf_field(); ?>
+
+                                        <input hidden  type="number" name="credit" value="<?php echo e($purchasePlan->credit); ?>"/>
+                                        <input hidden  type="number" name="phoneNumber" value="<?php echo e($purchasePlan->dataViews); ?>"/>
+                                        <input hidden  type="text" name="dataFilter" value="<?php echo e($purchasePlan->dataFilter); ?>"/>
+                                        <input hidden  type="text" name="csvExport" value="<?php echo e($purchasePlan->dataFilter); ?>"/>
+                                        <input hidden  type="number" name="price" value="<?php echo e($purchasePlan->price); ?>"/>
+                                        <input hidden  type="number" name="userId" value="<?php echo e(Auth::user()->id); ?>"/>
+                                        <input hidden  type="text" name="plan" value="<?php echo e($purchasePlan->plan); ?>"/>
+                                        <input hidden  type="text" name="paidBy" value="stripe"/>
+
+                                    <?php $__currentLoopData = $userCardInfo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $card): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <button type="submit" class="credit-card-info u-box-shadow-2 mt-4 bg-white text-start">
                                             <div class="card-body p-4">
                                                 <h4 class="card-title py-3 mb-3">Card Information</h4>
                                                 <p class="card-text">Card Number: </p>
-                                                <p class="card-text">**** **** **** {{ substr($card->creditCardNumber, 12, 15) }}</p>
+                                                <p class="card-text">**** **** **** <?php echo e(substr($card->creditCardNumber, 12, 15)); ?></p>
                                                 <p class="card-text">Expiration Date:</p>
-                                                <p class="card-text">{{ $card->expirationDate }}</p>
+                                                <p class="card-text"><?php echo e($card->expirationDate); ?></p>
                                             </div>
                                         </button>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </form>
                             </div>
                         </div>
@@ -1564,12 +1571,42 @@
                             </div>
                             <div class="card-body col-12 p-0">
                                 <div class="d-flex justify-content-between px-5">
-                                    <a href="{{ route('upgrade') }}" class="col-5">
-                                        <img class="img-fluid" src="{{ asset('/') }}adminAsset/assets/images/paypal.png" alt="paypal logo">
-                                    </a>
-                                    <a href="{{ route('upgrade') }}" class="col-5 p-1">
-                                        <img class="img-fluid p-4" src="{{ asset('/') }}adminAsset/assets/images/bitcoin.png" alt="bitcoin logo">
-                                    </a>
+                                    <form action="" class="col-5" enctype="multipart/form-data" method="post">
+                                        <?php echo csrf_field(); ?>
+
+                                        <input hidden  type="number" name="credit" value="<?php echo e($purchasePlan->credit); ?>"/>
+                                        <input hidden  type="number" name="phoneNumber" value="<?php echo e($purchasePlan->dataViews); ?>"/>
+                                        <input hidden  type="text" name="dataFilter" value="<?php echo e($purchasePlan->dataFilter); ?>"/>
+                                        <input hidden  type="text" name="csvExport" value="<?php echo e($purchasePlan->dataFilter); ?>"/>
+                                        <input hidden  type="number" name="price" value="<?php echo e($purchasePlan->price); ?>"/>
+                                        <input hidden  type="number" name="userId" value="<?php echo e(Auth::user()->id); ?>"/>
+                                        <input hidden  type="text" name="plan" value="<?php echo e($purchasePlan->plan); ?>"/>
+                                        <input hidden  type="text" name="paidBy" value="paypal"/>
+
+                                        <button type="submit" class="bg-transparent">
+                                            <img class="img-fluid" src="<?php echo e(asset('/')); ?>adminAsset/assets/images/paypal.png" alt="paypal logo">
+                                        </button>
+                                    </form>
+                                    <form action="" class="col-5" method="post" enctype="multipart/form-data">
+                                        <?php echo csrf_field(); ?>
+
+                                        <input hidden  type="number" name="credit" value="<?php echo e($purchasePlan->credit); ?>"/>
+                                        <input hidden  type="number" name="phoneNumber" value="<?php echo e($purchasePlan->dataViews); ?>"/>
+                                        <input hidden  type="text" name="dataFilter" value="<?php echo e($purchasePlan->dataFilter); ?>"/>
+                                        <input hidden  type="text" name="csvExport" value="<?php echo e($purchasePlan->dataFilter); ?>"/>
+                                        <input hidden  type="number" name="price" value="<?php echo e($purchasePlan->price); ?>"/>
+                                        <input hidden  type="number" name="amountUSD" value="<?php echo e($purchasePlan->price); ?>"/>
+                                        <input hidden  type="number" name="userId" value="<?php echo e(Auth::user()->id); ?>"/>
+                                        <input hidden  type="number" name="userID" value="<?php echo e(Auth::user()->id); ?>"/>
+                                        <input hidden  type="text" name="plan" value="<?php echo e($purchasePlan->plan); ?>"/>
+                                        <input hidden  type="text" name="paidBy" value="bitcoin"/>
+                                        <input hidden type="text" name="orderID" value="1"/>
+                                        <input type="hidden" name="redirect" value="<?php echo e(url()->full()); ?>">
+
+                                        <button type="submit" class="p-1 bg-transparent">
+                                            <img class="img-fluid p-4" src="<?php echo e(asset('/')); ?>adminAsset/assets/images/bitcoin.png" alt="bitcoin logo">
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -1717,5 +1754,7 @@
         <!-- END BILLING -->
     </section>
     <!-- END MAIN -->
-    </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('userDashboard.settings.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\Lidata\resources\views/userDashboard/settings/plans/billingRequest.blade.php ENDPATH**/ ?>

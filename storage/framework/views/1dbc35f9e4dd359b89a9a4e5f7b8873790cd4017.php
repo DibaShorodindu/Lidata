@@ -8,7 +8,6 @@
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a href="<?php echo e(route('managePlan')); ?>" class="nav-link <?php echo e(request()->routeIs('managePlan') ? 'active' : ''); ?>">Plan Overview</a>
-                    
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo e(route('billing')); ?>" class="nav-link">Billing</a>

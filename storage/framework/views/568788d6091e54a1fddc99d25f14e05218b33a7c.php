@@ -181,182 +181,71 @@
         </div>
     </section>
     <!-- END SECTION HEADER -->
-
     <!-- START PACKAGES -->
     <section
-        class="section-packages u-padding-lg pt-5 px-sm-0 d-flex justify-content-center"
+            class="section-packages u-padding-lg pt-5 px-sm-0 d-flex justify-content-center"
     >
         <div class="container mx-md-5 px-md-5">
             <div class="row mx-lg-5 mb-md-5 justify-content-center">
-                <div class="col-md-4 col-sm-6 col-9">
-                    <div class="pricingTable">
-                        <div class="pricingTable-header">
-                            <i class="bi bi-send-fill"></i>
-                            <div class="price-value">
-                                $0 <span class="month">per month</span>
+                <?php $__currentLoopData = $packages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $package): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="col-md-4 col-sm-6 col-9">
+                        <div class="pricingTable">
+                            <div class="pricingTable-header">
+                                <i class="bi bi-send-fill"></i>
+                                <div class="price-value">
+                                    $<?php echo e($package->price); ?> <span class="month">per month</span>
+                                </div>
+                            </div>
+                            <h3 class="heading">Free</h3>
+                            <div class="pricing-content">
+                                <ul>
+                                    <li><i class="bi bi-check2"></i><?php echo e($package->creditConvert); ?> Credits</li>
+                                    <li><i class="bi bi-check2"></i><?php echo e($package->dataViewsConvert); ?> Data Views</li>
+                                    <li><i class="bi bi-check2"></i><?php echo e($package->dataFilter); ?></li>
+                                    <li><i class="bi bi-check2"></i><?php echo e($package->csvExport); ?></li>
+                                </ul>
+                            </div>
+                            <div class="pricingTable-signup">
+                                <form action="<?php echo e(route('billingRequest', ['id' => $package->id])); ?>">
+                                    <button type="submit" class="btn btn-default">sign up</button>
+                                </form>
                             </div>
                         </div>
-                        <h3 class="heading">Free</h3>
-                        <div class="pricing-content">
-                            <ul>
-                                <li><i class="bi bi-check2"></i>20 Credits</li>
-                                <li><i class="bi bi-check2"></i>20 Phone Numbers</li>
-                                <li><i class="bi bi-check2"></i>Basic Filters</li>
-                                <li><i class="bi bi-check2"></i>CSV Export</li>
-                            </ul>
-                        </div>
-                        <div class="pricingTable-signup">
-                            <a href="#">sign up</a>
+                    </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
+                <div class="row mx-lg-5 mt-md-5 justify-content-center">
+                    <div class="col-md-4 col-sm-6 col-9 mt-3">
+                        <div class="pricingTable red">
+                            <div class="pricingTable-header">
+                                <i class="bi bi-handbag-fill"></i>
+                                <div class="price-value">
+                                    Talk to Sales<span class="month">&nbsp;</span>
+                                </div>
+                            </div>
+                            <h3 class="heading">Custom</h3>
+                            <div class="pricing-content">
+                                <ul>
+                                    <li><i class="bi bi-check2"></i>Unlimited Credits</li>
+                                    <li><i class="bi bi-check2"></i>Unlimited Data Views</li>
+                                    <li><i class="bi bi-check2"></i>Data Filters</li>
+                                    <li><i class="bi bi-check2"></i>CSV Export</li>
+                                </ul>
+                            </div>
+                            <div class="pricingTable-signup">
+                                <button class="btn btn-default">contact us</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 col-sm-6 col-9">
-                    <div class="pricingTable green">
-                        <div class="pricingTable-header">
-                            <i class="bi bi-file-earmark-fill"></i>
-
-                            <div class="price-value">
-                                $100 <span class="month">per month</span>
-                            </div>
-                        </div>
-                        <h3 class="heading">Basic</h3>
-                        <div class="pricing-content">
-                            <ul>
-                                <li><i class="bi bi-check2"></i>5K Credits</li>
-                                <li><i class="bi bi-check2"></i>5K Phone Numbers</li>
-                                <li><i class="bi bi-check2"></i>Data Filters</li>
-                                <li><i class="bi bi-check2"></i>CSV Export</li>
-                            </ul>
-                        </div>
-                        <div class="pricingTable-signup">
-                            <a href="#">sign up</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6 col-9">
-                    <div class="pricingTable blue">
-                        <div class="pricingTable-header">
-                            <i class="bi bi-award-fill"></i>
-                            <div class="price-value">
-                                $190 <span class="month">per month</span>
-                            </div>
-                        </div>
-                        <h3 class="heading">Professional</h3>
-                        <div class="pricing-content">
-                            <ul>
-                                <li><i class="bi bi-check2"></i>10K Credits</li>
-                                <li><i class="bi bi-check2"></i>10K Phone Numbers</li>
-                                <li><i class="bi bi-check2"></i>Data Filters</li>
-                                <li><i class="bi bi-check2"></i>CSV Export</li>
-                            </ul>
-                        </div>
-                        <div class="pricingTable-signup">
-                            <a href="#">sign up</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mx-lg-5 mt-md-5 justify-content-center">
-                <div class="col-md-4 col-sm-6 col-9 mt-md-3">
-                    <div class="pricingTable red">
-                        <div class="pricingTable-header">
-                            <i class="bi bi-briefcase-fill"></i>
-                            <div class="price-value">
-                                $400 <span class="month">per month</span>
-                            </div>
-                        </div>
-                        <h3 class="heading">Business</h3>
-                        <div class="pricing-content">
-                            <ul>
-                                <li><i class="bi bi-check2"></i>50K Credits</li>
-                                <li><i class="bi bi-check2"></i>50K Phone Numbers</li>
-                                <li><i class="bi bi-check2"></i>Data Filters</li>
-                                <li><i class="bi bi-check2"></i>CSV Export</li>
-                            </ul>
-                        </div>
-                        <div class="pricingTable-signup">
-                            <a href="#">sign up</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6 col-9 mt-md-3">
-                    <div class="pricingTable red">
-                        <div class="pricingTable-header">
-                            <i class="bi bi-briefcase-fill"></i>
-                            <div class="price-value">
-                                $1000 <span class="month">per month</span>
-                            </div>
-                        </div>
-                        <h3 class="heading">Business Pro</h3>
-                        <div class="pricing-content">
-                            <ul>
-                                <li><i class="bi bi-check2"></i>300K Credits</li>
-                                <li><i class="bi bi-check2"></i>300K Phone Numbers</li>
-                                <li><i class="bi bi-check2"></i>Data Filters</li>
-                                <li><i class="bi bi-check2"></i>CSV Export</li>
-                            </ul>
-                        </div>
-                        <div class="pricingTable-signup">
-                            <a href="#">sign up</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6 col-9 mt-3">
-                    <div class="pricingTable red">
-                        <div class="pricingTable-header">
-                            <i class="bi bi-handbag-fill"></i>
-                            <div class="price-value">
-                                $1500<span class="month">&nbsp;</span>
-                            </div>
-                        </div>
-                        <h3 class="heading">Enterprise</h3>
-                        <div class="pricing-content">
-                            <ul>
-                                <li><i class="bi bi-check2"></i>1M Credits</li>
-                                <li><i class="bi bi-check2"></i>1M Phone Numbers</li>
-                                <li><i class="bi bi-check2"></i>Data Filters</li>
-                                <li><i class="bi bi-check2"></i>CSV Export</li>
-                            </ul>
-                        </div>
-                        <div class="pricingTable-signup">
-                            <a href="#">Sign uP</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mx-lg-5 mt-md-5 justify-content-center">
-                <div class="col-md-4 col-sm-6 col-9 mt-3">
-                    <div class="pricingTable red">
-                        <div class="pricingTable-header">
-                            <i class="bi bi-handbag-fill"></i>
-                            <div class="price-value">
-                                Talk to Sales<span class="month">&nbsp;</span>
-                            </div>
-                        </div>
-                        <h3 class="heading">Custom</h3>
-                        <div class="pricing-content">
-                            <ul>
-                                <li><i class="bi bi-check2"></i>Unlimited Credits</li>
-                                <li><i class="bi bi-check2"></i>Unlimited Phone Numbers</li>
-                                <li><i class="bi bi-check2"></i>Data Filters</li>
-                                <li><i class="bi bi-check2"></i>CSV Export</li>
-                            </ul>
-                        </div>
-                        <div class="pricingTable-signup">
-                            <a href="../contact.html">Contact Us</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
     <!-- END PACKAGES -->
+
+
 
     <!-- START Frequently Asked Questions -->
     <section class="section-packages-faq u-padding-lg pt-5">

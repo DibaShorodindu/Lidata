@@ -5,7 +5,9 @@ use App\Exports\CustomExport;
 use App\Imports\LidataImport;
 use App\Models\Credit;
 use App\Models\CreditHistory;
+use App\Models\DownloadedList;
 use App\Models\ExportHistori;
+use App\Models\LidataUserModel;
 use App\Models\PurchasePlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -66,27 +68,21 @@ class AdminController extends Controller
     }
 
 
-    // public function customExport(Request $request)
-
-    // {
-    //     return (new CustomExport($request->chk))->download('phoneList.xlsx');
-    // }
 
     public function customExport(Request $request)
     {
 
-        $credit=Credit::find(Auth::user()->id)->first();
+        $credit=Credit::where('userId', Auth::user()->id)->first();
         if ($credit->useableCredit >= count($request->chk))
         {
+            Credit::updateUserCradit($request);
             ExportHistori::newExportHistori($request);
-            $credit = Credit::find(Auth::user()->id);
+            DownloadedList::createNew($request);
             $usableCredit = $credit->useableCredit;
-            Credit::where('userId',Auth::user()->id)->update([
-                'userId'         => $request->userId,
-                'useableCredit'  => $usableCredit-count($request->chk),
-            ]);
             CreditHistory::create($request);
-            return (new CustomExport($request->chk))->download('phoneList.xlsx');
+            LidataUserModel::updateUseAbleCredit($request);
+
+            return (new CustomExport($request->chk))->download('lidata.xlsx');
         }
         else
         {
@@ -94,26 +90,6 @@ class AdminController extends Controller
         }
     }
 
-
-    // public function customExport(Request $request)
-    // {
-    // //    return $request->userId;
-    //     $credit=Credit::find($request->userId);
-    //     // return $credit;
-
-    //     if ($credit->useableCredit >= count($request->chk))
-    //     {
-    //         ExportHistori::newExportHistori($request);
-    //         Credit::updateUserCradit($request);
-    //         CreditHistory::create($request);
-    //         return (new CustomExport($request->chk))->download('phoneList.xlsx');
-
-    //     }
-    //     else
-    //     {
-    //         return redirect('/settings/upgrade');
-    //     }
-    // }
 
     public function cumpanyExport(Request $request)
     {

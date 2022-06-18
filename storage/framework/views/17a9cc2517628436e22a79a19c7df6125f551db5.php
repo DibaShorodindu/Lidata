@@ -1,5 +1,9 @@
 
 
+<?php $__env->startSection('title.title'); ?>
+  You | Li Data
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('main'); ?>
   <section class="section-main">
     <div class="card u-box-shadow-2 m-4 border rounded-3">

@@ -344,6 +344,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function (){
     ]);
 
 
+    Route::post('/people/fetch_data', '\App\Http\Controllers\User\UserController@peopleDataHistory')->name('peopleDataHistory');
+
     //searching people
 
 
@@ -498,7 +500,7 @@ Route::get('/settings/billing/{id}',[
         'uses' => '\App\Http\Controllers\User\UserController@history',
         'as'   => 'history',
     ]);
-
+    Route::post('/daterange/fetch_data', '\App\Http\Controllers\User\UserController@historyDate')->name('historyDate');
 
     Route::get('/settings/upgrade',[
         'uses' => '\App\Http\Controllers\User\UserController@upgradeUser',

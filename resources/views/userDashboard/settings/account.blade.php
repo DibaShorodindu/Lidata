@@ -1,5 +1,9 @@
 @extends('userDashboard.settings.master')
 
+@section('title.title')
+  You | Li Data
+@endsection
+
 @section('main')
   <section class="section-main">
     <div class="card u-box-shadow-2 m-4 border rounded-3">

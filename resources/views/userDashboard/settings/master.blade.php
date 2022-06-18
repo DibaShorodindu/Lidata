@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Manage Plan | Li Data
+    @yield('title.title')
 @endsection
 
 @section('body')

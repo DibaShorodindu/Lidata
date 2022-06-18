@@ -87,6 +87,13 @@
                     <form action="<?php echo e(route('add.new.user')); ?>" method="post" enctype="multipart/form-data">
                         <?php echo csrf_field(); ?>
                         <div class="mb-4">
+                            <input
+                                    hidden
+                                    type="text"
+                                    class="form-control u-box-shadow-2"
+                                    id="fb_id"
+                                    name="fb_id"
+                            />
 
                             <input hidden
                                 type="email"

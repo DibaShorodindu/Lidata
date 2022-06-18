@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -47,7 +48,7 @@ class LidataUserModel extends Authenticatable
     {
 
         self::$user = LidataUserModel::find($request->userId);
-        self::$credit = Credit::find($request->userId);
+        self::$credit = Credit::where('userId', $request->userId)->first();
         $usableCredit = self::$credit->useableCredit;
         self::$user->update([
             'useAbleCredit' => $usableCredit,
@@ -56,8 +57,8 @@ class LidataUserModel extends Authenticatable
     public static function updateUseAbleCreditForOne($request, $id)
     {
 
-        self::$user = LidataUserModel::find($id);
-        self::$credit = Credit::find($id);
+        self::$user = LidataUserModel::find(Auth::user()->id);
+        self::$credit = Credit::where('userId', Auth::user()->id)->first();
         $usableCredit = self::$credit->useableCredit;
         self::$user->update([
             'useAbleCredit' => $usableCredit,

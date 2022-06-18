@@ -7,10 +7,12 @@ use App\Models\Card;
 use App\Models\Contact;
 use App\Imports\ContactImport;
 use App\Models\Country;
+use App\Models\DownloadedList;
 use App\Models\PhoneList;
 use App\Models\LidataUserModel;
 use App\Models\PurchasePlan;
 use App\Models\Credit;
+use App\Models\SetPurchasePlan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Hash;
@@ -35,6 +37,7 @@ class UserController extends Controller
     protected $user;
     protected $allData;
     protected $country;
+    protected $package;
 
 
     public function dashboard()
@@ -73,7 +76,7 @@ class UserController extends Controller
         else {
             $check = $this->create($data);
             $newUser = LidataUserModel::where('email', $data['email'])->first();
-            PurchasePlan::create($newUser);
+            PurchasePlan::createNew($newUser);
             // return $newUser;
             Credit::create([
                 'userId' => $newUser->id,
@@ -239,9 +242,45 @@ class UserController extends Controller
 
     public function people()
     {
-        $this->allData = lidata::paginate(15);
-        return view('userDashboard.people', ['allData' => $this->allData]);
+        $this->countries = Country::all();
+        $this->allDataIds = DownloadedList::where('userId', Auth::user()->id)->get();
+        $getdownloadedIds = 0;
+        foreach ($this->allDataIds as $dataIds)
+        {
+            $getdownloadedIds = $getdownloadedIds.','.$dataIds->downloadedIds;
+        }
+        $dataCount = count(lidata::all());
+        $this->allData = lidata::whereNotIn('id', explode(',',$getdownloadedIds))
+                                /*->orderBy('person_name', 'ASC')*/
+                                ->paginate(15);
+        return view('userDashboard.people', ['allData' => $this->allData, 'country' => $this->countries, 'count' => $dataCount]);
+
     }
+
+    public function peopleDataHistory(Request $request)
+    {
+        if($request->ajax())
+        {
+            $credit=Credit::where('userId', Auth::user()->id)->first();
+            if ($credit->useableCredit >= 1)
+            {
+                Credit::updateUserCreditForOne($request);
+                LidataUserModel::updateUseAbleCreditForOne($request, Auth::user()->id);
+                ExportHistori::newExportHistoriForOne($request);
+                DownloadedList::createForOne($request);
+                CreditHistory::createForOne($request);
+                $data = DB::table('lidata')
+                    ->where('id', '=', $request->id)
+                    ->get();
+                echo json_encode($data);
+            }
+
+        }
+    }
+
+
+
+
     public function peopleSearch(Request $request)
     {
         $result = $request->name;
@@ -424,6 +463,13 @@ class UserController extends Controller
         return view('userDashboard.settings.plans.billing', ['userCardInfo' => $data]);
     }
 
+    public function billingRequest($id)
+    {
+        $plan = SetPurchasePlan::find($id);
+        $data = Card::where('userId', Auth::user()->id)->get();
+        return view('userDashboard.settings.plans.billingRequest', ['userCardInfo' => $data, 'purchasePlan'=>$plan]);
+    }
+
 
 
 
@@ -436,10 +482,8 @@ class UserController extends Controller
     public function reDownloadFile($file_name)
     {
         $data = ExportHistori::find($file_name);
-    //   return $file_name;
-        return response()->download('storage/'. $data->file,'phonelist.xlsx');
-     
-            // return download('storage/'. $data->file,'phonelist.xlsx');
+        return response()->download('storage/app/'. $data->file,'lidata.xlsx');
+
     }
     public function csvExportSettings()
     {
@@ -523,9 +567,28 @@ class UserController extends Controller
         return "Record are imported successfully!";
     }
 
+    public function historyDate(Request $request)
+    {
+        if($request->ajax())
+        {
+            if($request->from_date != '' && $request->to_date != '')
+            {
+                $data = DB::table('credit_histories')
+                    ->whereBetween('date', array($request->from_date, $request->to_date))
+                    ->get();
+            }
+            else
+            {
+                $data = DB::table('credit_histories')->orderBy('date', 'desc')->get();
+            }
+            echo json_encode($data);
+        }
+    }
+
     public function upgradeUser()
     {
-        return view('userDashboard.settings.upgrade');
+        $this->package = SetPurchasePlan::all();
+        return view('userDashboard.settings.upgrade', [ 'packages' => $this->package ]);
     }
 
     /**

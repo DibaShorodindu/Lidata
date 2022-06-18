@@ -1,4 +1,7 @@
 @extends('userDashboard.settings.master')
+@section('title.title')
+    Credit Usage | Li Data
+@endsection
 
 @section('main')
     <section class="section-main">
@@ -21,15 +24,15 @@
         <section class="section-current-credit">
             <div class="card u-box-shadow-2 m-4 border rounded-3">
                 <div
-                    class="card-title d-flex justify-content-between align-items-center"
+                        class="card-title d-flex justify-content-between align-items-center"
                 >
                     <h3 class="p-4 text-capitalize">
                         Credits Usage <span> {{ $userPurchasePlan[1] }} {{ $userPurchasePlan[3] }} {{ $userPurchasePlan[2] }}  - {{ $userPurchasePlan[4] }} {{ $userPurchasePlan[5] }} {{ $userPurchasePlan[6] }} </span>
                     </h3>
                     <a
-                        href="{{route('upgrade')}}"
-                        type="button"
-                        class="btn btn-access me-4"
+                            href="{{route('upgrade')}}"
+                            type="button"
+                            class="btn btn-access me-4"
                     >
                         Buy More Credits
                     </a>
@@ -41,7 +44,7 @@
                                 <h3 class="fs-3">
                                     Email Credits
                                     <i
-                                        class="bi bi-question-circle-fill text-secondary"
+                                            class="bi bi-question-circle-fill text-secondary"
                                     ></i>
                                     <p class="mt-4">
                                         You have used <span class="text-primary">{{ $userPurchasePlan[7] }}</span> of
@@ -58,5 +61,3 @@
         <!-- END CURRENT CREDIT -->
     </section>
 @endsection
-
-                   

@@ -1,6 +1,10 @@
 
 @extends('userDashboard.settings.master')
 
+@section('title.title')
+    Manage Plan | Li Data
+@endsection
+
 @section('main')
     <section class="section-main">
         <!-- START SECOND NAVBAR -->
@@ -8,10 +12,6 @@
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a href="{{ route('managePlan') }}" class="nav-link {{  request()->routeIs('managePlan') ? 'active' : '' }}">Plan Overview</a>
-                    {{--<form action="{{ route('managePlan') }}" method="get" enctype="multipart/form-data">
-                        @csrf
-                        <button type="submit" class="nav-link"> Plan Overview </button>
-                    </form>--}}
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('billing') }}" class="nav-link">Billing</a>

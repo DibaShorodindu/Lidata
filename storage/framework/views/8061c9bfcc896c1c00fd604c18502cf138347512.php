@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <meta name="description" content="" />
     <meta name="keywords"
@@ -33,10 +33,10 @@
           rel="stylesheet" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('/') }}adminAsset/assets/css/style.css" />
+    <link rel="stylesheet" href="<?php echo e(asset('/')); ?>adminAsset/assets/css/style.css" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('/') }}adminAsset/assets/images/icons/favicon.ico" />
+    <link rel="shortcut icon" href="<?php echo e(asset('/')); ?>adminAsset/assets/images/icons/favicon.ico" />
 </head>
 
 <body>
@@ -44,8 +44,8 @@
     <!-- START NAVBAR -->
     <nav class="navbar navbar--user navbar-expand-md navbar-light" id="user-nav">
         <div class="container-fluid justify-content-end">
-            <a class="navbar-brand" href="{{ route('/') }}">
-                <img class="img-fluid" src="{{ asset('/') }}adminAsset/assets/images/logo.svg" alt="phone list" />
+            <a class="navbar-brand" href="<?php echo e(route('/')); ?>">
+                <img class="img-fluid" src="<?php echo e(asset('/')); ?>adminAsset/assets/images/logo.svg" alt="phone list" />
             </a>
 
             <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse"
@@ -56,23 +56,23 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item pl-4">
-                        <a class="nav-link {{  request()->routeIs('loggedInUser') ? 'active' : '' }}"
-                           aria-current="page" href="{{ route('loggedInUser') }}">
+                        <a class="nav-link <?php echo e(request()->routeIs('loggedInUser') ? 'active' : ''); ?>"
+                           aria-current="page" href="<?php echo e(route('loggedInUser')); ?>">
                             <i class="bi bi-house-door"></i>
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item" id="search">
-                        <a class="nav-link {{  request()->routeIs('people') ? 'active' : '' }}"
-                           href="{{ route('people') }}">
+                        <a class="nav-link <?php echo e(request()->routeIs('people') ? 'active' : ''); ?>"
+                           href="<?php echo e(route('people')); ?>">
                             <i class="bi bi-search"></i>
                             Data Search
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {{  request()->routeIs('upgrade') ? 'active' : '' }}"
-                           href="{{ route('upgrade') }}">
+                        <a class="nav-link <?php echo e(request()->routeIs('upgrade') ? 'active' : ''); ?>"
+                           href="<?php echo e(route('upgrade')); ?>">
                             <i class="bi bi-box-seam"></i>
                             Products
                         </a>
@@ -82,22 +82,22 @@
 
             <!-- START SHOW ELEMENT ON CLICKING USER -->
             <div class="user-div hide u-box-shadow-1">
-                <h4 class="px-4 pt-5">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</h4>
+                <h4 class="px-4 pt-5"><?php echo e(Auth::user()->firstName); ?> <?php echo e(Auth::user()->lastName); ?></h4>
                 <div class="user--label mx-4">
                     <span>User</span>
                 </div>
 
                 <div class="user--menu">
-                    <a class="user--menu-item" href="{{ route('account') }}">
+                    <a class="user--menu-item" href="<?php echo e(route('account')); ?>">
                         <i class="bi bi-gear"></i>
                         <span>Settings</span>
                     </a>
-                    <a class="user--menu-item" href="{{ route('upgrade') }}">
+                    <a class="user--menu-item" href="<?php echo e(route('upgrade')); ?>">
                         <i class="bi bi-trophy"></i>
                         <span>Upgrade Plan</span>
                     </a>
 
-                    <a class="user--menu-item mb-3" href="{{ route('userLogout') }}">
+                    <a class="user--menu-item mb-3" href="<?php echo e(route('userLogout')); ?>">
                         <i class="bi bi-power"></i>
                         <span>Logout</span>
                     </a>
@@ -108,7 +108,7 @@
 
         <!-- START RIGHT NAV ITEMS -->
         <div class="d-flex align-items-center nav-right__box">
-            <a class="btn btn-purple mx-4" href="{{ route('upgrade') }}">Get unlimited leads
+            <a class="btn btn-purple mx-4" href="<?php echo e(route('upgrade')); ?>">Get unlimited leads
             </a>
             <button type="button" class="btn">
                 <a href="#">
@@ -127,7 +127,8 @@
             <button type="button" id="userBtn" class="user user-btn circle-element mx-3">
 
                 <p class="user-name">
-                    {{ $firstStringCharacter = substr(Auth::user()->firstName, 0, 1) }}{{ $firstStringCharacter = substr(Auth::user()->lastName, 0, 1) }}
+                    <?php echo e($firstStringCharacter = substr(Auth::user()->firstName, 0, 1)); ?><?php echo e($firstStringCharacter = substr(Auth::user()->lastName, 0, 1)); ?>
+
                 </p>
             </button>
         </div>
@@ -161,8 +162,8 @@
                 <li class="nav-item">
                     <span class="text-uppercase">Personal Profile</span>
                     <a
-                            href="{{ route('account') }}"
-                            class="nav-link {{  request()->routeIs('account') ? 'active' : '' }}"
+                            href="<?php echo e(route('account')); ?>"
+                            class="nav-link <?php echo e(request()->routeIs('account') ? 'active' : ''); ?>"
                             aria-current="page"
                     >
                         <h2 class="fs-4 m-0">You</h2>
@@ -170,18 +171,18 @@
                 </li>
                 <li class="nav-item mt-4">
                     <span class="text-uppercase">Admin Settings</span>
-                    <a href="{{ route('managePlan') }}" class="nav-link {{  request()->routeIs('managePlan') ? 'active' : '' }} {{  request()->routeIs('billing') ? 'active' : '' }}" >
+                    <a href="<?php echo e(route('managePlan')); ?>" class="nav-link <?php echo e(request()->routeIs('managePlan') ? 'active' : ''); ?> <?php echo e(request()->routeIs('billing') ? 'active' : ''); ?>" >
                         <h2 class="fs-4 m-0">Manage Plan</h2>
                     </a>
                 </li>
                 <li class="nav-item mt-4">
                     <span class="text-uppercase">System Activity</span>
-                    <a href="{{ route('exports') }}" class="nav-link {{  request()->routeIs('exports') ? 'active' : '' }} {{  request()->routeIs('csv-export-settings') ? 'active' : '' }}">
+                    <a href="<?php echo e(route('exports')); ?>" class="nav-link <?php echo e(request()->routeIs('exports') ? 'active' : ''); ?> <?php echo e(request()->routeIs('csv-export-settings') ? 'active' : ''); ?>">
                         <h2 class="fs-4 m-0">Exports</h2>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('current') }}" class="nav-link {{  request()->routeIs('current') ? 'active' : '' }} {{  request()->routeIs('history') ? 'active' : '' }}">
+                    <a href="<?php echo e(route('current')); ?>" class="nav-link <?php echo e(request()->routeIs('current') ? 'active' : ''); ?> <?php echo e(request()->routeIs('history') ? 'active' : ''); ?>">
                         <h2 class="fs-4 m-0">Credit Usage </h2>
                     </a>
                 </li>
@@ -195,13 +196,13 @@
             <section class="second-navbar">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a href="{{ route('current') }}"
-                           class="nav-link {{  request()->routeIs('current') ? 'active' : '' }}">Current Credit
+                        <a href="<?php echo e(route('current')); ?>"
+                           class="nav-link <?php echo e(request()->routeIs('current') ? 'active' : ''); ?>">Current Credit
                             Usage</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('history') }}"
-                           class="nav-link {{  request()->routeIs('history') ? 'active' : '' }}">Credit Usage
+                        <a href="<?php echo e(route('history')); ?>"
+                           class="nav-link <?php echo e(request()->routeIs('history') ? 'active' : ''); ?>">Credit Usage
                             History</a>
                     </li>
                 </ul>
@@ -232,17 +233,20 @@
                                 <div class="card-title d-flex justify-content-between align-items-center">
                                     <h3 class="p-4 text-capitalize">
                                         Historical Credit Usage
-                                        <span id="historicalCreditUsageFrom"> ({{ $userPurchasePlan[1] }} {{ $userPurchasePlan[3] }}
-                                            {{ $userPurchasePlan[2] }}
+                                        <span id="historicalCreditUsageFrom"> (<?php echo e($userPurchasePlan[1]); ?> <?php echo e($userPurchasePlan[3]); ?>
+
+                                            <?php echo e($userPurchasePlan[2]); ?>
+
                                         </span>
                                         -
-                                        <span id="historicalCreditUsageTo">{{ $userPurchasePlan[4] }}
-                                            {{ $userPurchasePlan[5] }} {{ $userPurchasePlan[6] }})
+                                        <span id="historicalCreditUsageTo"><?php echo e($userPurchasePlan[4]); ?>
+
+                                            <?php echo e($userPurchasePlan[5]); ?> <?php echo e($userPurchasePlan[6]); ?>)
                                         </span>
                                     </h3>
                                 </div>
                                 <div class="card-body py-5 mt-4 mb-5 d-flex flex-column align-items-center">
-                                    <span class="display-1" id="usedCredit">{{ $userPurchasePlan[7] }}</span>
+                                    <span class="display-1" id="usedCredit"><?php echo e($userPurchasePlan[7]); ?></span>
                                     <span class="text-secondary fw-bold">Credits</span>
                                 </div>
                             </div>
@@ -268,8 +272,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
 <!-- CUSTOM JS -->
-<script src="{{asset('/')}}adminAsset/assets/js/navbar.js"></script>
-<script src="{{asset('/')}}adminAsset/assets/js/script.js"></script>
+<script src="<?php echo e(asset('/')); ?>adminAsset/assets/js/navbar.js"></script>
+<script src="<?php echo e(asset('/')); ?>adminAsset/assets/js/script.js"></script>
 
 
 <script>
@@ -288,9 +292,9 @@
     function fetch_data(from_date = '', to_date = '')
     {
         $.ajax({
-            url:"{{ route('historyDate') }}",
+            url:"<?php echo e(route('historyDate')); ?>",
             method:"POST",
-            data:{from_date:from_date, to_date:to_date, _token:"{{ csrf_token() }}"},
+            data:{from_date:from_date, to_date:to_date, _token:"<?php echo e(csrf_token()); ?>"},
             dataType:"json",
             success:function(data)
             {
@@ -332,4 +336,4 @@
 
 </body>
 
-</html>
+</html><?php /**PATH D:\xampp\htdocs\Lidata\resources\views/userDashboard/settings/credits/history.blade.php ENDPATH**/ ?>

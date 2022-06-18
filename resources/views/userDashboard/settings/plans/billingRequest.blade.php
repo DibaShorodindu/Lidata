@@ -43,14 +43,14 @@
                                             Add Credit Card
                                         </button>
                                     @endif
-                                    @if( !$userCardInfo->isEmpty() )
-                                        <a href="{{ route('removeCard') }}">
-                                            <button type="button"  class="btn btn-blue text-white col-5 ">
-                                                <i class="bi bi-dash pe-1"></i>
-                                                Remove Credit Card
-                                            </button>
-                                        </a>
-                                    @endif
+                                        @if( !$userCardInfo->isEmpty() )
+                                            <a href="{{--{{ route('removeCard') }}--}}">
+                                                <button type="button"  class="btn btn-blue text-white col-5 ">
+                                                    <i class="bi bi-dash pe-1"></i>
+                                                    Remove Credit Card
+                                                </button>
+                                            </a>
+                                        @endif
                                 </div>
                             </div>
 
@@ -805,7 +805,7 @@
                                         </div>
                                         <div class="modal-body m-4 mb-5">
                                             @foreach($userCardInfo as $cardInfo)
-                                                <form action="{{ route('updateCardInfo') }}" method="post" enctype="multipart/form-data">
+                                                <form action="{{--{{ route('updateCardInfo') }}--}}" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     <div>
                                                         <h5>Your Details</h5>
@@ -1535,8 +1535,18 @@
 
                             <!-- WHEN CREDIT CARD INFO FOUND -->
                             <div class="credit-card-info u-box-shadow-2 mt-4">
-                                <form action="{{ route('upgrade') }}" enctype="multipart/form-data" method="get">
+                                <form action="{{--{{ route('stripe') }}--}}" enctype="multipart/form-data" method="post">
                                     @csrf
+
+                                        <input hidden  type="number" name="credit" value="{{$purchasePlan->credit}}"/>
+                                        <input hidden  type="number" name="phoneNumber" value="{{$purchasePlan->dataViews}}"/>
+                                        <input hidden  type="text" name="dataFilter" value="{{$purchasePlan->dataFilter}}"/>
+                                        <input hidden  type="text" name="csvExport" value="{{$purchasePlan->dataFilter}}"/>
+                                        <input hidden  type="number" name="price" value="{{$purchasePlan->price}}"/>
+                                        <input hidden  type="number" name="userId" value="{{ Auth::user()->id }}"/>
+                                        <input hidden  type="text" name="plan" value="{{$purchasePlan->plan}}"/>
+                                        <input hidden  type="text" name="paidBy" value="stripe"/>
+
                                     @foreach($userCardInfo as $card)
                                         <button type="submit" class="credit-card-info u-box-shadow-2 mt-4 bg-white text-start">
                                             <div class="card-body p-4">
@@ -1564,12 +1574,42 @@
                             </div>
                             <div class="card-body col-12 p-0">
                                 <div class="d-flex justify-content-between px-5">
-                                    <a href="{{ route('upgrade') }}" class="col-5">
-                                        <img class="img-fluid" src="{{ asset('/') }}adminAsset/assets/images/paypal.png" alt="paypal logo">
-                                    </a>
-                                    <a href="{{ route('upgrade') }}" class="col-5 p-1">
-                                        <img class="img-fluid p-4" src="{{ asset('/') }}adminAsset/assets/images/bitcoin.png" alt="bitcoin logo">
-                                    </a>
+                                    <form action="{{--{{ route('paypal') }}--}}" class="col-5" enctype="multipart/form-data" method="post">
+                                        @csrf
+
+                                        <input hidden  type="number" name="credit" value="{{$purchasePlan->credit}}"/>
+                                        <input hidden  type="number" name="phoneNumber" value="{{$purchasePlan->dataViews}}"/>
+                                        <input hidden  type="text" name="dataFilter" value="{{$purchasePlan->dataFilter}}"/>
+                                        <input hidden  type="text" name="csvExport" value="{{$purchasePlan->dataFilter}}"/>
+                                        <input hidden  type="number" name="price" value="{{$purchasePlan->price}}"/>
+                                        <input hidden  type="number" name="userId" value="{{ Auth::user()->id }}"/>
+                                        <input hidden  type="text" name="plan" value="{{$purchasePlan->plan}}"/>
+                                        <input hidden  type="text" name="paidBy" value="paypal"/>
+
+                                        <button type="submit" class="bg-transparent">
+                                            <img class="img-fluid" src="{{ asset('/') }}adminAsset/assets/images/paypal.png" alt="paypal logo">
+                                        </button>
+                                    </form>
+                                    <form action="{{--{{ route('payments.crypto.pay') }}--}}" class="col-5" method="post" enctype="multipart/form-data">
+                                        @csrf
+
+                                        <input hidden  type="number" name="credit" value="{{$purchasePlan->credit}}"/>
+                                        <input hidden  type="number" name="phoneNumber" value="{{$purchasePlan->dataViews}}"/>
+                                        <input hidden  type="text" name="dataFilter" value="{{$purchasePlan->dataFilter}}"/>
+                                        <input hidden  type="text" name="csvExport" value="{{$purchasePlan->dataFilter}}"/>
+                                        <input hidden  type="number" name="price" value="{{$purchasePlan->price}}"/>
+                                        <input hidden  type="number" name="amountUSD" value="{{$purchasePlan->price}}"/>
+                                        <input hidden  type="number" name="userId" value="{{ Auth::user()->id }}"/>
+                                        <input hidden  type="number" name="userID" value="{{ Auth::user()->id }}"/>
+                                        <input hidden  type="text" name="plan" value="{{$purchasePlan->plan}}"/>
+                                        <input hidden  type="text" name="paidBy" value="bitcoin"/>
+                                        <input hidden type="text" name="orderID" value="1"/>
+                                        <input type="hidden" name="redirect" value="{{ url()->full() }}">
+
+                                        <button type="submit" class="p-1 bg-transparent">
+                                            <img class="img-fluid p-4" src="{{ asset('/') }}adminAsset/assets/images/bitcoin.png" alt="bitcoin logo">
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -1717,5 +1757,5 @@
         <!-- END BILLING -->
     </section>
     <!-- END MAIN -->
-    </section>
 @endsection
+

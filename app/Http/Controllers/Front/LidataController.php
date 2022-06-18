@@ -121,7 +121,7 @@ class LidataController extends Controller
     public function autocompleteSearch(Request $request)
     {
         $query = $request->get('query');
-        $filterResult = Lidata::where('person_name', 'LIKE', '%'. $query. '%')->take(10)->get();
+        $filterResult = Lidata::where('person_name', 'like', '%'. $query. '%')->take(10)->get();
         //return response()->json($filterResult);
         $data = array();
         foreach ($filterResult as $hsl)

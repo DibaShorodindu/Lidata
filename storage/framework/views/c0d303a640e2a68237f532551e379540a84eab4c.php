@@ -47,9 +47,9 @@
           <div class="col-md-4 col-sm-6 col-9">
           <div class="pricingTable">
             <div class="pricingTable-header">
-              <i class="bi <?php echo e($package->icon); ?>"></i>
+              <i class="bi "></i>
               <div class="price-value">
-                $0 <span class="month">per month</span>
+                $<?php echo e($package->price); ?> <span class="month">per month</span>
               </div>
             </div>
             <h3 class="heading"><?php echo e($package->plan); ?></h3>
@@ -73,27 +73,27 @@
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         <div class="row mx-lg-5 mt-md-5 justify-content-center">
-        <div class="col-md-4 col-sm-6 col-9 mt-3">
-          <div class="pricingTable red">
-            <div class="pricingTable-header">
-              <i class="bi bi-handbag-fill"></i>
-              <div class="price-value">
-                Talk to Sales<span class="month">&nbsp;</span>
+          <div class="col-md-4 col-sm-6 col-9 mt-3">
+            <div class="pricingTable red">
+              <div class="pricingTable-header">
+                <i class="bi bi-handbag-fill"></i>
+                <div class="price-value">
+                  Talk to Sales<span class="month">&nbsp;</span>
+                </div>
+              </div>
+              <h3 class="heading">Custom</h3>
+              <div class="pricing-content">
+                <ul>
+                  <li><i class="bi bi-check2"></i>Unlimited Credits</li>
+                  <li><i class="bi bi-check2"></i>Unlimited Data Views</li>
+                  <li><i class="bi bi-check2"></i>Data Filters</li>
+                  <li><i class="bi bi-check2"></i>CSV Export</li>
+                </ul>
+              </div>
+              <div class="pricingTable-signup">
+                <button class="btn btn-default">contact us</button>
               </div>
             </div>
-            <h3 class="heading">Custom</h3>
-            <div class="pricing-content">
-              <ul>
-                <li><i class="bi bi-check2"></i>Unlimited Credits</li>
-                <li><i class="bi bi-check2"></i>Unlimited Data Views</li>
-                <li><i class="bi bi-check2"></i>Data Filters</li>
-                <li><i class="bi bi-check2"></i>CSV Export</li>
-              </ul>
-            </div>
-            <div class="pricingTable-signup">
-              <button class="btn btn-default">contact us</button>
-            </div>
-          </div>
         </div>
       </div>
       </div>

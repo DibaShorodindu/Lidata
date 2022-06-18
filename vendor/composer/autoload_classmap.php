@@ -56,6 +56,7 @@ return array(
     'App\\Models\\Country' => $baseDir . '/app/Models/Country.php',
     'App\\Models\\Credit' => $baseDir . '/app/Models/Credit.php',
     'App\\Models\\CreditHistory' => $baseDir . '/app/Models/CreditHistory.php',
+    'App\\Models\\DownloadedList' => $baseDir . '/app/Models/DownloadedList.php',
     'App\\Models\\ExportHistori' => $baseDir . '/app/Models/ExportHistori.php',
     'App\\Models\\Lidata' => $baseDir . '/app/Models/Lidata.php',
     'App\\Models\\LidataUserModel' => $baseDir . '/app/Models/LidataUserModel.php',

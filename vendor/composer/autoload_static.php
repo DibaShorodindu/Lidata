@@ -673,6 +673,7 @@ class ComposerStaticInit1767a134c4547802a5c83425a70b7a01
         'App\\Models\\Country' => __DIR__ . '/../..' . '/app/Models/Country.php',
         'App\\Models\\Credit' => __DIR__ . '/../..' . '/app/Models/Credit.php',
         'App\\Models\\CreditHistory' => __DIR__ . '/../..' . '/app/Models/CreditHistory.php',
+        'App\\Models\\DownloadedList' => __DIR__ . '/../..' . '/app/Models/DownloadedList.php',
         'App\\Models\\ExportHistori' => __DIR__ . '/../..' . '/app/Models/ExportHistori.php',
         'App\\Models\\Lidata' => __DIR__ . '/../..' . '/app/Models/Lidata.php',
         'App\\Models\\LidataUserModel' => __DIR__ . '/../..' . '/app/Models/LidataUserModel.php',
