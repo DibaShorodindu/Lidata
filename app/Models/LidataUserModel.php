@@ -27,6 +27,7 @@ class LidataUserModel extends Authenticatable
         'purchasePlan',
         'useAbleCredit',
         'fb_id',
+        'google_id'
     ];
 
     protected $hidden = [

@@ -86,14 +86,10 @@ class UserController extends Controller
             return redirect("loggedInUser")->with('message2', 'data Updated Successfully');
         }
     }
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
+
     public function create(array $data)
     {
-        if ($data['fb_id'] != null)
+        if (isset($data['fb_id']))
         {
             return LidataUserModel::create([
                 'email' => $data['email'],
@@ -106,6 +102,21 @@ class UserController extends Controller
                 'purchasePlan' => 'Free',
                 'useAbleCredit' => 50,
                 'fb_id' => $data['fb_id']
+            ]);
+        }
+        elseif (isset($data['google_id']))
+        {
+            return LidataUserModel::create([
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'firstName' => $data['firstName'],
+                'lastName' => $data['lastName'],
+                'name' => $data['firstName'].' '.$data['lastName'],
+                'phone' => $data['phone'],
+                'country' => $data['country'],
+                'purchasePlan' => 'Free',
+                'useAbleCredit' => 50,
+                'google_id' => $data['google_id']
             ]);
         }
         else

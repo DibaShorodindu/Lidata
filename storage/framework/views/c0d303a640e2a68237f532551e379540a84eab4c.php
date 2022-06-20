@@ -103,7 +103,43 @@
 
       <!-- END PACKAGES -->
 
-      <!-- START Frequently Asked Questions -->
+
+  <section
+          class="section-packages u-padding-lg pt-5 px-sm-0 d-flex justify-content-center"
+  >
+    <div class="container mx-md-5 px-md-5">
+      <div class="row mx-lg-5 mb-md-5 justify-content-center">
+        <?php $__currentLoopData = $packages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $package): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <div class="col-md-4 col-sm-6 col-9">
+          <div class="pricingTable">
+            <div class="pricingTable-header">
+              <i class="bi bi-send-fill"></i>
+              <div class="price-value">
+                $0 <span class="month">per month</span>
+              </div>
+            </div>
+            <h3 class="heading">Free</h3>
+            <div class="pricing-content">
+              <ul>
+                <li><i class="bi bi-check2"></i>50 Credits</li>
+                <li><i class="bi bi-check2"></i>50 Data Views</li>
+                <li><i class="bi bi-check2"></i>Basic Filters</li>
+                <li><i class="bi bi-check2"></i>CSV Export</li>
+              </ul>
+            </div>
+            <div class="pricingTable-signup">
+              <button class="btn btn-default">sign up</button>
+            </div>
+          </div>
+        </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </div>
+    </div>
+  </section>
+  <!-- END PACKAGES -->
+
+
+  <!-- START Frequently Asked Questions -->
       <section class="section-packages-faq my-5">
         <div class="container">
           <div class="row">

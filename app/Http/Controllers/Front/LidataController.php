@@ -118,20 +118,6 @@ class LidataController extends Controller
 
     }
 
-    public function autocompleteSearch(Request $request)
-    {
-        $query = $request->get('query');
-        $filterResult = Lidata::where('person_name', 'like', '%'. $query. '%')->take(10)->get();
-        //return response()->json($filterResult);
-        $data = array();
-        foreach ($filterResult as $hsl)
-        {
-            $data[] = $hsl->person_name;
-        }
-        return response()->json($data);
-        //echo json_encode($data);
-
-    }
 
     // people  page end
 
@@ -165,54 +151,30 @@ class LidataController extends Controller
 
     }
 
-    public function autocompletecompanySearch(Request $request)
-    {
-        $term = $request->get('term');
-        $filterResultcompany = Lidata::where('organization_name', 'LIKE', '%'. $term. '%')->take(10)->get();
-        //return response()->json($filterResult);
-        $data = array();
-        foreach ($filterResultcompany as $hsl)
-        {
-            $data[] = $hsl->organization_name;
-        }
-        return response()->json($data);
-        //echo json_encode($data);
-
-    }
 
 
-
-
-
-
-
-
-
-
-
-
-    public function product_us(){
+    public function product(){
         return view('front.product.product');
     }
-    public function pricing_us(){
+    public function pricing(){
         return view('pricing.package');
     }
-    public function careers_us(){
+    public function careers(){
         return view('careers');
     }
-    public function about_us(){
+    public function about(){
         return view('about');
     }
-    public function contact_us(){
+    public function contact(){
         return view('contact');
     }
-    public function terms_of_service_us(){
+    public function termsOfService(){
         return view('terms-of-service');
     }
-    public function privacy_policy_us(){
+    public function privacyPolicy(){
         return view('privacy_policy');
     }
-    public function refund_us(){
+    public function refund(){
         return view('refund');
     }
 }

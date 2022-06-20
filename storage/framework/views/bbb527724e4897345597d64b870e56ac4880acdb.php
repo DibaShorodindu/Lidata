@@ -1,19 +1,19 @@
 
-@extends('front.master')
-@section('metaDescription')
-@endsection
-@section('title')
-       About Us | Li Data
-@endsection
 
-@section('main')
+<?php $__env->startSection('metaDescription'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?>
+       About Us | Li Data
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main'); ?>
  <!-- START BREADCRUMB -->
  <hr class="mt-lg-0 mt-5 text-secondary" />
       <div class="container">
         <div class="row">
           <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ route('/') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?php echo e(route('/')); ?>">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">
                 About Us
               </li>
@@ -82,7 +82,7 @@
             <div class="col-md-6 px-5 mt-md-0 mt-5 pt-md-0 pt-5">
               <img
                 class="img-fluid h-md-50"
-                src="{{ asset('/') }}adminAsset/assets/images/about01.svg"
+                src="<?php echo e(asset('/')); ?>adminAsset/assets/images/about01.svg"
                 alt="About Us Illustration"
               />
             </div>
@@ -133,4 +133,6 @@
       <!-- END MAP -->
 
      
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('front.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\Lidata\resources\views/front/contact/aboutUS.blade.php ENDPATH**/ ?>

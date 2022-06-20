@@ -103,7 +103,7 @@
 
       <!-- END PACKAGES -->
 
-      <!-- START Frequently Asked Questions -->
+  <!-- START Frequently Asked Questions -->
       <section class="section-packages-faq my-5">
         <div class="container">
           <div class="row">

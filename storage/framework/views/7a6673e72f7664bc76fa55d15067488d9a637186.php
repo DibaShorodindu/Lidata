@@ -1,18 +1,18 @@
-@extends('front.master')
-@section('metaDescription')
-@endsection
-@section('title')
-      Contact Us | Li Data
-@endsection
 
-@section('main')
+<?php $__env->startSection('metaDescription'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?>
+      Contact Us | Li Data
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main'); ?>
  <!-- START BREADCRUMB -->
  <hr class="mt-lg-0 mt-5 text-secondary" />
       <div class="container">
         <div class="row">
           <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ route('/') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?php echo e(route('/')); ?>">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">
                 Contact Us
               </li>
@@ -89,4 +89,5 @@
       </section>
       <!-- END CONTACT FORM -->
 
-     @endsection
+     <?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\Lidata\resources\views/front/contact/contact.blade.php ENDPATH**/ ?>

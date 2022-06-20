@@ -32,8 +32,8 @@ return [
 
 
     'google' => [
-        'client_id' => env('GOOGLE_CLIENT_ID'),
-        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'client_id' => '561149640187-p8hgpjd0eki6rokovmevu47801unh0ma.apps.googleusercontent.com',
+        'client_secret' => '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',
         'redirect' => 'http://localhost/Lidata/user/google/callback',
     ],
 

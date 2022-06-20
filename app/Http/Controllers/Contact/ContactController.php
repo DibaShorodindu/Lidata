@@ -9,11 +9,11 @@ class ContactController extends Controller
 {
     public function contact()
     {
-        return view('contact.contact');
+        return view('front.contact.contact');
     }
 
     public function aboutUS()
     {
-        return view('contact.aboutUS');
+        return view('front.contact.aboutUS');
     }
 }

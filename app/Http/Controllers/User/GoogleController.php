@@ -4,12 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\LidataUserModel;
-use App\Models\User;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Laravel\Jetstream\Events\AddingTeam;
 use Laravel\Socialite\Facades\Socialite;
 
 class GoogleController extends Controller
@@ -17,16 +13,16 @@ class GoogleController extends Controller
     CONST DRIVER_TYPE = 'google';
     public function handleGoogleRedirect()
     {
-        return Socialite::driver(static::DRIVER_TYPE)->redirect();
+        return Socialite::driver('google')->redirect();
     }
 
     public function handleGoogleCallback()
     {
         try {
 
-            $user = Socialite::driver(static::DRIVER_TYPE)->user();
+            $user = Socialite::driver('google')->user();
 
-            $userExisted = LidataUserModel::where('email', $user->email)->first();
+            $userExisted = LidataUserModel::where('google_id', $user->id)->first();
 
             if( $userExisted ) {
 

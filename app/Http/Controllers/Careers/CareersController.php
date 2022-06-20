@@ -9,6 +9,6 @@ class CareersController extends Controller
 {
     public function careers()
     {
-        return view('careers.careers');
+        return view('front.career.careers');
     }
 }

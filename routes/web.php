@@ -56,15 +56,6 @@ Route::get('/',[
         ]);
 
 
-
-
-// route carrer
-
-Route::get('/career',[
-    'uses' => '\App\Http\Controllers\Front\LidataController@careers_us',
-    'as'   => 'career',
-    ]);
-
 // route category
 
 Route::get('/category-company/{id}',[
@@ -97,23 +88,18 @@ Route::get('/user-company/{id}',[
     'as'   => 'user-company',
         ]);
 
-Route::get('/autocomplete-search', [LidataController::class, 'autocompleteSearch']);
-Route::get('/autocomplete-company-search', [LidataController::class, 'autocompletecompanySearch']);
-
-
-
 
     // route term of service
 
     Route::get('/terms-of-service',[
-        'uses' => '\App\Http\Controllers\Front\LidataController@terms_of_service_us',
+        'uses' => '\App\Http\Controllers\Front\LidataController@termsOfService',
         'as'   => 'terms-of-service',
         ]);
 
     // route privecy police
 
 Route::get('/privacy-policy',[
-    'uses' => '\App\Http\Controllers\Front\LidataController@privacy_policy_us',
+    'uses' => '\App\Http\Controllers\Front\LidataController@privacyPolicy',
     'as'   => 'privacy-policy',
     ]);
 
@@ -124,27 +110,17 @@ Route::get('/privacy-policy',[
 // route product
 
 Route::get('/product',[
-    'uses' => '\App\Http\Controllers\Front\LidataController@product_us',
+    'uses' => '\App\Http\Controllers\Front\LidataController@product',
     'as'   => 'product',
     ]);
 
-// route about
-Route::get('/about',[
-        'uses' => '\App\Http\Controllers\Front\LidataController@about_us',
-        'as'   => 'about',
-        ]);
 
-// route contact
 
-Route::get('/contact',[
-    'uses' => '\App\Http\Controllers\Front\LidataController@contact_us',
-    'as'   => 'contact',
-    ]);
 
 // route refound
 
 Route::get('/refund',[
-    'uses' => '\App\Http\Controllers\Front\LidataController@refund_us',
+    'uses' => '\App\Http\Controllers\Front\LidataController@refund',
     'as'   => 'refund',
         ]);
 
@@ -214,7 +190,9 @@ Route::get('auth/facebook', [SocialController::class, 'facebookRedirect']);
 Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFacebook']);
 
 /** search routes */
-// Route::get('/autocomplete-search', [TypeaheadController::class, 'autocompleteSearch']);
+Route::get('/autocomplete-search', [TypeaheadController::class, 'autocompleteSearch']);
+Route::get('/autocomplete-company-search', [TypeaheadController::class, 'autocompleteSearch']);
+
 
 // Route::get('searchPeople{id}',[
 //     'uses' => 'App\Http\Controllers\User\Searching\TypeaheadController@searchPeople',
@@ -313,20 +291,23 @@ Route::get('/pricing/packages',[
     'as'   => 'packages',
 ]);
 /** careers page */
-// Route::get('/careers',[
-//     'uses' => '\App\Http\Controllers\Careers\CareersController@careers',
-//     'as'   => 'careers',
-// ]);
-/** contact page */
-// Route::get('/contact',[
-//     'uses' => '\App\Http\Controllers\Contact\ContactController@contact',
-//     'as'   => 'contact',
-// ]);
+ Route::get('/career',[
+     'uses' => '\App\Http\Controllers\Careers\CareersController@careers',
+     'as'   => 'career',
+ ]);
+
+/** contact  page */
+
+Route::get('/contact',[
+    'uses' => '\App\Http\Controllers\Contact\ContactController@contact',
+    'as'   => 'contact',
+]);
+
 /** about us page */
-// Route::get('/aboutUS',[
-//     'uses' => '\App\Http\Controllers\Contact\ContactController@aboutUS',
-//     'as'   => 'about',
-// ]);
+Route::get('/aboutUS',[
+     'uses' => '\App\Http\Controllers\Contact\ContactController@aboutUS',
+     'as'   => 'about',
+ ]);
 
 
 /** user Dashboard */

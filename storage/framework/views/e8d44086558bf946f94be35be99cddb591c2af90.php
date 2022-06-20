@@ -135,4 +135,4 @@
      
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('front.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\lidata_list\resources\views/about.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('front.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\lidata_list\resources\views/aboutUS.blade.php ENDPATH**/ ?>

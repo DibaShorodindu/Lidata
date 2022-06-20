@@ -88,11 +88,12 @@
                         <?php echo csrf_field(); ?>
                         <div class="mb-4">
                             <input
-                                    hidden
+
                                     type="text"
                                     class="form-control u-box-shadow-2"
-                                    id="fb_id"
-                                    name="fb_id"
+                                    id="google_id"
+                                    name="google_id"
+                                    value="<?php echo e($newUserData->id); ?>"
                             />
 
                             <input hidden

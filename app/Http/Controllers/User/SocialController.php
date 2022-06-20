@@ -7,9 +7,8 @@ use App\Models\Country;
 use App\Models\LidataUserModel;
 use Illuminate\Http\Request;
 use App\Models\User;
-/*use Laravel\Socialite\Facades\Socialite;*/
+use Laravel\Socialite\Facades\Socialite;
 use Validator;
-use Socialite;
 use Exception;
 use Auth;
 
