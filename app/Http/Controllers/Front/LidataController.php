@@ -141,7 +141,7 @@ class LidataController extends Controller
         return view('front.user.user-company', ['data'=>$this->data])->with('userData', $this->userData);
     }
 
-    public function COmpany_Search(Request $request)
+    public function companySearch(Request $request)
     {
         $this->data = Lidata::where('organization_name', $request->searchCompany)->first();
         $result = substr($this->data->organization_name, 0, 3);

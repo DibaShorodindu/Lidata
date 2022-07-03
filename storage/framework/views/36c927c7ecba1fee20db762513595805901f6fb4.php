@@ -287,124 +287,203 @@
         <!-- START SIDEBAR -->
         <section class="section-user-dashboard--sidebar">
             <div class="heading--sub py-3 ps-4 u-border-bottom">Filters</div>
-            <!-- INPUT NAME -->
+            <!-- Search NAME -->
             <div class="search-bar py-3 ps-4 u-border-bottom">
 
-                <form id="search" action="<?php echo e(route('peopleSearch')); ?>">
-                    <input
-                            type="text"
-                            id='searchPeopleFromPhoneList'
-                            name="name"
-                            onkeypress="handle"
-                            placeholder="Search People..."
-                    />
-                </form>
+                <input
+                        type="text"
+                        id='searchPeople'
+                        name="name"
+                        onkeypress="handle()"
+                        placeholder="Search People..."
+                        autocomplete="off"
+                />
             </div>
-            <!-- INPUT NAME -->
-            <div class="input-name u-border-bottom py-4 px-4">
-                <div class="input-title pb-2">
-                    <i class="bi bi-person-badge pe-2"></i>
-                    Name
+            <form id="search" action="<?php echo e(route('people.search.combination')); ?>">
+                <!-- INPUT NAME -->
+                <div class="input-name u-border-bottom py-4 px-4">
+                    <div class="input-title pb-2">
+                        <i class="bi bi-person-badge pe-2"></i>
+                        Name
+                    </div>
+                    <?php if(isset($name)): ?>
+                        <input
+                                type="text"
+                                id='name'
+                                name="name"
+                                placeholder="Enter name..."
+                                onkeypress="handle()"
+                                autocomplete="off"
+                                value="<?php echo e($name); ?>"
+                        />
+                    <?php else: ?>
+                        <input
+                                type="text"
+                                id='name'
+                                name="name"
+                                placeholder="Enter name..."
+                                onkeypress="handle()"
+                                autocomplete="off"
+                        />
+                    <?php endif; ?>
+                        <button type="submit" class="btn btn-blue rounded-1 w-100">
+                        Apply
+                        </button>
                 </div>
-                <form id="search" action="<?php echo e(route('peopleSearch')); ?>">
-                    <input
-                            type="text"
-                            id='searchPeopleFromPhoneList'
-                            name="name"
-                            placeholder="Enter name..."
-                            onkeypress="handle"
-                    />
-                </form>
-            </div>
-            <!-- INPUT JOB TITLE -->
-            <div class="input-job u-border-bottom py-4 px-4">
-                <div class="input-title pb-2">
-                    <i class="bi bi-briefcase pe-2"></i>
-                    Job Title
-                </div>
-                <form id="searchGender" action="<?php echo e(route('genderSearch')); ?>">
-                    <input
-                            type="text"
-                            name="gender"
-                            id="gender"
-                            placeholder="Search for a job title"
 
-                            onkeypress="handleGender"
-                    />
+                <!-- INPUT JOB TITLE -->
+                <div class="input-job u-border-bottom py-4 px-4">
+                    <div class="input-title pb-2">
+                        <i class="bi bi-briefcase pe-2"></i>
+                        Job Title
+                    </div>
+                    <?php if(isset($jobTitle)): ?>
+                        <input
+                                type="text"
+                                name="jobTitle"
+                                id="jobTitle"
+                                placeholder="Search for a job title"
+                                onkeypress="handle()"
+                                autocomplete="off"
+                                value="<?php echo e($jobTitle); ?>"
+                        />
+                    <?php else: ?>
+                        <input
+                                type="text"
+                                name="jobTitle"
+                                id="jobTitle"
+                                placeholder="Search for a job title"
+                                onkeypress="handle()"
+                                autocomplete="off"
+                        />
+                    <?php endif; ?>
+                    <button type="submit" class="btn btn-blue rounded-1 w-100">
+                        Apply
+                    </button>
+                </div>
+                <!-- INPUT COMPANY NAME -->
+                <div class="input-company u-border-bottom py-4 px-4">
+                    <div class="input-title pb-2">
+                        <i class="bi bi-building pe-2"></i>
+                        Company
+                    </div>
+                    <?php if(isset($company)): ?>
+                        <input
+                                type="text"
+                                name="company"
+                                id="company"
+                                placeholder="Enter companies..."
+                                onkeypress="handle()"
+                                autocomplete="off"
+                                value="<?php echo e($company); ?>"
+                        />
+                    <?php else: ?>
+                        <input
+                                type="text"
+                                name="company"
+                                id="company"
+                                placeholder="Enter companies..."
+                                onkeypress="handle()"
+                                autocomplete="off"
+                        />
+                    <?php endif; ?>
+                    <button type="submit" class="btn btn-blue rounded-1 w-100">
+                        Apply
+                    </button>
+                </div>
+                <!-- INPUT CITY -->
+                <div class="input-city u-border-bottom py-4 px-4">
+                    <div class="input-title pb-2">
+                        <i class="bi bi-pin-map-fill"></i>
+                        City
+                    </div>
+                    <?php if(isset($city)): ?>
+                        <input
+                                type="text"
+                                name="city"
+                                id="city"
+                                placeholder="Enter city"
+                                onkeypress="handle()"
+                                autocomplete="off"
+                                value="<?php echo e($city); ?>"
+                        />
+                    <?php else: ?>
+                        <input
+                                type="text"
+                                name="city"
+                                id="city"
+                                placeholder="Enter city"
+                                onkeypress="handle()"
+                                autocomplete="off"
+                        />
+                    <?php endif; ?>
+                    <button type="submit" class="btn btn-blue rounded-1 w-100">
+                        Apply
+                    </button>
+                </div>
+                <!-- INPUT STATE -->
+                <div class="input-state u-border-bottom py-4 px-4">
+                    <div class="input-title pb-2">
+                        <i class="bi bi-map-fill"></i>
+                        State
+                    </div>
+                    <?php if(isset($state)): ?>
+                        <input
+                                type="text"
+                                name="state"
+                                id="state"
+                                placeholder="Enter state"
+                                onkeypress="handle()"
+                                autocomplete="off"
+                                value="<?php echo e($state); ?>"
+                        />
+                    <?php else: ?>
+                        <input
+                                type="text"
+                                name="state"
+                                id="state"
+                                placeholder="Enter state"
+                                onkeypress="handle()"
+                                autocomplete="off"
+                        />
+                    <?php endif; ?>
+                    <button type="submit" class="btn btn-blue rounded-1 w-100">
+                        Apply
+                    </button>
+                </div>
+                <!-- INPUT INDUSTRY NAME -->
+                <div class="input-industry py-4 px-4">
+                    <div class="input-title pb-2">
+                        <i class="bi bi-tools pe-2"></i>
+                        Industry
+                    </div>
+                    <input
 
-                    <ul id="gender" class="jobList hide">
-                        <li>software engineer</li>
-                        <li>project manager</li>
-                        <li>teacher</li>
-                        <li>owner</li>
-                        <li>student</li>
-                    </ul>
-                </form>
-            </div>
-            <!-- INPUT COMPANY NAME -->
-            <div class="input-company u-border-bottom py-4 px-4">
-                <div class="input-title pb-2">
-                    <i class="bi bi-building pe-2"></i>
-                    Company
-                </div>
-                <form id="searchrelationship" action="<?php echo e(route('relationshipSearch')); ?>">
-                    <input
-                            type="text"
-                            name="relationship"
-                            id="relationship"
-                            placeholder="Enter companies..."
-                            onkeypress="handlerelationship"
                     />
-                </form>
-            </div>
-            <!-- INPUT CITY -->
-            <div class="input-city u-border-bottom py-4 px-4">
-                <div class="input-title pb-2">
-                    <i class="bi bi-pin-map-fill"></i>
-                    City
+                    <?php if(isset($industry)): ?>
+                        <input
+                                type="text"
+                                name="industry"
+                                id="industry"
+                                placeholder="Search industries..."
+                                onkeypress="handle()"
+                                autocomplete="off"
+                                value="<?php echo e($industry); ?>"
+                        />
+                    <?php else: ?>
+                        <input
+                                type="text"
+                                name="industry"
+                                id="industry"
+                                placeholder="Search industries..."
+                                onkeypress="handle()"
+                        />
+                    <?php endif; ?>
+                    <button type="submit" class="btn btn-blue rounded-1 w-100">
+                        Apply
+                    </button>
                 </div>
-                <form id="searchLocation" action="<?php echo e(route('locationSearch')); ?>">
-                    <input
-                            type="text"
-                            name="location"
-                            id="location"
-                            placeholder="Enter city"
-                            onkeypress="handlelocation"
-                    />
-                </form>
-            </div>
-            <!-- INPUT STATE -->
-            <div class="input-state u-border-bottom py-4 px-4">
-                <div class="input-title pb-2">
-                    <i class="bi bi-map-fill"></i>
-                    State
-                </div>
-                <form id="searchHometown" action="<?php echo e(route('hometownSearch')); ?>">
-                    <input
-                            type="text"
-                            name="town"
-                            id="town"
-                            placeholder="Enter state"
-                            onkeypress="handletown"
-                    />
-                </form>
-            </div>
-            <!-- INPUT INDUSTRY NAME -->
-            <div class="input-industry py-4 px-4">
-                <div class="input-title pb-2">
-                    <i class="bi bi-tools pe-2"></i>
-                    Industry
-                </div>
-                <form id="searchCountry" action="<?php echo e(route('industrySearch')); ?>">
-                    <input
-                            type="text"
-                            name="industry"
-                            id="industry"
-                            placeholder="Search industries..."
-                            onkeypress="handleindustry"
-                    />
-                </form>
-            </div>
+            </form>
         </section>
         <!-- END SIDEBAR -->
 
@@ -414,11 +493,11 @@
             <section class="section-user-dashboard--main">
                 <div class="container">
                     <div class="row">
-                        <input type="number" hidden name="userId" value="<?php echo e(Auth::user()->id); ?>">
                         <!-- Download CSV Button -->
                         <div class="container">
-                            <div class="row">
-                                <div class="col-md-4 ms-auto py-4 d-flex justify-content-end">
+                            <div class="row py-4">
+                                <input type="number" hidden name="userId" value="<?php echo e(Auth::user()->id); ?>">
+                                <div class="col-md-8 ms-auto d-flex justify-content-end">
                                     <button
                                             type="submit"
                                             id="customCSV"
@@ -432,133 +511,131 @@
                         </div>
                         <!-- Download CSV Button -->
                         <!-- START TABLE -->
-                        <div class="section-table table-scrollable mx-5 mb-5"
-                             style="width: 75vw; overflow: auto; max-height: 85vh"
+                        <div class="section-table table-scrollable mx-5 mb-2"
+                             style="width: 75vw; overflow: auto; max-height: 90vh"
                         >
                             <div class="container">
                                 <div class="row">
                                     <table  class="table table-hover table-bordered table-responsive list"  id="peopleTable"    >
-                                <thead>
-                                    <tr>
-                                        <th class="px-4">
-                                            <input id="checkAll" type="button" class="selectAll" value="Select All"/>
-                                        </th>
-                                        <th>Name</th>
-                                        <th>Title</th>
-                                        <th>Company</th>
-                                        <th>Quick Actions</th>
-                                        <th>Contact Location</th>
-                                        <th>Employees</th>
-                                        <th>Industry</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php $__currentLoopData = $allData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <tr class="table-row">
-                                        <td>
-                                            <input type="checkbox" name="chk[]" id="chk" class="form-check-input" value="<?php echo e($data->id); ?>" >
-                                        </td>
-                                        <td>
-                                            <a href="<?php echo e(route('user', ['id' => $data->id ])); ?>" class="person-name">
-                                                <?php if(!empty($data->person_name)): ?>
-                                                    <?php echo e(ucwords($data->person_name)); ?>
+                                        <thead>
+                                            <tr>
+                                                <th class="px-4">
+                                                    <input id="checkAll" type="button" class="selectAll" value="Select All"/>
+                                                </th>
+                                                <th>Name</th>
+                                                <th>Title</th>
+                                                <th>Company</th>
+                                                <th>Quick Actions</th>
+                                                <th>Contact Location</th>
+                                                <th>Employees</th>
+                                                <th>Industry</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $__currentLoopData = $allData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <tr class="table-row">
+                                                    <td>
+                                                        <input type="checkbox" name="chk[]" id="chk" class="form-check-input" value="<?php echo e($data->id); ?>" >
+                                                    </td>
+                                                    <td>
+                                                        <a href="<?php echo e(route('user', ['id' => $data->id ])); ?>" class="person-name">
+                                                            <?php if(!empty($data->person_name)): ?>
+                                                                <?php echo e(ucwords($data->person_name)); ?>
 
-                                                <?php else: ?>
-                                                    -
-                                                <?php endif; ?>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <?php if(!empty($data->person_title)): ?>
-                                                <?php echo e(ucwords($data->person_title)); ?>
+                                                            <?php else: ?>
+                                                                -
+                                                            <?php endif; ?>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <?php if(!empty($data->person_title)): ?>
+                                                            <?php echo e(ucwords($data->person_title)); ?>
 
-                                            <?php else: ?>
-                                                -
-                                            <?php endif; ?>
-                                        </td>
-                                        <td>
-                                            <?php if(!empty($data->organization_name )): ?>
-                                                <?php echo e(ucwords($data->organization_name)); ?>
+                                                        <?php else: ?>
+                                                            -
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if(!empty($data->organization_name )): ?>
+                                                            <?php echo e(ucwords($data->organization_name)); ?>
 
-                                            <?php else: ?>
-                                                -
-                                            <?php endif; ?>
-                                        </td>
-                                        <td class="position-relative">
-                                            <button
-                                                    type="button"
-                                                    class="btn btn-access btn-access--phone"
-                                                    id="<?php echo e($data->id); ?>"
-                                                    onclick="accessPhoneNumber(<?php echo e($data->id); ?>)"
-                                            >
-                                                Access Email
-                                            </button>
-                                            <div class="message-box hide-text">
-                                                Verified number costs one credit.
-                                            </div>
+                                                        <?php else: ?>
+                                                            -
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td class="position-relative">
+                                                        <button
+                                                                type="button"
+                                                                class="btn btn-access btn-access--phone"
+                                                                id="<?php echo e($data->id); ?>"
+                                                                onclick="accessPhoneNumber(<?php echo e($data->id); ?>)"
+                                                        >
+                                                            Access Email
+                                                        </button>
+                                                        <div class="message-box hide-text">
+                                                            Verified number costs one credit.
+                                                        </div>
 
-                                            <div class="button-group hide" id="buttonGroup<?php echo e($data->id); ?>">
-                                                <a
-                                                        class="btn btn-access btn-access--phone"
-                                                        href=""
-                                                >
-                                                    <i class="bi bi-phone"></i>
-                                                    <i class="bi bi-caret-down-fill"></i>
-                                                </a>
-                                                <div
-                                                        class="message-box message-box--phone hide-text"
-                                                        id="messagePhone<?php echo e($data->id); ?>"
-                                                >
-                                                </div>
+                                                        <div class="button-group hide" id="buttonGroup<?php echo e($data->id); ?>">
+                                                            <a
+                                                                    class="btn btn-access btn-access--phone"
+                                                                    href=""
+                                                            >
+                                                                <i class="bi bi-phone"></i>
+                                                                <i class="bi bi-caret-down-fill"></i>
+                                                            </a>
+                                                            <div
+                                                                    class="message-box message-box--phone hide-text"
+                                                                    id="messagePhone<?php echo e($data->id); ?>"
+                                                            >
+                                                            </div>
 
-                                                <a
-                                                        class="btn btn-access btn-access--email"
-                                                        href=""
-                                                >
-                                                    <i class="bi bi-envelope"></i>
-                                                    <i class="bi bi-caret-down-fill"></i>
-                                                </a>
+                                                            <a
+                                                                    class="btn btn-access btn-access--email"
+                                                                    href=""
+                                                            >
+                                                                <i class="bi bi-envelope"></i>
+                                                                <i class="bi bi-caret-down-fill"></i>
+                                                            </a>
 
-                                                <div
-                                                        class="message-box message-box--email hide-text"
-                                                        id="messageEmail<?php echo e($data->id); ?>"
-                                                >
-                                                    <!-- Email not available -->
-                                                </div>
-                                            </div>
-                                        </td>
+                                                            <div
+                                                                    class="message-box message-box--email hide-text"
+                                                                    id="messageEmail<?php echo e($data->id); ?>"
+                                                            >
+                                                                <!-- Email not available -->
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <?php if(!empty( $data->person_location_city  )): ?>
+                                                            <?php echo e(ucwords($data->person_location_city) .', '.ucwords($data->person_location_state).','.ucwords($data->person_location_country)); ?>
 
-                                        <td>
-                                            <?php if(!empty( $data->person_location_city  )): ?>
-                                                <?php echo e(ucwords($data->person_location_city) .', '.ucwords($data->person_location_state).','.ucwords($data->person_location_country)); ?>
+                                                        <?php else: ?>
+                                                            -
+                                                        <?php endif; ?>
+                                                    </td>
 
-                                            <?php else: ?>
-                                                -
-                                            <?php endif; ?>
-                                        </td>
+                                                    <td>
+                                                        <?php if(!empty($data->organization_num_current_employees )): ?>
+                                                            <?php echo e(ucwords($data-> organization_num_current_employees)); ?>
 
-                                        <td>
-                                            <?php if(!empty($data->organization_num_current_employees )): ?>
-                                                <?php echo e(ucwords($data-> organization_num_current_employees)); ?>
+                                                        <?php else: ?>
+                                                            -
+                                                        <?php endif; ?>
+                                                    </td>
 
-                                            <?php else: ?>
-                                                -
-                                            <?php endif; ?>
-                                        </td>
+                                                    <td>
+                                                        <?php if(!empty($data->organization_industries )): ?>
+                                                            <?php echo e(ucwords($data-> organization_industries)); ?>
 
-                                        <td>
-                                            <?php if(!empty($data->organization_industries )): ?>
-                                                <?php echo e(ucwords($data-> organization_industries)); ?>
-
-                                            <?php else: ?>
-                                                -
-                                            <?php endif; ?>
-                                        </td>
-                                    </tr>
-
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </tbody>
-                            </table>
+                                                        <?php else: ?>
+                                                            -
+                                                        <?php endif; ?>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -567,8 +644,13 @@
                 <!-- END TABLE -->
                 <!-- Download CSV Button -->
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 ms-auto py-4 d-flex justify-content-end">
+                    <div class="row py-4">
+                        <div class="col-md-4 text-secondary ps-5">
+                            Filtered records: <?php echo e($count); ?>
+
+                        </div>
+                        <input type="number" hidden name="userId" value="<?php echo e(Auth::user()->id); ?>">
+                        <div class="col-md-8 ms-auto d-flex justify-content-end">
                             <button
                                     type="submit"
                                     id="customCSV"
@@ -582,13 +664,311 @@
                 </div>
                 <!-- Download CSV Button -->
                 <!-- START PAGINATION -->
-                <div class="row pb-2 pt-5 mt-2">
+                <div class="row pb-2">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
                             <li class="page-item">
                                 <div class="d-sm-inline-flex justify-content-center">
-                                    <?php echo $allData->links(); ?>
+                                    <?php if(isset($name) != null && isset($jobTitle) == null && isset($company) == null
+                                        && isset($city) == null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name])->links(); ?>
 
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) == null
+                                        && isset($city) == null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'jobTitle' => $jobTitle])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) != null
+                                        && isset($city) == null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'company' => $company])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) == null
+                                        && isset($city) != null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'city' => $city])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) == null
+                                        && isset($city) == null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) == null
+                                        && isset($city) == null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) == null
+                                   && isset($city) == null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle ])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) != null
+                                    && isset($city) == null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'company' => $company])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) == null
+                                    && isset($city) != null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'city' => $city])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) == null
+                                    && isset($city) == null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) == null
+                                    && isset($city) == null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) != null
+                                    && isset($city) == null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'jobTitle' => $jobTitle,'company' => $company])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) == null
+                                    && isset($city) != null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'jobTitle' => $jobTitle,'city' => $city])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) == null
+                                    && isset($city) == null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'jobTitle' => $jobTitle,'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) == null
+                                    && isset($city) == null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'jobTitle' => $jobTitle,'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) != null
+                                    && isset($city) != null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'company' => $company,'city' => $city])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) != null
+                                    && isset($city) == null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'company' => $company,'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) != null
+                                    && isset($city) == null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'company' => $company,'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) == null
+                                    && isset($city) != null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'city' => $city,'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) == null
+                                    && isset($city) != null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'city' => $city,'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) == null
+                                    && isset($city) == null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'state' => $state,'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) != null
+                                    && isset($city) == null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,
+                                        'company' => $company])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) == null
+                                    && isset($city) != null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,
+                                        'city' => $city])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) == null
+                                    && isset($city) == null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,
+                                        'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) == null
+                                    && isset($city) == null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,
+                                        'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) != null
+                                    && isset($city) != null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'company' => $company,
+                                        'city' => $city])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) != null
+                                    && isset($city) == null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'company' => $company,
+                                        'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) != null
+                                    && isset($city) == null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'company' => $company,
+                                        'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) == null
+                                    && isset($city) != null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'city' => $city,
+                                        'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) == null
+                                    && isset($city) != null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'city' => $city,
+                                        'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) == null
+                                    && isset($city) == null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'state' => $state,
+                                        'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) != null
+                                    && isset($city) != null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'jobTitle' => $jobTitle,'company' => $company,
+                                            'city' => $city])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) != null
+                                    && isset($city) == null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'jobTitle' => $jobTitle,'company' => $company,
+                                            'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) != null
+                                    && isset($city) == null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'jobTitle' => $jobTitle,'company' => $company,
+                                            'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) == null
+                                    && isset($city) != null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'jobTitle' => $jobTitle,'city' => $city,
+                                            'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) == null
+                                    && isset($city) != null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'jobTitle' => $jobTitle,'city' => $city,
+                                            'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) == null
+                                    && isset($city) == null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'jobTitle' => $jobTitle,'state' => $state,
+                                            'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) != null
+                                    && isset($city) != null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'company' => $company,
+                                            'city' => $city,'state' => $state,])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) != null
+                                    && isset($city) != null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'company' => $company,
+                                            'city' => $city,'industry' => $industry,])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) != null
+                                   && isset($city) == null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'company' => $company,
+                                            'state' => $state, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) == null
+                                   && isset($city) != null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([
+                                            'city' => $city,'state' => $state, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) != null
+                                   && isset($city) != null && isset($state) == null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,'company' => $company,
+                                            'city' => $city])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) != null
+                                   && isset($city) == null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,'company' => $company,
+                                            'state' => $state, ])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) == null
+                                   && isset($city) != null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,
+                                            'city' => $city,'state' => $state ])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) != null
+                                   && isset($city) == null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,'company' => $company,
+                                            'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) == null
+                                   && isset($city) != null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,
+                                            'city' => $city, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) == null
+                                   && isset($city) == null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,
+                                            'state' => $state, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) != null
+                                   && isset($city) != null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'company' => $company,
+                                            'city' => $city,'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) != null
+                                   && isset($city) != null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'company' => $company,
+                                            'city' => $city, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) == null
+                                   && isset($city) != null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name,
+                                            'city' => $city,'state' => $state, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) != null
+                                   && isset($city) != null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([  'jobTitle' => $jobTitle,'company' => $company,
+                                            'city' => $city,'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) != null
+                                   && isset($city) != null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends(['jobTitle' => $jobTitle,'company' => $company,
+                                            'city' => $city, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) == null
+                                   && isset($city) != null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([  'jobTitle' => $jobTitle,
+                                            'city' => $city,'state' => $state, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) != null
+                                   && isset($city) == null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'company' => $company,
+                                            'state' => $state, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) != null
+                                   && isset($city) == null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([  'jobTitle' => $jobTitle,'company' => $company,
+                                            'state' => $state, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) == null && isset($company) != null
+                                   && isset($city) != null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'company' => $company,
+                                            'city' => $city,'state' => $state, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) != null
+                                   && isset($city) != null && isset($state) != null && isset($industry) == null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,'company' => $company,
+                                            'city' => $city,'state' => $state])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) != null
+                                   && isset($city) != null && isset($state) == null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,'company' => $company,
+                                            'city' => $city, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) != null
+                                   && isset($city) == null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,'company' => $company,
+                                            'state' => $state, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) == null
+                                   && isset($city) != null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,
+                                            'city' => $city,'state' => $state, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) == null && isset($company) != null
+                                   && isset($city) != null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'company' => $company,
+                                            'city' => $city,'state' => $state, 'industry' => $industry])->links(); ?>
+
+                                    <?php elseif(isset($name) == null && isset($jobTitle) != null && isset($company) != null
+                                    && isset($city) != null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'jobTitle' => $jobTitle,'company' => $company,
+                                            'city' => $city,'state' => $state, 'industry' => $industry])->links(); ?>
+
+
+
+                                    <?php elseif(isset($name) != null && isset($jobTitle) != null && isset($company) != null
+                                        && isset($city) != null && isset($state) != null && isset($industry) != null): ?>
+                                        <?php echo $allData->appends([ 'name' => $name, 'jobTitle' => $jobTitle,'company' => $company,
+                                            'city' => $city,'state' => $state, 'industry' => $industry])->links(); ?>
+
+                                    <?php else: ?>
+                                        <?php echo $allData->links(); ?>
+
+                                    <?php endif; ?>
                                 </div>
                             </li>
                         </ul>
@@ -699,79 +1079,6 @@
 
         return false;
     }
-    function handleGender(e){
-        if(e.key === "Enter"){
-            alert("Enter was just pressed.");
-        }
-
-        return false;
-    }
-    function handlerelationship(e){
-        if(e.key === "Enter"){
-            alert("Enter was just pressed.");
-        }
-
-        return false;
-    }
-    function handlelocation(e){
-        if(e.key === "Enter"){
-            alert("Enter was just pressed.");
-        }
-
-        return false;
-    }
-    function handletown(e){
-        if(e.key === "Enter"){
-            alert("Enter was just pressed.");
-        }
-
-        return false;
-    }
-    function handlecountry(e){
-        if(e.key === "Enter"){
-            alert("Enter was just pressed.");
-        }
-
-        return false;
-    }
-    function handleindustry(e){
-        if(e.key === "Enter"){
-            alert("Enter was just pressed.");
-        }
-
-        return false;
-    }
-
-
-    /*$(function(){
-        $('#customCSV').click(function(){
-            var val = [];
-            $(':checkbox:checked').each(function(i){
-                val[i] = $(this).val();
-            });
-            //alert(val);
-            var selected_values = val;
-            $.ajax({
-                type: "GET",
-                url: "",
-                    cache: false,
-                    data: {id: selected_values},
-                    success: function() {
-                        let _url = $("#export_records").data('href');
-                        //var selected_values = val;
-                        //window.location.href = _url + '?user_id=' + selected_values;
-
-                    }
-                });
-            });
-
-        });*/
-
-
-
-
-
-
 </script>
 
 

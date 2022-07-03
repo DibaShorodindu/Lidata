@@ -43,7 +43,7 @@
           </div>
           <div class="col-md-3 col-6">
             <div class="row">
-              <form action="<?php echo e(route('Company_Search')); ?>">
+              <form action="<?php echo e(route('companySearch')); ?>">
                 <?php echo csrf_field(); ?>
                 <div class="col-12">
                   <input  type="text" name="searchCompany" id="searchCompany"

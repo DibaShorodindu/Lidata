@@ -8,7 +8,6 @@ use App\Models\Contact;
 use App\Imports\ContactImport;
 use App\Models\Country;
 use App\Models\DownloadedList;
-use App\Models\PhoneList;
 use App\Models\LidataUserModel;
 use App\Models\PurchasePlan;
 use App\Models\Credit;
@@ -219,11 +218,7 @@ class UserController extends Controller
         return view('user.userLogin');
     }
 
-    /*
-     * Write code on Method
-     *
-     * @return response()
-     */
+
     public function userAuth(Request $request)
     {
         $request->validate([
@@ -234,7 +229,7 @@ class UserController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $result = $request->email;
-            $this->data = LidataUserModel::where('email', 'LIKE', $result. '%'  )->get();
+            $this->data = LidataUserModel::where('email', '=', $result )->get();
             return redirect('loggedInUser')
                 ->with( ['userData' => $this->data] )
                 ->withSuccess('You have Successfully loggedin');
@@ -361,8 +356,20 @@ class UserController extends Controller
 
     public function company()
     {
-        $this->allData = lidata::paginate(15);
-        return view('userDashboard.company', ['allData' => $this->allData]);
+        $this->countries = Country::all();
+        $this->allDataIds = DownloadedList::where('userId', Auth::user()->id)->get();
+        $getdownloadedIds = 0;
+        foreach ($this->allDataIds as $dataIds)
+        {
+            $getdownloadedIds = $getdownloadedIds.','.$dataIds->downloadedIds;
+        }
+        $dataCount = count(lidata::all());
+        $this->allData = lidata::whereNotIn('id', explode(',',$getdownloadedIds))
+            /*->orderBy('person_name', 'ASC')*/
+            ->paginate(15);
+        return view('userDashboard.company', ['allData' => $this->allData, 'country' => $this->countries, 'count' => $dataCount]);
+        /*$this->allData = lidata::paginate(15);
+        return view('userDashboard.company', ['allData' => $this->allData]);*/
     }
 
     public function companySearch(Request $request)
