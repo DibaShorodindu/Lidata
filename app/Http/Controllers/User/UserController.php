@@ -8,7 +8,6 @@ use App\Models\Contact;
 use App\Imports\ContactImport;
 use App\Models\Country;
 use App\Models\DownloadedList;
-use App\Models\PhoneList;
 use App\Models\LidataUserModel;
 use App\Models\PurchasePlan;
 use App\Models\Credit;
@@ -219,11 +218,7 @@ class UserController extends Controller
         return view('user.userLogin');
     }
 
-    /*
-     * Write code on Method
-     *
-     * @return response()
-     */
+
     public function userAuth(Request $request)
     {
         $request->validate([
@@ -234,7 +229,7 @@ class UserController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $result = $request->email;
-            $this->data = LidataUserModel::where('email', 'LIKE', $result. '%'  )->get();
+            $this->data = LidataUserModel::where('email', '=', $result )->get();
             return redirect('loggedInUser')
                 ->with( ['userData' => $this->data] )
                 ->withSuccess('You have Successfully loggedin');
@@ -300,69 +295,49 @@ class UserController extends Controller
             ->paginate(15);
         return view('userDashboard.peopleSearch', ['allData' => $this->allData,'searchHistory' => $result]);
     }
-    public function genderSearch(Request $request)
+    public function nameSearch(Request $request)
     {
-        $result = $request->gender;
+        $this->countries = Country::all();
+        $this->allDataIds = DownloadedList::where('userId', Auth::user()->id)->get();
+        $getdownloadedIds = 0;
+        foreach ($this->allDataIds as $dataIds)
+        {
+            $getdownloadedIds = $getdownloadedIds.','.$dataIds->downloadedIds;
+        }
         $this->allData = DB::table('lidata')
-            ->where('person_title', 'like','%'.$result.'%')
+            ->whereNotIn('id', explode(',',$getdownloadedIds))
+            ->where('person_first_name_unanalyzed', '=',  $request->searchPeopleName)
+            ->orWhere('person_last_name_unanalyzed', '=',  $request->searchPeopleName)
+            ->orWhere('person_name', '=',  $request->searchPeopleName)
+            ->orderBy('person_name', 'ASC')
             ->paginate(15);
-
-        return view('userDashboard.genderSearch', ['allData' => $this->allData,'searchHistory' => $result]);
+        $dataCount =DB::table('lidata')
+            ->where('person_first_name_unanalyzed', '=',  $request->searchPeopleName)
+            ->orWhere('person_last_name_unanalyzed', '=',  $request->searchPeopleName)
+            ->orWhere('person_name', '=',  $request->name)
+            ->get();
+        return view('userDashboard.people', ['allData' => $this->allData,
+            'searchPeopleName' => $request->searchPeopleName, 'count' => count($dataCount)]);
     }
-
-    public function relationshipSearch(Request $request)
-    {
-        $result = $request->relationship;
-        $this->allData = DB::table('lidata')
-            ->where('organization_name', 'like','%'.$result.'%')
-            ->paginate(15);
-
-        return view('userDashboard.genderSearch', ['allData' => $this->allData,'searchHistory' => $result]);
-    }
-    public function locationSearch(Request $request)
-    {
-        $result = $request->location;
-        $this->allData = DB::table('lidata')
-            ->where('person_location_city', 'like','%'.$result.'%')
-            ->paginate(15);
-
-        return view('userDashboard.genderSearch', ['allData' => $this->allData,'searchHistory' => $result]);
-    }
-    public function hometownSearch(Request $request)
-    {
-        $result = $request->town;
-        $this->allData = DB::table('lidata')
-            ->where('person_location_state', 'like','%' .$result.'%')
-            ->paginate(15);
-
-        return view('userDashboard.genderSearch', ['allData' => $this->allData,'searchHistory' => $result]);
-    }
-    public function countrySearch(Request $request)
-    {
-        $result = $request->country;
-        $this->allData = DB::table('lidata')
-            ->where('person_location_country', 'like','%' .$result.'%')
-            ->paginate(15);
-
-        return view('userDashboard.genderSearch', ['allData' => $this->allData,'searchHistory' => $result]);
-    }
-    public function industrySearch(Request $request)
-    {
-        $result = $request->industry;
-        $this->allData = DB::table('lidata')
-            ->where('organization_industries', 'like','%' .$result.'%')
-            ->paginate(15);
-
-        return view('userDashboard.genderSearch', ['allData' => $this->allData,'searchHistory' => $result]);
-    }
-
 
     // company controller
 
     public function company()
     {
-        $this->allData = lidata::paginate(15);
-        return view('userDashboard.company', ['allData' => $this->allData]);
+        $this->countries = Country::all();
+        $this->allDataIds = DownloadedList::where('userId', Auth::user()->id)->get();
+        $getdownloadedIds = 0;
+        foreach ($this->allDataIds as $dataIds)
+        {
+            $getdownloadedIds = $getdownloadedIds.','.$dataIds->downloadedIds;
+        }
+        $dataCount = count(lidata::all());
+        $this->allData = lidata::whereNotIn('id', explode(',',$getdownloadedIds))
+            /*->orderBy('person_name', 'ASC')*/
+            ->paginate(15);
+        return view('userDashboard.company', ['allData' => $this->allData, 'country' => $this->countries, 'count' => $dataCount]);
+        /*$this->allData = lidata::paginate(15);
+        return view('userDashboard.company', ['allData' => $this->allData]);*/
     }
 
     public function companySearch(Request $request)
@@ -373,48 +348,6 @@ class UserController extends Controller
             ->paginate(15);
         return view('userDashboard.companySearch', ['allData' => $this->allData,'searchHistory' => $result]);
     }
-
-    public function citySearch(Request $request)
-    {
-        $result = $request->city;
-        $this->allData = DB::table('lidata')
-            ->where('organization_hq_location_city', 'like','%' .$result.'%')
-            ->paginate(15);
-
-        return view('userDashboard.citySearch', ['allData' => $this->allData,'searchHistory' => $result]);
-    }
-
-    public function stateSearch(Request $request)
-    {
-        $result = $request->hometown;
-        $this->allData = DB::table('lidata')
-            ->where('organization_hq_location_state', 'like','%' .$result.'%')
-            ->paginate(15);
-
-        return view('userDashboard.companySearch', ['allData' => $this->allData,'searchHistory' => $result]);
-    }
-
-    public function country_companySearch(Request $request)
-    {
-        $result = $request->country;
-        $this->allData = DB::table('lidata')
-            ->where('organization_hq_location_country', 'like','%' .$result.'%')
-            ->paginate(15);
-
-        return view('userDashboard.companySearch', ['allData' => $this->allData,'searchHistory' => $result]);
-    }
-
-    public function industry_companySearch(Request $request)
-    {
-        $result = $request->industry;
-        $this->allData = DB::table('lidata')
-            ->where('organization_industries', 'like','%' .$result.'%')
-            ->paginate(15);
-
-        return view('userDashboard.companySearch', ['allData' => $this->allData,'searchHistory' => $result
-    ]);
-    }
-
 
 
     public function account()

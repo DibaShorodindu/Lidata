@@ -35,18 +35,12 @@ class AdminController extends Controller
     //  admin Dashboard file upload
 
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
+
     public function fileImportExport()
     {
         //return view('file-import');
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     * @throws \Illuminate\Validation\ValidationException
-     */
 
 
 
@@ -56,9 +50,7 @@ class AdminController extends Controller
         return back()->with('message', 'file imported Successfully');
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
+
 
 
 
@@ -73,12 +65,20 @@ class AdminController extends Controller
     {
 
         $credit=Credit::where('userId', Auth::user()->id)->first();
-        if ($credit->useableCredit >= count($request->chk))
+        $allDataIds = DownloadedList::where('userId', Auth::user()->id)->get();
+        $getdownloadedIds = 0;
+        foreach ($allDataIds as $dataIds)
+        {
+
+            $getdownloadedIds = $getdownloadedIds.','.$dataIds->downloadedIds;
+        }
+        $preDownloaded = count($request->chk) - (count(array_intersect($request->chk, explode(',',$getdownloadedIds ))));
+
+        if ($credit->useableCredit >= $preDownloaded)
         {
             Credit::updateUserCradit($request);
             ExportHistori::newExportHistori($request);
             DownloadedList::createNew($request);
-            $usableCredit = $credit->useableCredit;
             CreditHistory::create($request);
             LidataUserModel::updateUseAbleCredit($request);
 

@@ -43,7 +43,7 @@
         </div>
         <div class="col-md-3 col-6">
           <div class="row">
-            <form action="{{ route('Company_Search') }}">
+            <form action="{{ route('company.search') }}">
               @csrf
               <div class="col-12">
                 <input  type="text" name="searchCompany" id="searchCompany"
@@ -562,15 +562,15 @@
   }
 </script>
 
-{{--<script>
+<script>
   var stateObj = { foo: "" };
-  history.pushState(stateObj, "page without extension", "people/{{ $data->person_first_name_unanalyzed.'.'.$data->person_last_name_unanalyzed }}");
+  history.pushState(stateObj, "page without extension", "{{ $data->organization_name }}");
   window.onpopstate = function(event) {
     if(event && event.state) {
       location.reload();
     }
   }
-</script>--}}
+</script>
 
 
 

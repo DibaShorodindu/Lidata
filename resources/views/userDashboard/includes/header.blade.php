@@ -11,7 +11,7 @@
                 alt="li data"
             />
         </a>
-      
+
         <button
             class="navbar-toggler me-auto"
             type="button"
@@ -24,7 +24,7 @@
             <span class="navbar-toggler-icon"> </span>
           </button>
 
-         
+
 
         <div
             class="collapse navbar-collapse justify-content-between"
@@ -111,7 +111,7 @@
            <!-- update lidata code last -->
 
 
-      
+
 
         <!-- START SHOW ELEMENT ON CLICKING USER -->
         <div class="user-div hide u-box-shadow-1">

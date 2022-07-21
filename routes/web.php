@@ -73,9 +73,9 @@ Route::get('/userSearch',[
     'as'   => 'userSearch',
     ]);
 
-Route::get('/Company_Search',[
+Route::get('/company-search',[
     'uses' => '\App\Http\Controllers\Front\LidataController@COmpany_Search',
-    'as'   => 'Company_Search',
+    'as'   => 'company.search',
     ]);
 
 Route::get('/user/{id}',[
@@ -191,7 +191,7 @@ Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFaceboo
 
 /** search routes */
 Route::get('/autocomplete-search', [TypeaheadController::class, 'autocompleteSearch']);
-Route::get('/autocomplete-company-search', [TypeaheadController::class, 'autocompleteSearch']);
+Route::get('/autocomplete-company-search', [TypeaheadController::class, 'autocompletecompanySearch']);
 
 
 // Route::get('searchPeople{id}',[
@@ -330,60 +330,31 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function (){
     //searching people
 
 
-    Route::get('peopleSearch',[
+  /*  Route::get('peopleSearch',[
         'uses' => '\App\Http\Controllers\User\UserController@peopleSearch',
         'as'   => 'peopleSearch',
+    ]);*/
+    Route::get('people-search',[
+        'uses' => '\App\Http\Controllers\User\Searching\Combination@peopleSearchCombination',
+        'as'   => 'people.search.combination',
     ]);
-    Route::get('genderSearch',[
-        'uses' => '\App\Http\Controllers\User\UserController@genderSearch',
-        'as'   => 'genderSearch',
-    ]);
-    Route::get('relationshipSearch',[
-        'uses' => '\App\Http\Controllers\User\UserController@relationshipSearch',
-        'as'   => 'relationshipSearch',
-    ]);
-    Route::get('locationSearch',[
-        'uses' => '\App\Http\Controllers\User\UserController@locationSearch',
-        'as'   => 'locationSearch',
-    ]);
-    Route::get('hometownSearch',[
-        'uses' => '\App\Http\Controllers\User\UserController@hometownSearch',
-        'as'   => 'hometownSearch',
-    ]);
-    Route::get('countrySearch',[
-        'uses' => '\App\Http\Controllers\User\UserController@countrySearch',
-        'as'   => 'countrySearch',
-    ]);
-    Route::get('industrySearch',[
-        'uses' => '\App\Http\Controllers\User\UserController@industrySearch',
-        'as'   => 'industrySearch',
+
+    Route::get('people-name-search',[
+        'uses' => '\App\Http\Controllers\User\UserController@nameSearch',
+        'as'   => 'people.search',
     ]);
 
 
-//searching company
+// route company
 
-   Route::get('companySearch',[
-    'uses' => '\App\Http\Controllers\User\UserController@companySearch',
-    'as'   => 'companySearch',
-   ]);
-   Route::get('citySearch',[
-    'uses' => '\App\Http\Controllers\User\UserController@citySearch',
-    'as'   => 'citySearch',
+    Route::get('company',[
+        'uses' => '\App\Http\Controllers\User\UserController@company',
+        'as'   => 'company',
     ]);
-
-   Route::get('stateSearch',[
-    'uses' => '\App\Http\Controllers\User\UserController@stateSearch',
-    'as'   => 'stateSearch',
-   ]);
-   Route::get('country_companySearch',[
-    'uses' => '\App\Http\Controllers\User\UserController@country_companySearch',
-    'as'   => 'country_companySearch',
-   ]);
-  Route::get('industry_companySearch',[
-    'uses' => '\App\Http\Controllers\User\UserController@industry_companySearch',
-    'as'   => 'industry_companySearch',
-  ]);
-
+    Route::get('company-search',[
+        'uses' => '\App\Http\Controllers\User\Searching\Company@companySearchCombination',
+        'as'   => 'company.search.combination',
+    ]);
 
 
 Route::get('/settings/account',[
@@ -501,17 +472,6 @@ Route::get('userLogout',[
 ]);
 
 
-
-
-
-
-
-    // route company
-
-    Route::get('company',[
-        'uses' => '\App\Http\Controllers\User\UserController@company',
-        'as'   => 'company',
-    ]);
 
 
 

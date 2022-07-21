@@ -18,9 +18,10 @@
 
 
 <!-- Custom JS -->
-<script src="{{ asset('/') }}adminAsset/assets/js/navbar.js"></script>
-<script src="{{ asset('/') }}adminAsset/assets/js/people.js"></script>
-<script src="{{ asset('/') }}adminAsset/assets/js/script.js"></script>
+<script src="<?php echo e(asset('/')); ?>adminAsset/assets/js/navbar.js"></script>
+<script src="<?php echo e(asset('/')); ?>adminAsset/assets/js/people.js"></script>
+<script src="<?php echo e(asset('/')); ?>adminAsset/assets/js/script.js"></script>
 
 
 
+<?php /**PATH E:\xampp\htdocs\Lidata\resources\views/userDashboard/includes/script.blade.php ENDPATH**/ ?>

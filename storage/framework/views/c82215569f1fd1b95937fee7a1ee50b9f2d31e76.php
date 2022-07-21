@@ -288,17 +288,30 @@
         <section class="section-user-dashboard--sidebar">
             <div class="heading--sub py-3 ps-4 u-border-bottom">Filters</div>
             <!-- Search NAME -->
-            <div class="search-bar py-3 ps-4 u-border-bottom">
-
-                <input
-                        type="text"
-                        id='searchPeople'
-                        name="name"
-                        onkeypress="handle()"
-                        placeholder="Search People..."
-                        autocomplete="off"
-                />
-            </div>
+            <form id="search" action="<?php echo e(route('people.search')); ?>">
+                <div class="search-bar py-3 ps-4 u-border-bottom">
+                    <?php if(isset($searchPeopleName)): ?>
+                        <input
+                                type="text"
+                                id='searchPeople'
+                                name="searchPeopleName"
+                                onkeypress="handle()"
+                                placeholder="Search People..."
+                                autocomplete="off"
+                                value="<?php echo e($searchPeopleName); ?>"
+                        />
+                    <?php else: ?>
+                        <input
+                                type="text"
+                                id='searchPeople'
+                                name="searchPeopleName"
+                                onkeypress="handle()"
+                                placeholder="Search People..."
+                                autocomplete="off"
+                        />
+                    <?php endif; ?>
+                </div>
+            </form>
             <form id="search" action="<?php echo e(route('people.search.combination')); ?>">
                 <!-- INPUT NAME -->
                 <div class="input-name u-border-bottom py-4 px-4">
@@ -1090,4 +1103,4 @@
 
 
 
-<?php /**PATH D:\xampp\htdocs\Lidata\resources\views/userDashboard/people.blade.php ENDPATH**/ ?>
+<?php /**PATH E:\xampp\htdocs\Lidata\resources\views/userDashboard/people.blade.php ENDPATH**/ ?>

@@ -8,6 +8,7 @@ use App\Models\Country;
 use App\Models\Lidata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LidataController extends Controller
 {
@@ -84,7 +85,11 @@ class LidataController extends Controller
 
     public function index()
     {
-        return view('front.home');
+        $count = DB::table('lidata')->count();
+        $location = DB::table('lidata')
+            ->whereNull('person_location_city')
+            ->count();
+        return view('front.home',['rowcount'=> $count, 'rowcount2'=> $location]);
     }
 
     // directory people start

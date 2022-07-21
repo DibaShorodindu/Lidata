@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <meta
             name="description"
@@ -44,10 +44,10 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('/') }}adminAsset/assets/css/style.css" />
+    <link rel="stylesheet" href="<?php echo e(asset('/')); ?>adminAsset/assets/css/style.css" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('/') }}adminAsset/assets/images/icons/favicon.ico" />
+    <link rel="shortcut icon" href="<?php echo e(asset('/')); ?>adminAsset/assets/images/icons/favicon.ico" />
 
 </head>
 
@@ -59,10 +59,10 @@
             id="user-nav"
     >
         <div class="container-fluid justify-content-end">
-            <a class="navbar-brand" href="{{ route('/') }}">
+            <a class="navbar-brand" href="<?php echo e(route('/')); ?>">
                 <img
                         class="img-fluid"
-                        src="{{ asset('/') }}adminAsset/assets/images/logo.svg"
+                        src="<?php echo e(asset('/')); ?>adminAsset/assets/images/logo.svg"
                         alt="li data"
                 />
             </a>
@@ -87,13 +87,13 @@
             >
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item pl-4">
-                        <a class="nav-link" aria-current="page" href="{{ route('loggedInUser') }}">
+                        <a class="nav-link" aria-current="page" href="<?php echo e(route('loggedInUser')); ?>">
                             <i class="bi bi-house-door"></i>
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item d-none d-md-block" id="search">
-                        <a class="nav-link nav-link__search active" href="{{ route('company') }}">
+                        <a class="nav-link nav-link__search active" href="<?php echo e(route('company')); ?>">
                             <i class="bi bi-search"></i>
                             Data Search
                         </a>
@@ -102,7 +102,7 @@
 
                         <!-- Show element on hover  -->
                         <div class="search__details hide">
-                            <a href="{{ route('people') }}">
+                            <a href="<?php echo e(route('people')); ?>">
                                 <div class="search__details--left d-flex">
                                     <div class="search__details--icon-box">
                                         <i class="bi bi-people"></i>
@@ -122,7 +122,7 @@
                                 </div>
                             </a>
 
-                            <a href="{{ route('company') }}">
+                            <a href="<?php echo e(route('company')); ?>">
                                 <div class="search__details--right d-flex">
                                     <div class="search__details--icon-box">
                                         <i class="bi bi-building"></i>
@@ -144,19 +144,19 @@
                     </li>
 
                     <li class="nav-item d-md-none d-lg-none">
-                        <a class="nav-link" href="{{ route('people') }}">
+                        <a class="nav-link" href="<?php echo e(route('people')); ?>">
                             <i class="bi bi-send px-2"></i>
                             People
                         </a>
                     </li>
                     <li class="nav-item d-md-none d-lg-none">
-                        <a class="nav-link" href="{{ route('company') }}">
+                        <a class="nav-link" href="<?php echo e(route('company')); ?>">
                             <i class="bi bi-building px-2"></i>
                             Companies
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('upgrade') }}">
+                        <a class="nav-link" href="<?php echo e(route('upgrade')); ?>">
                             <i class="bi bi-box-seam px-2"></i>
                             Products
                         </a>
@@ -176,20 +176,20 @@
             <div class="user-div hide u-box-shadow-1">
                 <h4 class="px-4 pt-5"></h4>
                 <div class="user--label mx-4">
-                    <span>{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</span>
+                    <span><?php echo e(Auth::user()->firstName); ?> <?php echo e(Auth::user()->lastName); ?></span>
                 </div>
 
                 <div class="user--menu">
-                    <a class="user--menu-item" href="{{ route('account') }}">
+                    <a class="user--menu-item" href="<?php echo e(route('account')); ?>">
                         <i class="bi bi-gear"></i>
                         <span>Settings</span>
                     </a>
-                    <a class="user--menu-item" href="{{ route('upgrade') }}">
+                    <a class="user--menu-item" href="<?php echo e(route('upgrade')); ?>">
                         <i class="bi bi-trophy"></i>
                         <span>Upgrade Plan</span>
                     </a>
 
-                    <a class="user--menu-item mb-3" href="{{ route('userLogout') }}">
+                    <a class="user--menu-item mb-3" href="<?php echo e(route('userLogout')); ?>">
                         <i class="bi bi-power"></i>
                         <span>Logout</span>
                     </a>
@@ -200,7 +200,7 @@
 
         <!-- START RIGHT NAV ITEMS -->
         <div class="d-flex align-items-center nav-right__box">
-            <a class="btn btn-blue mx-4" href="{{ route('upgrade') }}"
+            <a class="btn btn-blue mx-4" href="<?php echo e(route('upgrade')); ?>"
             >Get unlimited leads
             </a>
             <button type="button" class="btn">
@@ -223,7 +223,7 @@
                     class="user user-btn circle-element mx-3"
             >
 
-                <p class="user-name">{{ $firstStringCharacter = substr(Auth::user()->firstName, 0, 1) }}{{ $firstStringCharacter = substr(Auth::user()->lastName, 0, 1) }}</p>
+                <p class="user-name"><?php echo e($firstStringCharacter = substr(Auth::user()->firstName, 0, 1)); ?><?php echo e($firstStringCharacter = substr(Auth::user()->lastName, 0, 1)); ?></p>
             </button>
         </div>
         <!-- END RIGHT NAV ITEMS -->
@@ -232,7 +232,7 @@
 
     <!-- START SECOND NAVBAR -->
     <div class="navbar02 u-border-bottom">
-        <a href="{{ route('people') }}">
+        <a href="<?php echo e(route('people')); ?>">
             <div class="navbar02--left">
                 <h2 class="nav-item fs-4">
                     <i class="bi bi-people pe-2"></i>
@@ -241,7 +241,7 @@
             </div>
         </a>
 
-        <a href="{{ route('company') }}">
+        <a href="<?php echo e(route('company')); ?>">
             <div class="navbar02--right">
                 <h2 class="nav-item nav-item--colored fs-4">
                     <i class="bi bi-building pe-2"></i>
@@ -323,14 +323,14 @@
                         autocomplete="off"
                 />
             </div>
-            <form id="search" action="{{ route('company.search.combination') }}">
+            <form id="search" action="<?php echo e(route('company.search.combination')); ?>">
                 <!-- INPUT COMPANY NAME -->
                 <div class="input-company u-border-bottom py-4 px-4">
                     <div class="input-title pb-2">
                         <i class="bi bi-building pe-2"></i>
                         Company
                     </div>
-                    @if(isset($company))
+                    <?php if(isset($company)): ?>
                         <input
                                 type="text"
                                 name="company"
@@ -338,9 +338,9 @@
                                 placeholder="Enter companies..."
                                 onkeypress="handle()"
                                 autocomplete="off"
-                                value="{{ $company }}"
+                                value="<?php echo e($company); ?>"
                         />
-                    @else
+                    <?php else: ?>
                         <input
                                 type="text"
                                 name="company"
@@ -349,7 +349,7 @@
                                 onkeypress="handle()"
                                 autocomplete="off"
                         />
-                    @endif
+                    <?php endif; ?>
                     <button type="submit" class="btn btn-blue rounded-1 w-100">
                         Apply
                     </button>
@@ -361,7 +361,7 @@
                         <i class="bi bi-pin-map-fill"></i>
                         City
                     </div>
-                    @if(isset($city))
+                    <?php if(isset($city)): ?>
                         <input
                                 type="text"
                                 name="city"
@@ -369,9 +369,9 @@
                                 placeholder="Enter city"
                                 onkeypress="handle()"
                                 autocomplete="off"
-                                value="{{ $city }}"
+                                value="<?php echo e($city); ?>"
                         />
-                    @else
+                    <?php else: ?>
                         <input
                                 type="text"
                                 name="city"
@@ -380,7 +380,7 @@
                                 onkeypress="handle()"
                                 autocomplete="off"
                         />
-                    @endif
+                    <?php endif; ?>
                     <button type="submit" class="btn btn-blue rounded-1 w-100">
                         Apply
                     </button>
@@ -392,7 +392,7 @@
                         <i class="bi bi-map-fill"></i>
                         State
                     </div>
-                    @if(isset($state))
+                    <?php if(isset($state)): ?>
                         <input
                                 type="text"
                                 name="state"
@@ -400,9 +400,9 @@
                                 placeholder="Enter state"
                                 onkeypress="handle()"
                                 autocomplete="off"
-                                value="{{ $state }}"
+                                value="<?php echo e($state); ?>"
                         />
-                    @else
+                    <?php else: ?>
                         <input
                                 type="text"
                                 name="state"
@@ -411,7 +411,7 @@
                                 onkeypress="handle()"
                                 autocomplete="off"
                         />
-                    @endif
+                    <?php endif; ?>
                     <button type="submit" class="btn btn-blue rounded-1 w-100">
                         Apply
                     </button>
@@ -423,7 +423,7 @@
                         Country
                     </div>
                     <div class="dropdown" id="searchCountry">
-                        @if (isset($countries))
+                        <?php if(isset($countries)): ?>
                             <input
                                     class="searchBar col-12"
                                     id="countryInput"
@@ -433,9 +433,9 @@
                                     data-toggle="dropdown"
                                     data-bs-toggle="dropdown"
                                     autocomplete="off"
-                                    value="{{ $countries }}"
+                                    value="<?php echo e($countries); ?>"
                             />
-                        @else ()
+                        <?php else: ?>
                             <input
                                     class="searchBar col-12"
                                     id="countryInput"
@@ -448,17 +448,18 @@
                             />
 
 
-                        @endif
+                        <?php endif; ?>
                         <span class="caret"></span>
 
                         <ul class="dropdown-menu p-3" aria-labelledby="countryDropdown">
-                            @foreach($country as $countryName)
-                                <button  class="dropdown-item" id="countryBtn{{ $countryName->id }}"
-                                         type="submit" onclick="getCountryName({{ $countryName->id }})"
-                                         value="{{ $countryName->countryname }}" >{{ $countryName->countryname }}
-                                    ({{ $countryName->countrycode }})
+                            <?php $__currentLoopData = $country; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $countryName): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <button  class="dropdown-item" id="countryBtn<?php echo e($countryName->id); ?>"
+                                         type="submit" onclick="getCountryName(<?php echo e($countryName->id); ?>)"
+                                         value="<?php echo e($countryName->countryname); ?>" ><?php echo e($countryName->countryname); ?>
+
+                                    (<?php echo e($countryName->countrycode); ?>)
                                 </button>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                 </div>
@@ -468,7 +469,7 @@
                         <i class="bi bi-tools pe-2"></i>
                         Industry
                     </div>
-                    @if(isset($industry))
+                    <?php if(isset($industry)): ?>
                         <input
                                 type="text"
                                 name="industry"
@@ -476,9 +477,9 @@
                                 placeholder="Search industries..."
                                 onkeypress="handle()"
                                 autocomplete="off"
-                                value="{{ $industry }}"
+                                value="<?php echo e($industry); ?>"
                         />
-                    @else
+                    <?php else: ?>
                         <input
                                 type="text"
                                 name="industry"
@@ -486,7 +487,7 @@
                                 placeholder="Search industries..."
                                 onkeypress="handle()"
                         />
-                    @endif
+                    <?php endif; ?>
                     <button type="submit" class="btn btn-blue rounded-1 w-100">
                         Apply
                     </button>
@@ -496,15 +497,15 @@
         <!-- END SIDEBAR -->
 
         <!-- START MAIN DASHBOARD -->
-        <form action="{{ route('customExport') }}" enctype="multipart/form-data" method="get">
-            @csrf
+        <form action="<?php echo e(route('customExport')); ?>" enctype="multipart/form-data" method="get">
+            <?php echo csrf_field(); ?>
             <section class="section-user-dashboard--main">
                 <div class="container">
                     <div class="row">
                         <!-- Download CSV Button -->
                         <div class="container">
                             <div class="row py-4">
-                                <input type="number" hidden name="userId" value="{{ Auth::user()->id }}">
+                                <input type="number" hidden name="userId" value="<?php echo e(Auth::user()->id); ?>">
                                 <div class="col-md-8 ms-auto d-flex justify-content-end">
                                     <button
                                             type="submit"
@@ -542,26 +543,27 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($allData as $data)
+                                        <?php $__currentLoopData = $allData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <tr>
                                                 <td>
-                                                    <input type="checkbox" name="chk[]" id="chk" class="form-check-input" value="{{$data->id}}" >
+                                                    <input type="checkbox" name="chk[]" id="chk" class="form-check-input" value="<?php echo e($data->id); ?>" >
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('user', ['id' => $data->id ]) }}" class="company-name">
-                                                        @if(!empty($data->organization_name))
-                                                            {{ $data->organization_name}}
-                                                        @else
+                                                    <a href="<?php echo e(route('user', ['id' => $data->id ])); ?>" class="company-name">
+                                                        <?php if(!empty($data->organization_name)): ?>
+                                                            <?php echo e($data->organization_name); ?>
+
+                                                        <?php else: ?>
                                                             -
-                                                        @endif
+                                                        <?php endif; ?>
                                                     </a>
                                                 </td>
                                                 <td class="position-relative">
                                                     <button
                                                             type="button"
                                                             class="btn btn-access btn-access--phone"
-                                                            id="{{ $data->id }}"
-                                                            onclick="accessPhoneNumber({{ $data->id }})"
+                                                            id="<?php echo e($data->id); ?>"
+                                                            onclick="accessPhoneNumber(<?php echo e($data->id); ?>)"
                                                     >
                                                         Access Email
                                                     </button>
@@ -569,7 +571,7 @@
                                                         Verified number costs one credit.
                                                     </div>
 
-                                                    <div class="button-group hide" id="buttonGroup{{ $data->id }}">
+                                                    <div class="button-group hide" id="buttonGroup<?php echo e($data->id); ?>">
                                                         <a
                                                                 class="btn btn-access btn-access--phone"
                                                                 href=""
@@ -579,7 +581,7 @@
                                                         </a>
                                                         <div
                                                                 class="message-box message-box--phone hide-text"
-                                                                id="messagePhone{{ $data->id }}"
+                                                                id="messagePhone<?php echo e($data->id); ?>"
                                                         >
                                                         </div>
 
@@ -593,35 +595,38 @@
 
                                                         <div
                                                                 class="message-box message-box--email hide-text"
-                                                                id="messageEmail{{ $data->id }}"
+                                                                id="messageEmail<?php echo e($data->id); ?>"
                                                         >
                                                             <!-- Email not available -->
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    @if(!empty($data->organization_num_current_employees))
-                                                        {{ $data->organization_num_current_employees}}
-                                                    @else
+                                                    <?php if(!empty($data->organization_num_current_employees)): ?>
+                                                        <?php echo e($data->organization_num_current_employees); ?>
+
+                                                    <?php else: ?>
                                                         -
-                                                    @endif
+                                                    <?php endif; ?>
                                                 </td>
                                                 <td>
-                                                    @if(!empty($data->organization_industries))
-                                                        {{ $data->organization_industries}}
-                                                    @else
+                                                    <?php if(!empty($data->organization_industries)): ?>
+                                                        <?php echo e($data->organization_industries); ?>
+
+                                                    <?php else: ?>
                                                         -
-                                                    @endif
+                                                    <?php endif; ?>
                                                 </td>
                                                 <td>
-                                                    @if(!empty($data->organization_hq_location_city))
-                                                        {{ $data->organization_hq_location_city .', '.$data->organization_hq_location_state.','.$data->organization_hq_location_country}}
-                                                    @else
+                                                    <?php if(!empty($data->organization_hq_location_city)): ?>
+                                                        <?php echo e($data->organization_hq_location_city .', '.$data->organization_hq_location_state.','.$data->organization_hq_location_country); ?>
+
+                                                    <?php else: ?>
                                                         -
-                                                    @endif
+                                                    <?php endif; ?>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -635,9 +640,10 @@
                 <div class="container">
                     <div class="row py-4">
                         <div class="col-md-4 text-secondary ps-5">
-                            Filtered records: {{ $count }}
+                            Filtered records: <?php echo e($count); ?>
+
                         </div>
-                        <input type="number" hidden name="userId" value="{{ Auth::user()->id }}">
+                        <input type="number" hidden name="userId" value="<?php echo e(Auth::user()->id); ?>">
                         <div class="col-md-8 ms-auto d-flex justify-content-end">
                             <button
                                     type="submit"
@@ -657,7 +663,8 @@
                         <ul class="pagination justify-content-end">
                             <li class="page-item">
                                 <div class="d-sm-inline-flex justify-content-center">
-                                    {!! $allData->links() !!}
+                                    <?php echo $allData->links(); ?>
+
                                 </div>
                             </li>
                         </ul>
@@ -711,7 +718,7 @@
 
     });
 </script>
-{{--/* Access Phone Number */--}}
+
 
 <script type="text/javascript">
     let collection,  buttonGroup, messageBox, buttonId;
@@ -721,9 +728,9 @@
     function accessPhoneNumber(id)
     {
         $.ajax({
-            url:"{{ route('peopleDataHistory') }}",
+            url:"<?php echo e(route('peopleDataHistory')); ?>",
             method:"POST",
-            data:{id:id, _token:"{{ csrf_token() }}"},
+            data:{id:id, _token:"<?php echo e(csrf_token()); ?>"},
             dataType:"json",
             success:function(data)
             {
@@ -754,9 +761,9 @@
 
 
 <!-- Custom JS -->
-<script src="{{ asset('/') }}adminAsset/assets/js/navbar.js"></script>
-<script src="{{ asset('/') }}adminAsset/assets/js/people.js"></script>
-<script src="{{ asset('/') }}adminAsset/assets/js/script.js"></script>
+<script src="<?php echo e(asset('/')); ?>adminAsset/assets/js/navbar.js"></script>
+<script src="<?php echo e(asset('/')); ?>adminAsset/assets/js/people.js"></script>
+<script src="<?php echo e(asset('/')); ?>adminAsset/assets/js/script.js"></script>
 
 <script>
     function handle(e){
@@ -785,4 +792,4 @@
 
 
    
-     
+     <?php /**PATH E:\xampp\htdocs\Lidata\resources\views/userDashboard/company.blade.php ENDPATH**/ ?>

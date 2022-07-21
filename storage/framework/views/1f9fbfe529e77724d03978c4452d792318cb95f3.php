@@ -37,10 +37,10 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('/') }}adminAsset/assets/css/style.css" />
+    <link rel="stylesheet" href="<?php echo e(asset('/')); ?>adminAsset/assets/css/style.css" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('/') }}adminAsset/assets/images/icons/favicon.ico" />
+    <link rel="shortcut icon" href="<?php echo e(asset('/')); ?>adminAsset/assets/images/icons/favicon.ico" />
 </head>
 
 <body>
@@ -50,7 +50,7 @@
     <section class="section-signup--left">
         <div class="signup-text-box row">
             <a class="col-12 company-logo" href="index.html">
-                <img src="{{ asset('/') }}adminAsset/assets/images/logo--company-name-dark.svg" alt="logo" />
+                <img src="<?php echo e(asset('/')); ?>adminAsset/assets/images/logo--company-name-dark.svg" alt="logo" />
             </a>
             <div class="col-12">
                 <a type="button" class="btn btn-home pt-3" href="index.html">
@@ -77,15 +77,15 @@
                 <div class="card-body p-5 pb-3">
                     <div class="card-title">
                         <div class="col-12 company-logo">
-                            <img src="{{ asset('/') }}adminAsset/assets/images/logo--company-name-dark.svg" alt="logo" />
+                            <img src="<?php echo e(asset('/')); ?>adminAsset/assets/images/logo--company-name-dark.svg" alt="logo" />
                         </div>
                         <div>
                             <h1 class="pt-2 pb-3">Let's Get Started</h1>
                         </div>
                     </div>
 
-                    <form action="{{ route('add.new.user') }}" method="post" enctype="multipart/form-data">
-                        @csrf
+                    <form action="<?php echo e(route('add.new.user')); ?>" method="post" enctype="multipart/form-data">
+                        <?php echo csrf_field(); ?>
                         <div class="mb-4">
                             <input
                                     hidden
@@ -93,7 +93,7 @@
                                     class="form-control u-box-shadow-2"
                                     id="google_id"
                                     name="google_id"
-                                    value="{{ $newUserData->id }}"
+                                    value="<?php echo e($newUserData->id); ?>"
                             />
 
                             <input hidden
@@ -102,7 +102,7 @@
                                 id="email"
                                 placeholder="Enter Your Email"
                                 required
-                                value="{{ $newUserData->email }}"
+                                value="<?php echo e($newUserData->email); ?>"
                                 name="email"
                             />
                         </div>
@@ -125,12 +125,8 @@
                                 id="fname"
                                 placeholder="Enter Your First Name"
                                 required
-                                {{-- $full_name = "$newUserData->name"
-                                        {{$split=explode(" ", $newUserData->name->toArray())}}
-
-                                        {{$firstname=array_shift($split)}}
-                                        {{$lastname=implode(" ", $split)}}--}}
-                                value="{{ $firstname }}"
+                                
+                                value="<?php echo e($firstname); ?>"
                                 name="firstName"
                             />
                         </div>
@@ -142,7 +138,7 @@
                                 id="lname"
                                 placeholder="Enter Your Last Name"
                                 required
-                                value="{{$lastname}}"
+                                value="<?php echo e($lastname); ?>"
                                 name="lastName"
                             />
                         </div>
@@ -500,7 +496,7 @@
                         <div class="card-footer">
                             <p>
                                 Already have an account?
-                                <a href="login.{{ route('user.login') }}">Sign In</a>
+                                <a href="login.<?php echo e(route('user.login')); ?>">Sign In</a>
                             </p>
                         </div>
                     </form>
@@ -512,7 +508,7 @@
     <!-- END SIGNUP RIGHT SIDE -->
 </main>
 <!-- Custom JS -->
-<script src="{{ asset('/') }}adminAsset/assets/js/script.js"></script>
+<script src="<?php echo e(asset('/')); ?>adminAsset/assets/js/script.js"></script>
 
 <!-- Bootstrap JS -->
 <script
@@ -522,3 +518,4 @@
 ></script>
 </body>
 </html>
+<?php /**PATH E:\xampp\htdocs\Lidata\resources\views/user/userGoogleRegister.blade.php ENDPATH**/ ?>

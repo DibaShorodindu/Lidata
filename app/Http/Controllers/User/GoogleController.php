@@ -32,7 +32,10 @@ class GoogleController extends Controller
                 //return redirect('loggedInUser');
 
             }else {
-                return view('user.userGoogleRegister', ['newUserData'=>$user]);
+                $splitName = explode(' ', $user->getName(), 2);
+                $firstname = $splitName[0];
+                $lastname = !empty($splitName[1]) ? $splitName[1] : '';
+                return view('user.userGoogleRegister', ['newUserData'=>$user, 'lastname' => $lastname, 'firstname' => $firstname]);
             }
             Auth::loginUsingId($saveUser->id);
             return redirect('loggedInUser');

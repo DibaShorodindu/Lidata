@@ -29,9 +29,9 @@
                         <form action="{{ route('userSearch') }}">
                             @csrf
                             <div class="col-12">
-                                <input  type="text" name="searchPeople" id="searchPeopleName"
+                                <input  type="text" name="searchPeople" id="searchPeople"
                                         class="searchBar bg-white border-5 text-dark fw-normal col-md-9 col-8"
-                                        placeholder="Search by Name..." onkeyup="searchPeople()" autocomplete="off"  />
+                                        placeholder="Search by Name..." autocomplete="off"  />
                                 <button type="submit" class="btn btn-blue">Apply</button>
                             </div>
                         </form>
@@ -39,12 +39,12 @@
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="row">
-                        <form action="{{ route('Company_Search') }}">
+                        <form action="{{ route('company.search') }}">
                             @csrf
                             <div class="col-12">
                                 <input  type="text" name="searchCompany" id="searchCompany"
                                         class="searchBar bg-white border-5 text-dark fw-normal col-md-9 col-8"
-                                        placeholder="Search by Company..." onkeyup="searchCompany()" autocomplete="off"  />
+                                        placeholder="Search by Company..." autocomplete="off"  />
                                 <button type="submit" class="btn btn-blue">Apply</button>
                             </div>
                         </form>
@@ -175,9 +175,12 @@
     </section>
     <!-- END SECTION MESSAGE -->
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">
+    </script>
     <script type="text/javascript">
         let route = "{{ url('/autocomplete-search') }}";
-        $('#searchPeopleName').typeahead({
+        $('#searchPeople').typeahead({
             source: function (query, process) {
                 return $.get(route, {
                     query: query
