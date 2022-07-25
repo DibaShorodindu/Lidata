@@ -2,79 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a7363df-7384-43b6-bb73-3005ca90478c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/User/Searching/Combination.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/User/Searching/Company.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lidata (1).sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/1047387f8b8aa47f632551a5ea7ed718c63fa427.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/18d137c895b54c968b3a98efd7a16835d5b60c78.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/1f9fbfe529e77724d03978c4452d792318cb95f3.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/22b4b1c1f7724f976f123536e6adb98e5179cd64.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/2beeeddc96b6c3dab5c38d2c44aacd0a49275793.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/2c04016c6f272dfcd59cec29cad176e69a3a851c.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/2d3a7c01777e435bf52f5fc461431e12d7ea3fca.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/35eb3662cc29d46520e011d8fd3e5e6f5e74bf13.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/4089141065e07a1247bcb6b830fbfaca5c1f43f9.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/41c8e7ca7a997c5132672531d43a97356e5540b9.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/47fd8a90c8fc00ad51fa2a048921f93bddf1c555.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/73252e8204fc58aba0eb2527473a56d770f765de.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/81369951b2ef97f4e336bd13801c215275506b32.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/8e623825d9d7822e45cf2adfb7aac5944b860d4a.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/94ff7cfe1cd8b114768ac6ef2240ae3d7960263d.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/95da7dcde5c84b7bbdfd0856e4c70bb663a7ada1.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/9ebbbf684e7411b14319668be18bfbf862380475.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/9ee972ebc9386e830aaecd36d2bb03ebf5504efd.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/ab62af0079636c7b6725eb27fc4388f4d9a9c804.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/c575894a00384f29020e1612824ca72d9465230f.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/c6308f167b19cc62b10cd747c887c8d743d07548.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/c82215569f1fd1b95937fee7a1ee50b9f2d31e76.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/d5b3e149d5b5d4a7babdb5b9e24d7809ce355120.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/e6095bd9928b69b018cca33d8aab8dcbc61e5a04.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/e9e9443da8de75f64bbc90218cd204b235fa3823.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/f4334dda641ae0524c3ca3df47fd22d2df38ceaa.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Lidata.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Lidata.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Front/LidataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Front/LidataController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/GoogleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/GoogleController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Credit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Credit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Lidata.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Lidata.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_01_22_073127_create_phone_lists_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/category/company.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/category/company.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/category/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/category/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/user/user-company.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/user/user-company.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/user/user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/user/user.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/userGoogleRegister.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/userGoogleRegister.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userDashboard/citySearch.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userDashboard/company.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/userDashboard/company.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userDashboard/companySearch.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userDashboard/genderSearch.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userDashboard/includes/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/userDashboard/includes/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userDashboard/includes/header_company.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/48f983ddf633ab54bee0c46ef0a212456eb3fcc2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userDashboard/includes/header_user.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userDashboard/includes/script.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/userDashboard/includes/script.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userDashboard/master_company.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userDashboard/master_user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/c778a75929be8299837d7f1b0535dfc35f0c8824.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userDashboard/people.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/userDashboard/people.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userDashboard/peopleSearch.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/0dd304a7dce58ac91d5f7bf029903a202990d499.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/0dd304a7dce58ac91d5f7bf029903a202990d499.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/1d8da4a29db701e277e64e80bfc9764184838dd9.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/1d8da4a29db701e277e64e80bfc9764184838dd9.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/36c927c7ecba1fee20db762513595805901f6fb4.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/36c927c7ecba1fee20db762513595805901f6fb4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/3c2cd2a366c70005c77e267281b69b16084098f8.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/3c2cd2a366c70005c77e267281b69b16084098f8.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/c37f0a328c604d5d1517c7293cc260917019dad0.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/c37f0a328c604d5d1517c7293cc260917019dad0.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/e1ebff308aedf2b8ace97bdcde486eaa8624c2c1.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/e1ebff308aedf2b8ace97bdcde486eaa8624c2c1.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -225,6 +163,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp\htdocs\Lidata" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
@@ -239,7 +182,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658385617788</updated>
-      <workItem from="1658385619183" duration="9269000" />
+      <workItem from="1658385619183" duration="14337000" />
+      <workItem from="1658639833222" duration="974000" />
+      <workItem from="1658644627228" duration="3532000" />
+      <workItem from="1658719110256" duration="4779000" />
     </task>
     <servers />
   </component>
@@ -256,5 +202,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

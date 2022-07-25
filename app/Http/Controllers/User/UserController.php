@@ -295,8 +295,15 @@ class UserController extends Controller
             ->paginate(15);
         return view('userDashboard.peopleSearch', ['allData' => $this->allData,'searchHistory' => $result]);
     }
+
+
     public function nameSearch(Request $request)
     {
+        $credit=Credit::where('userId',Auth::user()->id)->first();
+        if($credit->useableCredit == 0 )
+            return view('userDashboard.settings.upgrade');
+        if($credit->useableCredit >= 1 && $request->searchPeopleName != null && $request->page == null)
+            Credit::filterCredit();
         $this->countries = Country::all();
         $this->allDataIds = DownloadedList::where('userId', Auth::user()->id)->get();
         $getdownloadedIds = 0;

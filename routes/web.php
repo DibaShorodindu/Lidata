@@ -74,7 +74,7 @@ Route::get('/userSearch',[
     ]);
 
 Route::get('/company-search',[
-    'uses' => '\App\Http\Controllers\Front\LidataController@COmpany_Search',
+    'uses' => '\App\Http\Controllers\Front\LidataController@companySearch',
     'as'   => 'company.search',
     ]);
 
@@ -351,7 +351,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function (){
         'uses' => '\App\Http\Controllers\User\UserController@company',
         'as'   => 'company',
     ]);
-    Route::get('company-search',[
+    Route::get('company-search-combination',[
         'uses' => '\App\Http\Controllers\User\Searching\Company@companySearchCombination',
         'as'   => 'company.search.combination',
     ]);
