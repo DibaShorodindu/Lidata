@@ -10,5 +10,4 @@ interface FromCollection
      * @return Collection
      */
     public function collection();
-    public function customCollection($id);
 }

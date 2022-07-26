@@ -72,7 +72,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body m-4 mb-5">
-                                            <form action="" method="post" enctype="multipart/form-data">
+                                            <form action="<?php echo e(route('addCardInfo')); ?>" method="post" enctype="multipart/form-data">
                                                 <?php echo csrf_field(); ?>
                                                 <div>
                                                     <h5>Your Details</h5>
@@ -804,7 +804,7 @@
                                         </div>
                                         <div class="modal-body m-4 mb-5">
                                             <?php $__currentLoopData = $userCardInfo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cardInfo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <form action="" method="post" enctype="multipart/form-data">
+                                                <form action="<?php echo e(route('updateCardInfo')); ?>" method="post" enctype="multipart/form-data">
                                                     <?php echo csrf_field(); ?>
                                                     <div>
                                                         <h5>Your Details</h5>
@@ -1535,7 +1535,7 @@
 
                             <!-- WHEN CREDIT CARD INFO FOUND -->
                             <div class="credit-card-info u-box-shadow-2 mt-4">
-                                <form action="" enctype="multipart/form-data" method="post">
+                                <form action="<?php echo e(route('stripe')); ?>" enctype="multipart/form-data" method="post">
                                     <?php echo csrf_field(); ?>
 
                                         <input hidden  type="number" name="credit" value="<?php echo e($purchasePlan->credit); ?>"/>
@@ -1590,7 +1590,7 @@
                                             <img class="img-fluid" src="<?php echo e(asset('/')); ?>adminAsset/assets/images/paypal.png" alt="paypal logo">
                                         </button>
                                     </form>
-                                    <form action="" class="col-5" method="post" enctype="multipart/form-data">
+                                    <form action="<?php echo e(route('payments.crypto.pay')); ?>" class="col-5" method="post" enctype="multipart/form-data">
                                         <?php echo csrf_field(); ?>
 
                                         <input hidden  type="number" name="credit" value="<?php echo e($purchasePlan->credit); ?>"/>

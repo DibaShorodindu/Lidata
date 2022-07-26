@@ -8,9 +8,11 @@
         "php": "^7.3|^8.0",
         "ext-json": "*",
         "ext-mysqli": "*",
+        "barryvdh/laravel-dompdf": "^2.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
+        "laravel/helpers": "^1.5",
         "laravel/jetstream": "^2.6",
         "laravel/sanctum": "^2.11",
         "laravel/socialite": "^5.5",
@@ -18,7 +20,9 @@
         "laravel/ui": "^3.4",
         "livewire/livewire": "^2.5",
         "maatwebsite/excel": "^3.1",
-        "phpoffice/phpspreadsheet": "^1.21"
+        "phpoffice/phpspreadsheet": "^1.21",
+        "stripe/stripe-php": "^8.11",
+        "victorybiz/laravel-crypto-payment-gateway": "^1.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

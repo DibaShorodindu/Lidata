@@ -19,7 +19,7 @@ class CreatePurchasePlansTable extends Migration
             $table->string('plan')->nullable();
             $table->integer('price')->nullable();
             $table->integer('credit')->nullable();
-            $table->integer('dataView')->nullable();
+            $table->integer('phoneNumber')->nullable();
             $table->string('dataFilter')->nullable();
             $table->string('csvExport')->nullable();
             $table->date('start')->nullable();

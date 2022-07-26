@@ -73,7 +73,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body m-4 mb-5">
-                                            <form action="{{--{{ route('addCardInfo') }}--}}" method="post" enctype="multipart/form-data">
+                                            <form action="{{ route('addCardInfo') }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <div>
                                                     <h5>Your Details</h5>
@@ -805,7 +805,7 @@
                                         </div>
                                         <div class="modal-body m-4 mb-5">
                                             @foreach($userCardInfo as $cardInfo)
-                                                <form action="{{--{{ route('updateCardInfo') }}--}}" method="post" enctype="multipart/form-data">
+                                                <form action="{{ route('updateCardInfo') }}" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     <div>
                                                         <h5>Your Details</h5>
@@ -1535,7 +1535,7 @@
 
                             <!-- WHEN CREDIT CARD INFO FOUND -->
                             <div class="credit-card-info u-box-shadow-2 mt-4">
-                                <form action="{{--{{ route('stripe') }}--}}" enctype="multipart/form-data" method="post">
+                                <form action="{{ route('stripe') }}" enctype="multipart/form-data" method="post">
                                     @csrf
 
                                         <input hidden  type="number" name="credit" value="{{$purchasePlan->credit}}"/>
@@ -1590,7 +1590,7 @@
                                             <img class="img-fluid" src="{{ asset('/') }}adminAsset/assets/images/paypal.png" alt="paypal logo">
                                         </button>
                                     </form>
-                                    <form action="{{--{{ route('payments.crypto.pay') }}--}}" class="col-5" method="post" enctype="multipart/form-data">
+                                    <form action="{{ route('payments.crypto.pay') }}" class="col-5" method="post" enctype="multipart/form-data">
                                         @csrf
 
                                         <input hidden  type="number" name="credit" value="{{$purchasePlan->credit}}"/>

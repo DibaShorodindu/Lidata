@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,7 +28,7 @@ class PurchasePlan extends Model
     public static function createNew($request)
     {
         self::$purchagePlan = new PurchasePlan();
-        self::$purchagePlan->userId       = $request->id;
+        self::$purchagePlan->userId       = Auth::user()->id;
         self::$purchagePlan->plan         = 'Free';
         self::$purchagePlan->price        = 0;
         self::$purchagePlan->credit       = 50;
@@ -37,5 +38,36 @@ class PurchasePlan extends Model
         self::$purchagePlan->start        = Carbon::now()->toDateString();
         self::$purchagePlan->end          = Carbon::now()->addDays(29)->format('Y-m-d');
         self::$purchagePlan->save();
+    }
+    public static function createNewOne($request)
+    {
+
+        self::$purchagePlan = new PurchasePlan();
+        self::$purchagePlan->userId       = Auth::user()->id;
+        self::$purchagePlan->plan         = $request->plan;
+        self::$purchagePlan->price        = $request->price;
+        self::$purchagePlan->credit       = $request->credit;
+        self::$purchagePlan->phoneNumber  = $request->phoneNumber;
+        self::$purchagePlan->dataFilter   = $request->dataFilter;
+        self::$purchagePlan->csvExport    = $request->csvExport;
+        self::$purchagePlan->start        = Carbon::now()->toDateString();
+        self::$purchagePlan->end         = Carbon::now()->addDays(29)->format('Y-m-d');
+        self::$purchagePlan->save();
+
+    }
+    public static function createNewByAdmin($request, $id)
+    {
+        self::$purchagePlan = new PurchasePlan();
+        self::$purchagePlan->userId       = $id;
+        self::$purchagePlan->plan         = $request->plan;
+        self::$purchagePlan->price        = $request->price;
+        self::$purchagePlan->credit       = $request->credit;
+        self::$purchagePlan->phoneNumber  = $request->phoneNumber;
+        self::$purchagePlan->dataFilter   = $request->dataFilter;
+        self::$purchagePlan->csvExport    = $request->csvExport;
+        self::$purchagePlan->start        = Carbon::now()->toDateString();
+        self::$purchagePlan->end         = Carbon::now()->addDays(29)->format('Y-m-d');
+        self::$purchagePlan->save();
+
     }
 }

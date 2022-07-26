@@ -72,7 +72,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body m-4 mb-5">
-                                            <form action="" method="post" enctype="multipart/form-data">
+                                            <form action="<?php echo e(route('addCardInfo')); ?>" method="post" enctype="multipart/form-data">
                                                 <?php echo csrf_field(); ?>
                                                 <div>
                                                     <h5>Your Details</h5>

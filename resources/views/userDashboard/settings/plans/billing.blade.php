@@ -73,7 +73,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body m-4 mb-5">
-                                            <form action="{{--{{ route('addCardInfo') }}--}}" method="post" enctype="multipart/form-data">
+                                            <form action="{{ route('addCardInfo') }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <div>
                                                     <h5>Your Details</h5>

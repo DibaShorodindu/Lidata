@@ -458,6 +458,19 @@ Route::get('/settings/billing/{id}',[
         'uses' => '\App\Http\Controllers\User\UserController@upgradeUser',
         'as'   => 'upgrade',
     ]);
+    //add Card Info
+    Route::post('addCardInfo',[
+        'uses' => '\App\Http\Controllers\User\UserController@addCardInfo',
+        'as'   => 'addCardInfo',
+    ]);
+    Route::post('updateCardInfo',[
+        'uses' => '\App\Http\Controllers\User\UserController@updateCardInfo',
+        'as'   => 'updateCardInfo',
+    ]);
+    Route::get('removeCard',[
+        'uses' => '\App\Http\Controllers\User\UserController@removeCard',
+        'as'   => 'removeCard',
+    ]);
 
 
 });
@@ -471,6 +484,25 @@ Route::get('userLogout',[
     'as'   => 'userLogout',
 ]);
 
+//stripe payment
+
+//Route::get('stripe', [StripeController::class, 'stripe']);
+Route::post('stripe',[
+    'uses' => '\App\Http\Controllers\Payment\PaymentController@stripeAccess',
+    'as'   => 'stripe',
+]);
+
+// routes/web.php
+
+// You can protect the 'payments.crypto.pay' route with `auth` middleware to allow access by only authenticated user
+Route::match(['get', 'post'], '/payments/crypto/pay', Victorybiz\LaravelCryptoPaymentGateway\Http\Controllers\CryptoPaymentController::class)
+    ->name('payments.crypto.pay');
+
+// You you need to create your own callback controller and define the route below
+// The callback route should be a publicly accessible route with no auth
+// However, you may also exclude the route from CSRF Protection by adding their URIs to the $except property of the VerifyCsrfToken middleware.
+Route::post('/payments/crypto/callback', [App\Http\Controllers\Payment\PaymentController::class, 'callback'])
+    ->withoutMiddleware(['web', 'auth']);
 
 
 

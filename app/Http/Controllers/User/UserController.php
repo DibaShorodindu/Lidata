@@ -207,6 +207,50 @@ class UserController extends Controller
     }
     /** end updating user information*/
 
+    /** start add/updating user billing information*/
+
+    public function addCardInfo(Request $request)
+    {
+        Card::create([
+            'userId' => $request->userId,
+            'firstName' => $request->firstName,
+            'lastName' => $request->lastName,
+            'creditCardNumber' => $request->creditCardNumber,
+            'expirationDate' => $request->expirationDate,
+            'cvc' => $request->cvc,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'country' => $request->country,
+            'postalCode' => $request->postalCode,
+        ]);
+        return redirect()->route('billing');
+    }
+    public function updateCardInfo(Request $request)
+    {
+        Card::where('id', $request->cardId)->update([
+            'userId' => $request->userId,
+            'firstName' => $request->firstName,
+            'lastName' => $request->lastName,
+            'creditCardNumber' => $request->creditCardNumber,
+            'expirationDate' => $request->expirationDate,
+            'cvc' => $request->cvc,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'country' => $request->country,
+            'postalCode' => $request->postalCode,
+        ]);
+        return redirect()->route('billing');
+    }
+    public function removeCard()
+    {
+        Card::where('userId', Auth::user()->id)->delete();
+        return redirect()->route('billing');
+    }
+
+    /** end add/updating user billing information*/
+
   
 
     public function userLogin()
@@ -410,7 +454,7 @@ class UserController extends Controller
 
     public function billing(Request $request)
     {
-        $data = Card::where('userId', $request->userId)->get();
+        $data = Card::where('userId', Auth::user()->id)->get();
         return view('userDashboard.settings.plans.billing', ['userCardInfo' => $data]);
     }
 

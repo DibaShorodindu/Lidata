@@ -1,4 +1,16 @@
 <?php return array (
+  'barryvdh/laravel-dompdf' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Pdf' => 'Barryvdh\\DomPDF\\Facade\\Pdf',
+      'PDF' => 'Barryvdh\\DomPDF\\Facade\\Pdf',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 
@@ -115,6 +127,17 @@
     'providers' => 
     array (
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    ),
+  ),
+  'victorybiz/laravel-crypto-payment-gateway' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Victorybiz\\LaravelCryptoPaymentGateway\\LaravelCryptoPaymentGatewayServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'LaravelCryptoPaymentGateway' => 'Victorybiz\\LaravelCryptoPaymentGateway\\LaravelCryptoPaymentGatewayFacade',
     ),
   ),
 );
