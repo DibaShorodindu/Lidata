@@ -28,7 +28,7 @@ class PurchasePlan extends Model
     public static function createNew($request)
     {
         self::$purchagePlan = new PurchasePlan();
-        self::$purchagePlan->userId       = Auth::user()->id;
+        self::$purchagePlan->userId       = $request->id;
         self::$purchagePlan->plan         = 'Free';
         self::$purchagePlan->price        = 0;
         self::$purchagePlan->credit       = 50;
@@ -43,7 +43,7 @@ class PurchasePlan extends Model
     {
 
         self::$purchagePlan = new PurchasePlan();
-        self::$purchagePlan->userId       = Auth::user()->id;
+        self::$purchagePlan->userId       = $request->userId;
         self::$purchagePlan->plan         = $request->plan;
         self::$purchagePlan->price        = $request->price;
         self::$purchagePlan->credit       = $request->credit;
